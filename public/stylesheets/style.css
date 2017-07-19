@@ -433,6 +433,7 @@ a:-webkit-any-link {
     line-height: 3rem;
     text-align: center;
     opacity: 0.8;
+    font-size: 1.3rem;
 }
 
 #search_botton {
@@ -598,7 +599,7 @@ a:-webkit-any-link {
     position: fixed;
     bottom: 0;
     /*background-color: black;*/
-    width: 100%;
+    width: inherit;
 }
 
 .all_counts {
@@ -613,21 +614,25 @@ a:-webkit-any-link {
     text-align: center;
     height: 2rem;
     line-height: 1.2rem;
+    font-size: 1.2rem;
+    
 }
 
 .shop_button {
     height: 4.5rem;
-    line-height: 4rem;
+    line-height: 4.5rem;
     text-align: center;
     background-color: #F5F5F5;
+    font-size: 1.2rem;
 }
 
 .clear_button {
     height: 4.5rem;
-    line-height: 4rem;
+    line-height: 4.5rem;
     text-align: center;
     background-color: orangered;
     color: white;
+    font-size: 1.2rem;
 }
 
 .nogoods {
@@ -640,6 +645,7 @@ a:-webkit-any-link {
     line-height: 4rem;
     text-align: center;
     background-color: #e7e7e7;
+    font-size: 1.2rem;
 }
 
 .ringhtnogoods {
@@ -647,6 +653,7 @@ a:-webkit-any-link {
     line-height: 4rem;
     text-align: center;
     background-color: orangered;
+    font-size: 1.2rem;
 }
 
 .zk_topBack {
