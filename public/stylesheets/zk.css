@@ -1,0 +1,107 @@
+.push div img{
+	width: 100%;
+	height: auto;
+}
+.zk_adPic{
+	position: relative;
+	height: 12.25rem;
+}
+.zk_adPic>img{
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.zk_adTag{
+	width: 4rem !important;
+	z-index: 2;
+}
+.zk_info{
+	height: auto;
+	background-color: white;
+	padding-top: 0.5rem;
+}
+.zk_infoName{
+	padding-left: 1rem !important;
+	text-align: left;
+	font-size: 0.94rem;
+}
+.zk_infoPrice{
+	padding-right: 1rem;
+	height: auto;
+	width: auto;
+	float: right;
+	color: #ff6000;
+}
+.zk_briefPrice{
+	padding-left: 1rem !important;
+	height: auto;
+	width: auto !important;
+	color: #ff6000;
+}
+.zk_infoPrice>div,.zk_briefPrice>div{
+	float: right;
+	width: auto;
+	font-size: 0.94rem;
+}
+.zk_briefPrice>div{
+	float: left;
+}
+.zk_infoPrice>span,.zk_briefPrice>span{
+	float: right;
+	font-size: 0.72rem;
+	padding-top: 0.22rem;
+}
+.zk_infoPrice::before,.zk_briefPrice::before{
+	content: "￥";
+   	float: left;
+    padding-top: 0.2rem;
+    font-size: .2rem;
+    margin-right: .05rem;
+    font-weight: 400;
+}
+.zk_state{
+	height: auto;
+	background-color: white;
+	text-align: left;
+	font-size: 0.77rem;
+	padding-bottom: 0.5rem;
+	padding-left: 1rem !important;
+	color: rgba(0,0,0,0.54);
+}
+.zk_goodsPic{
+	height: 11.75rem;
+	background-color: white;
+}
+.zk_goodsBrief{
+	height: auto;
+	background-color: white;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+.zk_goodsBrief .zk_state{
+	padding-bottom: 0;
+}
+.space{
+	height: 0.5rem;
+	background-color: #F5F5F5;
+}
+.col-xs-6>.space{
+	height: 0.45rem;
+}
+.row>.col-xs-6>img{
+	width: 102% !important;
+}
+.zk_up{
+	position: fixed;
+	width: 3rem;
+	height: auto;
+	right: 1rem;
+	bottom: 6rem;
+	z-index: 2;
+}
+.zk_across .zk_goodsBrief{
+	height: 12.7rem;
+}
+.zk_across .zk_goodsBrief .zk_infoName{
+	padding-top: 2rem;
+}

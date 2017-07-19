@@ -1,0 +1,86 @@
+<!--
+作者：yoyo
+时间：2017-07-12
+描述：header
+-->
+<div id="header">
+    <div id="mainheader">
+        <div id="logo">
+            <img src="images/logo_mi.png" />
+        </div>
+        <div id="search">
+            <a href="search.html">
+                <span id="search_text">
+					搜索商品名称
+				</span>
+            </a>
+        </div>
+        <div id="login_button" class="<%=login?"hide":""%>">
+            <a href="#">
+                <span id="login_button_text">
+					登录
+				</span>
+            </a>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $(".smallfrag_name").click(function() {
+                $(this).children("p").addClass("smallfrag_active");
+                $(this).parents("li").siblings().find("p").removeClass("smallfrag_active");
+            });
+        });
+    </script>
+
+    <div id="smallheader" class="row">
+        <ul class="smallfrag_ul">
+            <li class="smallfrag_li">
+                <a href="javascript:frag_switch('.content', '1_1', function(){})">
+                    <div class="smallfrag_name">
+                        <p class="smallfrag_active">推荐</p>
+                    </div>
+                </a>
+            </li>
+            <li class="smallfrag_li">
+                <a href="javascript:frag_switch('.content', '1_2', function(){})">
+                    <div class="smallfrag_name">
+                        <p>手机</p>
+                    </div>
+                </a>
+            </li>
+            <li class="smallfrag_li">
+                <a href="javascript:frag_switch('.content', '1_3', function(){})">
+                    <div class="smallfrag_name">
+                        <p>智能</p>
+                    </div>
+                </a>
+            </li>
+            <li class="smallfrag_li">
+                <a href="javascript:frag_switch('.content', '1_4', function(){})">
+                    <div class="smallfrag_name">
+                        <p>电视</p>
+                    </div>
+                </a>
+            </li>
+            <li class="smallfrag_li">
+                <a href="javascript:frag_switch('.content', '1_5', function(){})">
+                    <div class="smallfrag_name">
+                        <p>电脑</p>
+                    </div>
+                </a>
+            </li>
+            <li class="smallfrag_li">
+                <a href="javascript:frag_switch('.content', '1_6', function(){})">
+                    <div class="smallfrag_name">
+                        <p>生活周边</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="content row">
+
+</div>

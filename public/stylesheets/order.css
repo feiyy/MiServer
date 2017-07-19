@@ -1,0 +1,155 @@
+.zk_topBack
+{
+	padding-bottom: 0.1rem;
+}
+.zk_topBorder
+{
+	height: 0.4rem;
+	background: url(../img/border.png) 0 0 repeat-x;
+	background-size: 2.6rem 0.4rem;
+}
+.zk_address,.zk_Space,.zk_address_hide,.zk_payMethod,.zk_orderId,.zk_orderState,.zk_turnDown,.zk_orderDetail
+{
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+.zk_address_hide,.zk_payMethod_hide
+{
+	display: none;
+}
+.zk_Space
+{
+	border-left: 1rem solid white;
+	border-right: 1rem solid white;
+	background-color: #eee;
+	height: 0.1rem;
+}
+.zk_address>.col-xs-10,.zk_address_hide>.col-xs-10
+{
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+.zk_username,.zk_userPhone
+{
+	color: #333;
+	text-align: left;
+	font-size: 1rem;
+	width: auto;
+	float: left;
+	padding-right: 1rem;
+}
+.zk_position
+{
+	font-size: 0.8rem;
+	color: #757575;
+	text-align: left;
+	
+}
+.zk_payMethod
+{
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+.zk_choose,.zk_noChoose
+{
+	padding-left: 1rem;
+	padding-right: 1rem;
+	padding-top: 2.3rem;
+}
+.zk_payMethod>.zk_noChoose,.zk_payMethod>.zk_choose
+{
+	padding-top: 0.5rem;
+}
+.zk_logo,.zk_payMethod>.col-xs-8
+{
+	padding-left: 1rem;
+	padding-right: 1rem;
+	padding-top: 0.5rem;
+}
+.zk_logo,.zk_payMethod>.col-xs-7
+{
+	padding-left: 1rem;
+	padding-right: 1rem;
+	padding-top: 0.5rem;
+}
+.zk_turnDown
+{
+	padding-bottom: 0.2rem;
+}
+.zk_turnDown>.col-xs-8
+{
+	padding-top: 0.2rem;
+}
+.zk_proName,.zk_number
+{
+	padding-top: 0.5rem;
+	font-size: 1rem;
+}
+.zk_number
+{
+	text-align: right;
+}
+
+.zk_orderId,.zk_orderState
+{
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+.zk_orderId>div
+{
+	color: #666;
+	font-size: 1rem;
+}
+.zk_orderState
+{
+	font-size: 1rem;
+	color: #FF5722;
+	text-align: right;
+}
+.zk_orderItem
+{
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+.zk_orderItem>.col-xs-3
+{
+	padding-left: 1rem;
+}
+.zk_orderItem>.col-xs-9
+{
+	font-size: 0.8rem;
+	color: #666;
+	padding-top: 1.5rem;
+}
+.zk_orderItemNum,.zk_orderItemMoney
+{
+	padding-bottom: 0.5rem;
+}
+.zk_orderItemNum
+{
+	color: #999;
+	padding-top: 0.5rem;
+	font-size: 0.8rem;
+}
+.zk_orderItemMoney
+{
+	padding-top: 0.2rem;
+	color: #666;
+	padding-right: 1rem;
+	font-size: 1rem;
+	text-align: right;
+}
+.zk_goDowm
+{
+	padding-right: 1rem;
+}
+.zk_orderDetail
+{
+	display: none;
+}
+.zk_orderDetail div
+{
+	padding-bottom: 0.5rem;
+	color: #666;
+    font-size: 1rem;
+}

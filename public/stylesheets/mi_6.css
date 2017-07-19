@@ -1,0 +1,140 @@
+.zk_mi6Name,.zk_mi6brief,.zk_mi6price,.zk_mi6choosen,.zk_mi6stock,.zk_mi6top,.zk_mi6top1,.zk_mi6spec,.zk_mi6nameAndSpec,.zk_mi6_version
+{
+	padding-left: 1rem;
+	padding-right: 1rem;
+	background-color: white;
+}
+.zk_mi6Name
+{
+	padding-bottom: 0.3rem;
+	padding-top: 0.5rem;
+	font-size: 1.25rem;
+	color: rgba(0,0,0,0.87);
+}
+.zk_mi6brief
+{
+	color: rgba(0,0,0,0.54);
+}
+.zk_mi6brief,.zk_mi6brief>font
+{
+	font-size: 1rem;
+}
+.zk_mi6price
+{
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	font-size: 1.6rem;
+	height: auto;
+	width: auto !important;
+	color: #ff6000;
+}
+.zk_mi6price:before
+{
+	content: '￥';
+   	float: left;
+    padding-top: 0.2rem;
+    font-size: 1.2rem;
+    margin-right: .05rem;
+    font-weight: 400;
+}
+.zk_mi6choosen,.zk_mi6stock,.zk_mi6top
+{
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+.zk_mi6choosen
+{
+	border-bottom: 1px solid rgba(0,0,0,0.01);
+}
+.zk_mi6top
+{
+	height: 2.5rem;
+}
+.zk_mi6top>.col-xs-4,.zk_mi6top1>.col-xs-4
+{
+	font-size: 1rem;
+	text-align: center;
+	border-right: 1px solid rgba(0,0,0,0.02);
+}
+.zk_mi6pics
+{
+	width: 100%;
+	height: auto;
+}
+.zk_mi6pics>img
+{
+	width: 100%;
+	height: auto;
+}
+.push
+{
+	height: auto;
+}
+.zk_mi6hide
+{
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	display: block;
+	z-index: 2;
+	opacity: 0.2;
+	position: fixed;
+}
+.zk_mi6cover
+{
+	height: 30rem;
+	width: 25.64rem;
+	background-color: white;
+	z-index: 3;
+	position: fixed;
+	bottom: 0;
+}
+.zk_mi6spec>div>img
+{
+	margin-top: -3.5rem;
+	width: 8rem !important;
+	height: auto;
+}
+.zk_mi6version
+{
+	overflow-y: scroll;
+	padding-right: 1rem;
+	height: 20rem;
+}
+.zk_mi6_version::-webkit-scrollbar {
+    display: none;
+}
+.zk_mi6standard,.zk_mi6standard1
+{
+	border-bottom: 1px solid rgba(0,0,0,0.01);
+	padding: 1rem 1rem;
+}
+.zk_mi6standard>div,.zk_mi6standard1>div
+{
+	padding-top: 0.4rem;
+	padding-bottom: 0.4rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	margin-bottom: 0.25rem;
+	border: 0.01rem solid rgba(0,0,0,0.15);
+	height: auto;
+	font-size: 0.8rem;
+	color: rgba(0,0,0,0.87);
+}
+.zk_mi6version>.col-xs-9
+{
+	padding-top: 0.4rem;
+}
+.zk_addGoods
+{
+	/*border: 1px solid #f4f4f4;*/
+	padding-right: 1rem;
+}
+.zk_commit
+{
+	position: fixed;
+	bottom: 0;
+	z-index: 3;
+	background-color: white;
+	text-align: center;
+}

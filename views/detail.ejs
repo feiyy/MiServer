@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title><%= detailName%> 商品详情</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/zk.css" />
+    <link rel="stylesheet" href="/stylesheets/mi_6.css" />
+
+    <script src="/javascripts/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascripts/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascripts/script.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascripts/zk.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="zk_mi6hide" onclick="down()"></div>
+        <div class="content row">
+            <div class="slideshow col-xs-12">
+
+            </div>
+            <div class="push col-xs-12">
+                
+                <div class="row zk_mi6Name"></div>
+                <div class="row zk_mi6brief">
+                    <font color="#ff4a00"></font>
+                </div>
+                <div class="row zk_mi6price"></div>
+                <div class="space"></div>
+                <div class="row zk_mi6choosen" onclick="up()">
+                    <div class="col-xs-2" style="color: rgba(0,0,0,0.54);font-size: 1rem;padding-left: 0;">已选</div>
+                    <div class="col-xs-10" style="color: rgba(0,0,0,0.87);font-size: 1rem;"></div>
+                </div>
+                <div class="row zk_mi6stock">
+                    <div class="col-xs-2" style="color: rgba(0,0,0,0.54);font-size: 1rem;padding-left: 0;">库存</div>
+                    <div class="col-xs-10" style="color: rgba(0,0,0,0.87);font-size: 1rem;"></div>
+                </div>
+                <div class="space"></div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="zk_mi6top">
+                            <div class="col-xs-4" id="top1" onclick="changePic(1)" style="color: #FF5722;">概述</div>
+                            <div class="col-xs-4" id="top2" onclick="changePic(2)">参数</div>
+                            <div class="col-xs-4" id="top3" onclick="changePic(3)" style="border-right: none;">预售条款</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="zk_mi6pics">
+                    <div class="col-xs-12" style="text-align: center;">点击查看更多</div>
+                </div>
+                <div class="col-xs-12">
+
+                </div>
+                <div class="zk_mi6cover">
+                    <div class="row zk_mi6spec" style="border-bottom: 1px solid rgba(0,0,0,0.01);">
+                        <div class="col-xs-4 zk_mi6icon"></div>
+                        <div class="col-xs-8">
+                            <div class="row zk_mi6price"></div>
+                            <div class="row zk_mi6nameAndSpec" style="font-size: 0.9rem;color: rgba(0,0,0,0.87);"></div>
+                        </div>
+                    </div>
+                    <div class="row zk_mi6version">
+                        <div class="col-xs-12" style="color: rgba(0,0,0,0.54);font-size: 0.8rem;padding-left: 1rem;">版本</div>
+                        <div class="col-xs-12 zk_mi6standard">
+                            <!--<div class="col-xs-12">全网通版 6GB 64GB</div>-->
+                        </div>
+                        <div class="col-xs-6" style="color: rgba(0,0,0,0.54);font-size: 0.8rem;padding-left: 1rem;">颜色</div>
+                        <div class="col-xs-6">
+                            <div class="col-xs-5" style="color: rgba(0,0,0,0.54);font-size: 0.8rem;padding-left: 1rem;">库存剩余</div>
+                            <div class="col-xs-1 zk_mi6Store" style="color: rgba(0,0,0,0.54);font-size: 0.8rem;padding-left: 0;"></div>
+                            <div class="col-xs-1" style="color: rgba(0,0,0,0.54);font-size: 0.8rem;padding-left: 0;">件,</div>
+                            <div class="col-xs-5 zk_wrongInfo" style="color: rgba(0,0,0,0.54);font-size: 0.8rem;padding-left: 0;">请尽快购买</div>
+                        </div>
+                        <div class="col-xs-12 zk_mi6standard1">
+                            <!--<div class="col-xs-3" style="text-align: center;margin-right: 1rem;">亮黑色</div>-->
+                        </div>
+                        <div class="col-xs-9" style="color: rgba(0,0,0,0.54);font-size: 0.8rem;padding-left: 1rem;">购买数量</div>
+                        <div class="col-xs-3 zk_addGoods">
+                            <div class="col-xs-4" onclick="addGoods(-1)" style="border:1px solid #f4f4f4;"><img src="img/sub.png"></div>
+                            <div class="col-xs-4 zk_mi6number" style="text-align: center;">1</div>
+                            <div class="col-xs-4" onclick="addGoods(1)" style="border:1px solid #f4f4f4;"><img src="img/plus.png"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="zk_commit col-xs-12" onclick="commitOrder(this)">
+                    确定
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
