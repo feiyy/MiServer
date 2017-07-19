@@ -22,7 +22,6 @@ router.post('/login', function(req, res, next) {
             console.log(uname + " login: success");
         } else {
             console.log(uname + " login: fail");
-            // res.render("index", { username: "", err: "登录失败", users: arr });
         }
     });
 });
