@@ -10,8 +10,8 @@ router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express', fragment: 1 });
 });
 
-router.get('/detail', function(req, res, next) {
-    res.render('detail', { detailName: '小米6' });
+router.get('/detail/:id', function(req, res, next) {
+    res.render('detail', { detailid: req.params.id });
 });
 
 router.get('/payment', function(req, res, next) {
@@ -75,6 +75,9 @@ router.get('/img/:file', function(req, res, next) {
 });
 
 router.get('/json/:file', function(req, res, next) {
+    db.queryDetaiById(id, function(detail) {
+        res.send(detail.parseJSON());
+    });
     console.log(req.params.file);
     res.sendFile('/models/' + req.params.file, options);
 });
