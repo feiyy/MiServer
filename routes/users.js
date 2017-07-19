@@ -26,4 +26,27 @@ router.post('/login', function(req, res, next) {
     });
 });
 
+router.get('/register', function(req, res, next) {
+    res.render('register');
+});
+
+router.post('/register', function(req, res, next) {
+    //获取表单数据
+    var uname = req.body.user;
+    var pwd = req.body.pwd;
+    var user = {
+        uname: uname,
+        pwd: pwd
+    };
+    console.log(user);
+    user = db.queryUserByName(uname, function(user) {
+        console.log(user);
+        if (pwd == user.pwd) {
+            console.log(uname + " login: success");
+        } else {
+            console.log(uname + " login: fail");
+        }
+    });
+});
+
 module.exports = router;
