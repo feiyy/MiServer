@@ -76,7 +76,7 @@ router.get('/img/:file', function(req, res, next) {
 
 router.get('/json/:file', function(req, res, next) {
     db.queryDetaiById(id, function(detail) {
-        res.send(detail.parseJSON());
+        res.send(detail);
     });
     console.log(req.params.file);
     res.sendFile('/models/' + req.params.file, options);
