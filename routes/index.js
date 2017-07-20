@@ -17,9 +17,9 @@ router.get('/mine', function(req, res, next) {
 
 router.get('/detail/:id', function(req, res, next) {
     var detailId = req.params.id;
-    db.queryDetailById(detailId, function(detail){
+    db.queryDetailById(detailId, function(detail) {
         console.log(detail);
-        res.render('detail', { detailName: detail.name ,detailId: detailId });
+        res.render('detail', { detailName: detail.name, detailId: detailId });
     });
 });
 
@@ -42,7 +42,7 @@ router.get('/search', function(req, res, next) {
 router.get('/fragments/:id', function(req, res, next) {
     var frag_id = req.params.id;
     if (frag_id == 1) {
-        res.render('fragments/' + frag_id, { login: false });
+        res.render('fragments/' + frag_id, { login: req.session.user });
     } else {
         res.render('fragments/' + frag_id);
     }
@@ -81,7 +81,9 @@ router.get('/shopcart', function(req, res, next) {
 
     // user = query -> req.session.user._id;
     // details = user.shopcart;
-
+    if (!req.session.user) {
+        res.render('login');
+    }
     res.render('fragments/' + 3, { details: details });
 });
 
@@ -107,7 +109,7 @@ router.get('/json/:id', function(req, res, next) {
 });
 
 router.get('/init', function(req, res, next) {
-    db.init(function(cb){
+    db.init(function(cb) {
         res.send(cb);
     });
 })

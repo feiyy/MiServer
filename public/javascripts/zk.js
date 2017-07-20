@@ -1,25 +1,25 @@
 var jid;
 phoneInfo = function(id) {
-    jid=id;
+    jid = id;
     $.ajax({
         type: "get",
-        url: "/json/" + jid,//此处要改为相应的id
+        url: "/json/" + jid, //此处要改为相应的id
         async: true,
         success: function(item) {
             //$.each(data.phone, function(i, item) {
-                // if (item.name == "小米6") {
-                    console.log(item);
-                    $(".zk_mi6Name").text(item.name);
-                    $(".zk_mi6brief").html("<font color='#ff4a00'>【" + item.activity + "】</font>" + item.brief);
-                    $(".zk_mi6price").text(item.type[0].price);
-                    $(".zk_mi6choosen>.col-xs-10").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color + " x1");
-                    $(".zk_mi6stock>.col-xs-10").text("剩余" + item.type[0].stock + "件");
-                    $(".zk_mi6Store").text(item.stock);
-                    $(".zk_mi6pics").html("<img src=" + item.urls1[0].url + " />" + "<img src=" + item.urls1[1].url + " />" + "<img src=" + item.urls1[2].url + " />" + "<div class='col-xs-12 zk_mi6more' style='text-align: center;font-size:2rem;background-color:white;color:#FF5722' onclick='showMore()'>点击查看更多</div>");
-                    $(".zk_mi6nameAndSpec").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color);
-                    $(".zk_mi6icon").html("<img src=" + item.type[0].pic + "  />");
-                //     return false;
-                // }
+            // if (item.name == "小米6") {
+            console.log(item);
+            $(".zk_mi6Name").text(item.name);
+            $(".zk_mi6brief").html("<font color='#ff4a00'>【" + item.activity + "】</font>" + item.brief);
+            $(".zk_mi6price").text(item.type[0].price);
+            $(".zk_mi6choosen>.col-xs-10").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color + " x1");
+            $(".zk_mi6stock>.col-xs-10").text("剩余" + item.type[0].stock + "件");
+            $(".zk_mi6Store").text(item.stock);
+            $(".zk_mi6pics").html("<img src=" + item.urls1[0].url + " />" + "<img src=" + item.urls1[1].url + " />" + "<img src=" + item.urls1[2].url + " />" + "<div class='col-xs-12 zk_mi6more' style='text-align: center;font-size:2rem;background-color:white;color:#FF5722' onclick='showMore()'>点击查看更多</div>");
+            $(".zk_mi6nameAndSpec").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color);
+            $(".zk_mi6icon").html("<img src=" + item.type[0].pic + "  />");
+            //     return false;
+            // }
             //});
         }
     });
@@ -30,10 +30,10 @@ function changePic(num) {
     $("#top" + num).siblings().css("color", "#333");
     $.ajax({
         type: "get",
-        url: "/json/"+jid,
+        url: "/json/" + jid,
         async: true,
         success: function(item) {
-               
+
             var str = "";
             switch (num) {
                 case 1:
@@ -62,35 +62,35 @@ function up() {
     $(".zk_mi6standard1").html("");
     $.ajax({
         type: "get",
-        url: "/json/"+jid,
+        url: "/json/" + jid,
         async: true,
         success: function(item) {
             var types = new Array();
-                if (item.name == str[0]) {
-                    var typeStr = item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom;
-                    var isRepeated = false;
-                    for (var i = 0; i < types.length; i++) {
-                        if (types[i] == typeStr) {
-                            isRepeated = true;
-                            break;
-                        }
-                    }
-                    if (!isRepeated)
-                        types.push(typeStr);
-                    //按照系统的逻辑来看，规格+颜色具体地将每一部手机区别开，因此当规格选定了之后，颜色不应该出现重复的情况
-                    if (item.type[0].name == str[1] && item.type[0].ram == str[2] && item.type[0].rom == str[3]) {
-                        if (item.type[0].color == str[4]) {
-                            if (parseInt(item.type[0].stock) > 0)
-                                $(".zk_mi6standard1").append("<div class='col-xs-3' style='text-align: center;margin-right: 1rem;border: 1px solid #f56600;color:#f56600'>" + item.type[0].color + "</div>");
-                            else {
-                                $(".zk_mi6standard1").append("<div class='col-xs-3' style='text-align: center;margin-right: 1rem;border: 1px dashed #f56600;color:#f56600'>" + item.type[0].color + "</div>");
-                                $(".zk_commit").text("已售罄");
-                                $(".zk_commit").addClass("zk_noStock");
-                            }
-                        } else
-                            $(".zk_mi6standard1").append("<div class='col-xs-3' style='text-align: center;margin-right: 1rem;'>" + item.type[0].color + "</div>");
+            if (item.name == str[0]) {
+                var typeStr = item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom;
+                var isRepeated = false;
+                for (var i = 0; i < types.length; i++) {
+                    if (types[i] == typeStr) {
+                        isRepeated = true;
+                        break;
                     }
                 }
+                if (!isRepeated)
+                    types.push(typeStr);
+                //按照系统的逻辑来看，规格+颜色具体地将每一部手机区别开，因此当规格选定了之后，颜色不应该出现重复的情况
+                if (item.type[0].name == str[1] && item.type[0].ram == str[2] && item.type[0].rom == str[3]) {
+                    if (item.type[0].color == str[4]) {
+                        if (parseInt(item.type[0].stock) > 0)
+                            $(".zk_mi6standard1").append("<div class='col-xs-3' style='text-align: center;margin-right: 1rem;border: 1px solid #f56600;color:#f56600'>" + item.type[0].color + "</div>");
+                        else {
+                            $(".zk_mi6standard1").append("<div class='col-xs-3' style='text-align: center;margin-right: 1rem;border: 1px dashed #f56600;color:#f56600'>" + item.type[0].color + "</div>");
+                            $(".zk_commit").text("已售罄");
+                            $(".zk_commit").addClass("zk_noStock");
+                        }
+                    } else
+                        $(".zk_mi6standard1").append("<div class='col-xs-3' style='text-align: center;margin-right: 1rem;'>" + item.type[0].color + "</div>");
+                }
+            }
             for (var i = 0; i < types.length; i++) {
                 if ((str[1] + " " + str[2] + " " + str[3]) == types[i])
                     $(".zk_mi6standard").append("<div class='col-xs-12 zk_mi6choosed' style='border: 1px solid #f56600;color:#f56600'>" + types[i] + "</div>");
