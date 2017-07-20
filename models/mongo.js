@@ -1,11 +1,7 @@
 var user = {
 	uname:"13080868092",
     pwd:"123456",
-    hphoto:"/images/account/userimg.png",
-    sex:"male",
-    birthday:"1994-4-5",
-    payment:[],
-    address:[]};
+    };
 
 
 var mongoose = require('mongoose');
@@ -17,7 +13,12 @@ db.once('open', function() {
     //1. Schema
     userSchema = new Schema({
         uname: String,
-        pwd: String
+        pwd: String,
+        hphoto: String,
+        sex: String,
+        birthday: Date,
+        payment: Array,
+        address: Array
     });
 
     detailSchema = new Schema({
