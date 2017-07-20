@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var db = require("../models/mongo.js");
 
 var options = {
     root: __dirname + '/../'
@@ -80,6 +81,12 @@ router.get('/json/:file', function(req, res, next) {
     });
     console.log(req.params.file);
     res.sendFile('/models/' + req.params.file, options);
+});
+
+router.get('/init', function(req, res, next) {
+    db.init(function(cb){
+        res.send(cb);
+    });
 });
 
 module.exports = router;
