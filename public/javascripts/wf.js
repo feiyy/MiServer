@@ -327,12 +327,12 @@ $(document).ready(function() {
 
     $(".wf_checkbox").click(function() {
         if ($(this).attr('check') == '0') {
-            $(this).css('background', 'url(images/u=541265155,3402819027&fm=214&gp=02222.jpg.png) center no-repeat');
+            $(this).css('background', 'url(/images/cart/check.png) center no-repeat');
             $(this).css('background-size', '2rem 2rem');
             $(this).attr('check', '1');
             //background:'url(../images/u=541265155,3402819027&fm=214&gp=02222.jpg.png) center no-repeat';
         } else {
-            $(this).css('background', 'url(images/u=541265155,3402819027&fm=214&gp=01111111.jpg.png) center no-repeat');
+            $(this).css('background', 'url(/images/cart/uncheck.png) center no-repeat');
             $(this).css('background-size', '2rem 2rem');
             $(this).attr('check', '0');
         }
@@ -358,7 +358,7 @@ $(document).ready(function() {
         };
     });
 
-    $(".clear_button").click(function() {
+    $('.content').click(function() {
         var amount = 0;
         var total = 0;
         var values = $(".wf_input").find('.input_value');
