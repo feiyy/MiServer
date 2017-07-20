@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var db = require("../models/mongo.js");
 
 var options = {
     root: __dirname + '/../'
@@ -10,8 +11,8 @@ router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express', fragment: 1 });
 });
 
-router.get('/detail', function(req, res, next) {
-    res.render('detail', { detailName: '小米6' });
+router.get('/detail/:id', function(req, res, next) {
+    res.render('detail', { detailid: req.params.id });
 });
 
 router.get('/payment', function(req, res, next) {
@@ -75,8 +76,17 @@ router.get('/img/:file', function(req, res, next) {
 });
 
 router.get('/json/:file', function(req, res, next) {
+    db.queryDetaiById(id, function(detail) {
+        res.send(detail);
+    });
     console.log(req.params.file);
     res.sendFile('/models/' + req.params.file, options);
+});
+
+router.get('/init', function(req, res, next) {
+    db.init(function(cb){
+        res.send(cb);
+    });
 });
 
 module.exports = router;

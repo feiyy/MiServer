@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var db = mongoose.createConnection('10.25.53.88', 'smallmimall');
+var db = mongoose.createConnection('localhost', 'smallmimall');
 
 db.on('error', function() { console.log("error") });
 db.once('open', function() {
@@ -21,14 +21,14 @@ db.once('open', function() {
         pic: String,
         price: Number,
         stock: Number,
-        urls1: Object,
-        urls2: Object,
-        urls3: Object
+        urls1: Array,
+        urls2: Array,
+        urls3: Array
     });
 
     //2. Model 
     userModel = db.model('User', userSchema);
-    detailModel = db.model('Detail', detailSchema);
+    DetailModel = db.model('Detail', detailSchema);
     // queryUser();
 });
 
@@ -88,7 +88,7 @@ db.once('open', function() {
     }
 
     db.queryDetailByName = function(name, callback) {
-        DetailModel.find({ uname: name }, function(err, doc) {
+        DetailModel.find({ name: name }, function(err, doc) {
             callback(doc[0]);
         })
     }
@@ -105,8 +105,30 @@ db.once('open', function() {
         });
     }
 
+//{price: 200}
     db.updateDetail = function(id, data) {
         DetailModel.findByIdAndUpdate(id, data, function(err, doc) {});
+    }
+
+    db.init = function(callback){
+        var detail = {
+            name: "小米6",
+            activity: "7月14日早10点，小米6 64GB 亮白色 首卖",
+            brief: "变焦双摄，4 轴防抖 / 骁龙835 旗舰处理器，6GB 大内存，最大可选128GB 闪存 / 5.15吋 护眼屏 / 四曲面玻璃/陶瓷机身",
+            type: [{name: "陶瓷尊享版",  ram: "6GB",
+            rom: "128GB",
+            color: "亮黑色",}],
+           
+            pic: "img/lightblack.jpg",
+            price: "2999",
+            stock: "0",
+            urls1: [{ url: "img/mi61.jpg" }, { url: "img/mi62.jpg" }, { url: "img/mi63.jpg" }, { url: "img/mi64.jpg" }, { url: "img/mi65.jpg" }, { url: "img/mi66.jpg" }, { url: "img/mi67.jpg" }, { url: "img/mi68.jpg" }, { url: "img/mi69.jpg" }, { url: "img/mi610.jpg" }, { url: "img/mi611.jpg" }, { url: "img/mi612.jpg" }, { url: "img/mi613.jpg" }, { url: "img/mi614.jpg" }, { url: "img/mi615.jpg" }],
+            urls2: [{ url: "img/parameter1.jpg" }, { url: "img/parameter2.jpg" }, { url: "img/parameter3.jpg" }, { url: "img/parameter4.jpg" }],
+            urls3: [{ url: "img/yushou.jpg" }]
+        };
+        db.addDetail(detail, function(cb){
+            callback(cb);
+        });
     }
 }
 
