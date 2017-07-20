@@ -532,7 +532,7 @@ a:-webkit-any-link {
 
 .wf_checkbox {
     height: 100%;
-    background: url(../images/u=541265155,3402819027&fm=214&gp=01111111.jpg.png) center no-repeat;
+    background: url(/images/cart/uncheck.png) center no-repeat;
     background-size: 2rem 2rem;
 }
 
