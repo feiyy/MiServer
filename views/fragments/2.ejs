@@ -1,15 +1,553 @@
 <!--
 作者：yoyo
 时间：2017-07-12
-描述：footer
+描述：page-category
 -->
+<script>
+	$(document).ready(function(){
+		document.getElementById("category-content").onscroll = function(){
+			var ccst = $("#category-content").scrollTop();
+			var r = $(window).width()/24;
+			
+			if(ccst>100){
+				$("#category-header").fadeOut();
+			}
+			else if(ccst<100){
+				$("#category-header").fadeIn();
+			}
+			
+	
+			if(getElementPos("co_xinpin").y<=0&&getElementPos("co_shouji").y>0){
+				$("#li_xinpin").siblings().removeClass();
+				$("#li_xinpin").attr("class","li_active");
+			}
+			else if(getElementPos("co_shouji").y<=0&&getElementPos("co_dianshi").y>0){
+				$("#li_shouji").siblings().removeClass();
+				$("#li_shouji").attr("class","li_active");
+			}
+			else if(getElementPos("co_dianshi").y<=0&&getElementPos("co_diannao").y>0){
+				$("#li_dianshi").siblings().removeClass();
+				$("#li_dianshi").attr("class","li_active");
+			}
+			else if(getElementPos("co_diannao").y<=0&&getElementPos("co_jiadian").y>0){
+				$("#li_diannao").siblings().removeClass();
+				$("#li_diannao").attr("class","li_active");
+			}
+			else if(getElementPos("co_jiadian").y<=0&&getElementPos("co_luyou").y>0){
+				$("#li_jiadian").siblings().removeClass();
+				$("#li_jiadian").attr("class","li_active");
+			}
+			else if(getElementPos("co_luyou").y<=0&&getElementPos("co_zhineng").y>0){
+				$("#li_luyou").siblings().removeClass();
+				$("#li_luyou").attr("class","li_active");
+			}
+			else if(getElementPos("co_zhineng").y<=0&&getElementPos("co_dianyuan").y>0){
+				$("#li_zhineng").siblings().removeClass();
+				$("#li_zhineng").attr("class","li_active");
+			}
+			else if(getElementPos("co_dianyuan").y<=0&&getElementPos("co_erji").y>0){
+				$("#li_dianyuan").siblings().removeClass();
+				$("#li_dianyuan").attr("class","li_active");
+			}
+			else if(getElementPos("co_erji").y<=0&&getElementPos("co_yinxiang").y>0){
+				$("#li_erji").siblings().removeClass();
+				$("#li_erji").attr("class","li_active");
+			}
+			else if(getElementPos("co_yinxiang").y<=0&&getElementPos("co_lipin").y>0){
+				$("#li_yinxiang").siblings().removeClass();
+				$("#li_yinxiang").attr("class","li_active");
+			}
+			else if(getElementPos("co_lipin").y<=0&&getElementPos("co_shenghuo").y>0){
+				$("#li_lipin").siblings().removeClass();
+				$("#li_lipin").attr("class","li_active");
+			}
+			else if(getElementPos("co_shenghuo").y<=0&&getElementPos("co_mifenka").y>0){
+				$("#li_shenghuo").siblings().removeClass();
+				$("#li_shenghuo").attr("class","li_active");
+			}
+			else if(getElementPos("co_mifenka").y<=0){
+				$("#li_mifenka").siblings().removeClass();
+				$("#li_mifenka").attr("class","li_active");
+			}
+	
+			}
+	
+		function getElementPos(elementId) {
+			var ua = navigator.userAgent.toLowerCase();
+			var isOpera = (ua.indexOf('opera') != -1);
+			var isIE = (ua.indexOf('msie') != -1 && !isOpera); // not opera spoof
+			var el = document.getElementById(elementId);
+			if(el.parentNode === null || el.style.display == 'none') {
+				return false;
+			}
+			var parent = null;
+			var pos = [];
+			var box;
+			if(el.getBoundingClientRect) //IE
+			{
+				box = el.getBoundingClientRect();
+				var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+				var scrollLeft = Math.max(document.documentElement.scrollLeft, document.body.scrollLeft);
+				return {
+					x: box.left + scrollLeft,
+					y: box.top + scrollTop
+				};
+			} else if(document.getBoxObjectFor) // gecko   
+			{
+				box = document.getBoxObjectFor(el);
+				var borderLeft = (el.style.borderLeftWidth) ? parseInt(el.style.borderLeftWidth) : 0;
+				var borderTop = (el.style.borderTopWidth) ? parseInt(el.style.borderTopWidth) : 0;
+				pos = [box.x - borderLeft, box.y - borderTop];
+			} else // safari & opera   
+			{
+				pos = [el.offsetLeft, el.offsetTop];
+				parent = el.offsetParent;
+				if(parent != el) {
+					while(parent) {
+						pos[0] += parent.offsetLeft;
+						pos[1] += parent.offsetTop;
+						parent = parent.offsetParent;
+					}
+				}
+				if(ua.indexOf('opera') != -1 || (ua.indexOf('safari') != -1 && el.style.position == 'absolute')) {
+					pos[0] -= document.body.offsetLeft;
+					pos[1] -= document.body.offsetTop;
+				}
+			}
+			if(el.parentNode) {
+				parent = el.parentNode;
+			} else {
+				parent = null;
+			}
+			while(parent && parent.tagName != 'BODY' && parent.tagName != 'HTML') { // account for any scrolled ancestors
+				pos[0] -= parent.scrollLeft;
+				pos[1] -= parent.scrollTop;
+				if(parent.parentNode) {
+					parent = parent.parentNode;
+				} else {
+					parent = null;
+				}
+			}
+			return {
+				x: pos[0],
+				y: pos[1]
+			};
+		}
+		
+		$("#li_xinpin").click(function(){
+			$("#category-content").scrollTo("#co_xinpin",800);
+		});
+		$("#li_shouji").click(function(){
+			$("#category-content").scrollTo("#co_shouji",800);
+		});
+		$("#li_dianshi").click(function(){
+			$("#category-content").scrollTo("#co_dianshi",800);
+		});
+		$("#li_diannao").click(function(){
+			$("#category-content").scrollTo("#co_diannao",800);
+		});
+		$("#li_jiadian").click(function(){
+			$("#category-content").scrollTo("#co_jiadian",800);
+		});
+		$("#li_luyou").click(function(){
+			$("#category-content").scrollTo("#co_luyou",800);
+		});
+		$("#li_zhineng").click(function(){
+			$("#category-content").scrollTo("#co_zhineng",800);
+		});
+		$("#li_dianyuan").click(function(){
+			$("#category-content").scrollTo("#co_dianyuan",800);
+		});
+		$("#li_erji").click(function(){
+			$("#category-content").scrollTo("#co_erji",800);
+		});
+		$("#li_yinxiang").click(function(){
+			$("#category-content").scrollTo("#co_yinxiang",800);
+		});
+		$("#li_lipin").click(function(){
+			$("#category-content").scrollTo("#co_lipin",800);
+		});
+		$("#li_shenghuo").click(function(){
+			$("#category-content").scrollTo("#co_shenghuo",800);
+		});
+		$("#li_mifenka").click(function(){
+			$("#category-content").scrollTo("#co_mifenka",800);
+		});
 
-<div class="content">
-    <div class="header">
+	})
+</script>
 
-    </div>
+<div id="content">
+	<div id="category-header">
+		<a href="index.html">
+			<div id="category-header-backicon" class="col-xs-1">
+				<img src="images/icon_back_n.png" />
+			</div>
+		</a>
+		<div id="category-header-title" class="col-xs-9">
+			<h2>
+			商品分类
+			</h2>
+		</div>
+		
+		<a href="search.html">
+			<div id="category-header-searchicon" class="col-xs-1">
+				<img src="images/search_icon.png" />
+			</div>
+		</a>
+	</div>
+	
+	<div id="list-ad-content">
+		
+		<div id="category-list">
+			<ul>
+				<li class="li_active" id="li_xinpin">新品</li>
+				<li id="li_shouji">手机</li>
+				<li id="li_dianshi">电视</li>
+				<li id="li_diannao">电脑</li>
+				<li id="li_jiadian">家电</li>
+				<li id="li_luyou">路由</li>
+				<li id="li_zhineng">智能</li>
+				<li id="li_dianyuan">电源</li>
+				<li id="li_erji">耳机</li>
+				<li id="li_yinxiang">音箱</li>
+				<li id="li_lipin">礼品</li>
+				<li id="li_shenghuo">生活</li>
+				<li id="li_mifenka">米粉卡</li>
 
-    <div class="viewport">
+			</ul>
+		</div>
+	
+		<div id="category-content">
+			<div id="co_xinpin" class="ad-content">
+				<div class="ad-title-logo">
+					<img src="images/category/category-xinpin-logo.webp"/>
+				</div>
+				<div class="ad-title">
+					<span>手机</span>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>小米6</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>小米Max 2</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>红米4X</p>
+				</div>
+			
+				<div class="ad-title">
+					<span>电视</span>
+				</div>
+				<div class="ad-title">
+					<span>电脑</span>
+				</div>
+			</div>
+		
+			<div id="co_shouji" class="ad-content">
+				<div class="ad-title-logo">
+					<img src="images/category/category-shouji-logo.webp"/>
+				</div>
+				<div class="ad-title">
+					<span>小米手机</span>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>小米6</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>小米Max 2</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>红米5c</p>
+				</div>
+			
+				<div class="ad-title">
+					<span>红米手机</span>
+				</div>
+				<div class="ad-title">
+					<span>移动4G+专区</span>
+				</div>
+				<div class="ad-title">
+					<span>配件及其他</span>
+				</div>
+			</div>
+		
+			<div id="co_dianshi" class="ad-content">
+				<div class="ad-title-logo">
+					<img src="images/category/category-dianshi-logo.webp"/>
+				</div>
+				<div class="ad-title">
+					<span>电视</span>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>43英寸</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>49英寸</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>55-60英寸</p>
+				</div>
+			
+				<div class="ad-title">
+					<span>盒子</span>
+				</div>
+				<div class="ad-title">
+					<span>音箱</span>
+				</div>
+				<div class="ad-title">
+					<span>配件与会员</span>
+				</div>
+			</div>
+		
+			<div id="co_diannao" class="ad-content">
+				<div class="ad-title-logo">
+					<img src="images/category/category-diannao-logo.webp"/>
+				</div>
+				<div class="ad-title">
+					<span>电脑</span>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>笔记本12.5"</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>笔记本13.3"</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>平板</p>
+				</div>
+			
+				<div class="ad-title">
+					<span>配件及其他</span>
+				</div>
+			</div>
+		
+			<div id="co_jiadian" class="ad-content">
+				<div class="ad-title-logo">
+					<img src="images/category/category-jiadian-logo.jpg"/>
+				</div>
+				<div class="ad-title">
+					<span>家电</span>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>电饭煲</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>净水器</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>净化器</p>
+				</div>
+			</div>
+		
+			<div id="co_luyou" class="ad-content">
+				<div class="ad-title-logo">
+					<img src="images/category/category-luyou-logo.webp"/>
+				</div>
+				<div class="ad-title">
+					<span>路由</span>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>路由器3G</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>路由器3</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>路由器3c</p>
+				</div>
 
-    </div>
+			</div>
+
+			<div id="co_zhineng" class="ad-content">
+				<div class="ad-title-logo">
+					<img src="images/category/category-zhineng-logo.webp"/>
+				</div>
+				<div class="ad-title">
+					<span>智能</span>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>智能家庭</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>VR眼镜</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>摄像机</p>
+				</div>
+
+				<div class="ad-title">
+					<span>健康</span>
+				</div>
+				
+				<div class="ad-title">
+					<span>户外</span>
+				</div>
+			</div>
+			
+			<div id="co_dianyuan" class="ad-content">
+				<div class="ad-title-logo">
+					<img src="images/category/category-dianyuan-logo.webp"/>
+				</div>
+				<div class="ad-title">
+					<span>电源</span>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>插线板</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>移动电源</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>智能插座</p>
+				</div>
+
+			</div>
+			
+			<div id="co_erji" class="ad-content">
+				<div class="ad-title-logo">
+					<img src="images/category/category-erji-logo.webp"/>
+				</div>
+				<div class="ad-title">
+					<span>耳机</span>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>线控耳机</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>蓝牙耳机</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>头戴式耳机</p>
+				</div>
+
+			</div>
+			
+			<div id="co_yinxiang" class="ad-content">
+				<div class="ad-title-logo">
+					<img src="images/category/category-yinxiang-logo.webp"/>
+				</div>
+				<div class="ad-title">
+					<span>音箱</span>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>蓝牙音箱</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>电视音响</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>音乐闹钟</p>
+				</div>
+
+			</div>
+			
+			<div id="co_lipin" class="ad-content">
+				<div class="ad-title-logo">
+					<img src="images/category/category-lipin-logo.jpg"/>
+				</div>
+				<div class="ad-title">
+					<span>礼品</span>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>送长辈</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>送孩子</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>送男生</p>
+				</div>
+
+			</div>
+			
+			<div id="co_shenghuo" class="ad-content">
+				<div class="ad-title-logo">
+					<img src="images/category/category-shenghuo-logo.webp"/>
+				</div>
+				<div class="ad-title">
+					<span>生活</span>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>运动鞋</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>服饰</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>旅行箱</p>
+				</div>
+
+				<div class="ad-title">
+					<span>居家</span>
+				</div>
+				
+				<div class="ad-title">
+					<span>文具</span>
+				</div>
+			</div>
+			
+			<div id="co_mifenka" class="ad-content">
+				<div class="ad-title-logo">
+					<img src="images/category/category-mifenka-logo.webp"/>
+				</div>
+				<div class="ad-title">
+					<span>电话卡</span>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>日租卡</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>月租卡</p>
+				</div>
+				<div class="ad-small-logo">
+					<img />
+					<p>吃到饱</p>
+				</div>
+				
+
+			</div>
+		
+		</div>
+
+	</div>
+
 </div>
