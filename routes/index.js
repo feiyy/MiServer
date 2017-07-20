@@ -98,12 +98,12 @@ router.get('/img/:file', function(req, res, next) {
 });
 
 router.get('/json/:id', function(req, res, next) {
-    db.queryDetailById(req.params.id, function(detail){
-        console.log(detail);
-        res.send(detail);
-    });
-    //console.log(req.params.file);
-    //res.sendFile('/models/' + req.params.file, options);
+    // db.queryDetailById(req.params.id, function(detail){
+    //     console.log(detail);
+    //     res.send(detail);
+    // });
+    console.log(req.params.id);
+    res.sendFile('/models/' + req.params.id, options);
 });
 
 router.get('/init', function(req, res, next) {
