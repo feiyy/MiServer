@@ -27,6 +27,10 @@ router.get('/ordernull', function(req, res, next) {
     res.render('ordernull', { detailName: '小米6' });
 });
 
+router.get('/search', function(req, res, next) {
+    res.render('search', { detailName: '小米6' });
+});
+
 router.get('/fragments/:id', function(req, res, next) {
     var frag_id = req.params.id;
     if (frag_id == 1) {

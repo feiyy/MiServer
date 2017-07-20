@@ -423,8 +423,13 @@ a:-webkit-any-link {
     float: left;
     height: 3rem;
     line-height: 3rem;
-    opacity: 0.5;
-    text-align: center;
+}
+#back_button img
+{
+	margin-left: .5rem;
+	margin-bottom: .2rem;
+	height: 1.5rem;
+	width: 1.5rem;
 }
 
 #wf_head_content {
@@ -433,14 +438,21 @@ a:-webkit-any-link {
     line-height: 3rem;
     text-align: center;
     opacity: 0.8;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    padding-left: 1rem;
 }
 
 #search_botton {
     float: right;
     height: 3rem;
     line-height: 3rem;
-    opacity: 0.5;
+}
+
+#search_botton img{
+	height: 1.5rem;
+	width: 1.5rem;
+	margin-left: 1rem;
+	margin-bottom: .2rem;
 }
 
 .wf_middle {
