@@ -49,4 +49,8 @@ router.post('/register', function(req, res, next) {
     });
 });
 
+router.get('/person', function(req, res, next) {
+    res.render('person');
+});
+
 module.exports = router;
