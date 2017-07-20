@@ -7,6 +7,10 @@ router.get('/', function(req, res, next) {
     res.send('respond with a resource');
 });
 
+router.get('/address', function(req, res, next) {
+    res.render('address');
+});
+
 router.get('/login', function(req, res, next) {
     res.render('login');
 });
@@ -47,6 +51,10 @@ router.post('/register', function(req, res, next) {
             console.log(uname + " login: fail");
         }
     });
+});
+
+router.get('/person', function(req, res, next) {
+    res.render('person');
 });
 
 module.exports = router;

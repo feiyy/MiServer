@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css" />
+	    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+	    <link rel="stylesheet" href="/stylesheets/zk.css" />
+	    <link rel="stylesheet" href="/stylesheets/mi_6.css" />
+	    <link rel="stylesheet" href="/stylesheets/order.css" />
+	
+	    <script src="/javascripts/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="/javascripts/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/javascripts/script.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/javascripts/address.js" ></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="push">
+				<div class="col-xs-12" style="background-color: #f2f2f2;">
+					<div class="col-xs-1 zk_topBack">
+						<img src="img/icon_back.png">
+					</div>
+					<div class="col-xs-10" style="text-align: center;color: #666;">
+						管理地址
+					</div>
+					<div class="col-xs-1" ></div>
+				</div>
+				<div class="col-xs-12 zk_addrs">
+				</div>
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			               修改地址
+			      </div>
+			      <div class="modal-body col-xs-12">
+			        <div class="col-xs-3">姓名：</div>
+			        <input type="text" class="col-xs-9 zk_modName" placeholder="请输入名称"/>
+			        <div class="col-xs-3">手机号：</div>
+			        <input type="text" class="col-xs-9 zk_modPhone" placeholder="请输入收货人手机号码"/>
+							<div class="col-xs-12">
+								<select class="form-control col-xs-4">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+								<select class="form-control col-xs-4">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+								<select class="form-control col-xs-4">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</div>
+			        <div class="col-xs-3">详细地址：</div>
+			        <input type="text" class="col-xs-9 zk_modAddr" placeholder="请输入收货地址"/>
+			      </div>
+			      <div class="modal-footer">
+			        <!--<div class="col-xs-6 zk_addrHold" onclick="keepInDB()">保存</div>
+					<div class="col-xs-6 zk_addrConcel">取消</div>-->
+			      </div>
+			    </div>
+			  </div>
+			</div>
+				
+			</div>
+		</div>
+	</body>
+</html>

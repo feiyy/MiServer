@@ -11,8 +11,16 @@ router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express', fragment: 1 });
 });
 
+router.get('/mine', function(req, res, next) {
+    res.render('index', { title: 'Express', fragment: 4 });
+});
+
 router.get('/detail/:id', function(req, res, next) {
-    res.render('detail', { detailid: req.params.id });
+    var detailId = req.params.id;
+    db.queryDetailById(detailId, function(detail){
+        console.log(detail);
+        res.render('detail', { detailName: detail.name ,detailId: detailId });
+    });
 });
 
 router.get('/payment', function(req, res, next) {
@@ -25,6 +33,10 @@ router.get('/myorder', function(req, res, next) {
 
 router.get('/ordernull', function(req, res, next) {
     res.render('ordernull', { detailName: '小米6' });
+});
+
+router.get('/search', function(req, res, next) {
+    res.render('search', { detailName: '小米6' });
 });
 
 router.get('/fragments/:id', function(req, res, next) {
@@ -103,18 +115,19 @@ router.get('/img/:file', function(req, res, next) {
     res.sendFile('/public/images/details/' + req.params.file, options);
 });
 
-router.get('/json/:file', function(req, res, next) {
-    db.queryDetaiById(id, function(detail) {
-        res.send(detail);
-    });
-    console.log(req.params.file);
-    res.sendFile('/models/' + req.params.file, options);
+router.get('/json/:id', function(req, res, next) {
+    // db.queryDetailById(req.params.id, function(detail){
+    //     console.log(detail);
+    //     res.send(detail);
+    // });
+    console.log(req.params.id);
+    res.sendFile('/models/' + req.params.id, options);
 });
 
 router.get('/init', function(req, res, next) {
     db.init(function(cb){
         res.send(cb);
     });
-});
+})
 
 module.exports = router;

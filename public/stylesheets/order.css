@@ -8,7 +8,7 @@
 	background: url(../img/border.png) 0 0 repeat-x;
 	background-size: 2.6rem 0.4rem;
 }
-.zk_address,.zk_Space,.zk_address_hide,.zk_payMethod,.zk_orderId,.zk_orderState,.zk_turnDown,.zk_orderDetail
+.zk_address,.zk_Space,.zk_address_hide,.zk_payMethod,.zk_orderId,.zk_orderState,.zk_turnDown,.zk_orderDetail.zk_addrDetail
 {
 	padding-left: 1rem;
 	padding-right: 1rem;
@@ -152,4 +152,57 @@
 	padding-bottom: 0.5rem;
 	color: #666;
     font-size: 1rem;
+}
+
+.zk_addrDetail
+{
+	margin-top: 0.5rem;
+	
+}
+.zk_addrDetail>.col-xs-12
+{
+	border: 1px solid rgba(0,0,0,0.1);
+}
+.zk_addrDetail div
+{
+	padding-bottom: 0.5rem;
+	padding-top: 0.5rem;
+}
+.zk_addrUser,.zk_addrPhone
+{
+	font-size: 1rem;
+}
+.zk_addrUser
+{
+	color: #FF5722;
+}
+.zk_addrSpecific
+{
+	color: #333;
+	font-size: 0.8rem;
+}
+.zk_addrDelete,.zk_addrModify,.zk_addrHold,.zk_addrConcel
+{
+	margin-top: 0.5rem;
+	text-align: center;
+	font-size: 1rem;
+}
+.zk_addrModify,.zk_addrHold
+{
+	background-color: #FF5722;
+	color: white;
+}
+.zk_addrDelete,.zk_addrConcel
+{
+	background-color: lightgrey;
+}
+
+.modal-body>div,.modal-body>input
+{
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+.modal-body>input
+{
+	border: none;
 }
