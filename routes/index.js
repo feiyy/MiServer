@@ -12,7 +12,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/detail/:id', function(req, res, next) {
-    res.render('detail', { detailid: req.params.id });
+    var detailId = req.params.id;
+    db.queryDetailById(detailId, function(detail){
+        console.log(detail);
+        res.render('detail', { detailName: detail.name ,detailId: detailId });
+    });
 });
 
 router.get('/payment', function(req, res, next) {
@@ -75,18 +79,19 @@ router.get('/img/:file', function(req, res, next) {
     res.sendFile('/public/images/details/' + req.params.file, options);
 });
 
-router.get('/json/:file', function(req, res, next) {
-    db.queryDetaiById(id, function(detail) {
+router.get('/json/:id', function(req, res, next) {
+    db.queryDetailById(req.params.id, function(detail){
+        console.log(detail);
         res.send(detail);
     });
-    console.log(req.params.file);
-    res.sendFile('/models/' + req.params.file, options);
+    //console.log(req.params.file);
+    //res.sendFile('/models/' + req.params.file, options);
 });
 
 router.get('/init', function(req, res, next) {
     db.init(function(cb){
         res.send(cb);
     });
-});
+})
 
 module.exports = router;

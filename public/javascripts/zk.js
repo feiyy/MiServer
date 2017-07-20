@@ -1,23 +1,26 @@
-phoneInfo = function() {
+var jid;
+phoneInfo = function(id) {
+    jid=id;
     $.ajax({
         type: "get",
-        url: "/json/mi_6.json",
+        url: "/json/" + jid,//此处要改为相应的id
         async: true,
-        success: function(data) {
-            $.each(data.phone, function(i, item) {
-                if (item.name == "小米6") {
+        success: function(item) {
+            //$.each(data.phone, function(i, item) {
+                // if (item.name == "小米6") {
+                    console.log(item);
                     $(".zk_mi6Name").text(item.name);
                     $(".zk_mi6brief").html("<font color='#ff4a00'>【" + item.activity + "】</font>" + item.brief);
-                    $(".zk_mi6price").text(item.price);
-                    $(".zk_mi6choosen>.col-xs-10").text(item.name + " " + item.type + " " + item.ram + " " + item.rom + " " + item.color + " x1");
-                    $(".zk_mi6stock>.col-xs-10").text("剩余" + item.stock + "件");
+                    $(".zk_mi6price").text(item.type[0].price);
+                    $(".zk_mi6choosen>.col-xs-10").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color + " x1");
+                    $(".zk_mi6stock>.col-xs-10").text("剩余" + item.type[0].stock + "件");
                     $(".zk_mi6Store").text(item.stock);
                     $(".zk_mi6pics").html("<img src=" + item.urls1[0].url + " />" + "<img src=" + item.urls1[1].url + " />" + "<img src=" + item.urls1[2].url + " />" + "<div class='col-xs-12 zk_mi6more' style='text-align: center;font-size:2rem;background-color:white;color:#FF5722' onclick='showMore()'>点击查看更多</div>");
-                    $(".zk_mi6nameAndSpec").text(item.name + " " + item.type + " " + item.ram + " " + item.rom + " " + item.color);
-                    $(".zk_mi6icon").html("<img src=" + item.pic + "/>");
-                    return false;
-                }
-            });
+                    $(".zk_mi6nameAndSpec").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color);
+                    $(".zk_mi6icon").html("<img src=" + item.type[0].pic + "  />");
+                //     return false;
+                // }
+            //});
         }
     });
 }
@@ -143,11 +146,10 @@ function showMore() {
     });
 }
 $(function() {
-    phoneInfo();
 
     $(".content").scroll(
         function(event) {
-            console.log("scrollTop:" + parseInt($(".content").scrollTop()) + " html font-size:" + $("html").css("font-size"))
+            //console.log("scrollTop:" + parseInt($(".content").scrollTop()) + " html font-size:" + $("html").css("font-size"))
             if ((parseInt($(".content").scrollTop()) / parseInt($("html").css("font-size"))) >= 35) {
                 $(".zk_mi6top").css({ "position": "fixed", "top": "0", "width": "100%" });
             } else {
