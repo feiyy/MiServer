@@ -11,6 +11,10 @@ router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express', fragment: 1 });
 });
 
+router.get('/mine', function(req, res, next) {
+    res.render('index', { title: 'Express', fragment: 4 });
+});
+
 router.get('/detail/:id', function(req, res, next) {
     var detailId = req.params.id;
     db.queryDetailById(detailId, function(detail){

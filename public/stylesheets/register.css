@@ -239,12 +239,13 @@ a {
 
 #dd_phoneinput
 {
-	width: 11rem;
+	width:  9.5rem;
+	float: left;
 }
 
 #regmobile_btn
 {
-	width: 10rem;
+	width: 9rem;
 	height: 3rem;
 	float: right;
 }
@@ -325,6 +326,7 @@ a {
 .dd_intro
 {
 	padding: 0.75rem;
+	margin: 0;
 }
 
 .dd_intro span
