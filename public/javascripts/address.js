@@ -8,7 +8,7 @@ initialize=function()
 {
 	$.ajax({
 		type:"get",
-		url:"address.json",
+		url:"/json/address.json",
 		async:true,
 		success:function(data)
 		{
