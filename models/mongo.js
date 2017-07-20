@@ -1,3 +1,13 @@
+var user = {
+	uname:"13080868092",
+    pwd:"123456",
+    hphoto:"/images/account/userimg.png",
+    sex:"male",
+    birthday:"1994-4-5",
+    payment:[],
+    address:[]};
+
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var db = mongoose.createConnection('localhost', 'smallmimall');
