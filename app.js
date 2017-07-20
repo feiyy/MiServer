@@ -22,8 +22,13 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('smmall'));
 app.use(express.static(path.join(__dirname, 'public')));
+
+var express = require('express');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+
 app.use(session({
     resave: true, // don't save session if unmodified  
     saveUninitialized: false, // don't create session until something stored  
@@ -49,18 +54,6 @@ app.use(function(err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
     res.render('error');
-});
-
-app.use(function(req, res, next) {
-    if (!req.session.user) {
-        if (req.url == "/login") {
-            next(); //如果请求的地址是登录则通过，进行下一个请求  
-        } else {
-            res.redirect('/login');
-        }
-    } else if (req.session.user) {
-        next();
-    }
 });
 
 module.exports = app;
