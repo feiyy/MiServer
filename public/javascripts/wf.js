@@ -377,6 +377,21 @@ $(document).ready(function() {
         $(".all_counts").html('共' + amount + '件 金额/元');
         $(".all_price").html(total);
     });
+    
+    $(".goods_delete").click(function(){
+    	$.ajax({
+    		type:"get",
+    		url:"/shopcart/" + $(this).attr("id"),
+//  		dataType:"String",
+//  		data:{id:$(".wf_item").attr("id")}
+    		async:true,
+    		success:function(data){
+    			if(data=="1"){
+    				location.reload();
+    			}
+    		}
+    	});
+    })
 
     var myTouch = util.toucher(document.getElementById('carousel-example-generic'));
 
