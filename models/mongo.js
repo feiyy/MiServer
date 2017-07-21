@@ -1,10 +1,12 @@
 var user = {
-	uname:"13080868092",
-    pwd:"123456",
-    hphoto:"/images/account/userimg.png",
-    sex:"male",
-    payment:[],
-    address:[]};
+    phone: "",
+    uname: "13080868092",
+    pwd: "123456",
+    hphoto: "/images/account/userimg.png",
+    sex: "male",
+    payment: [],
+    address: []
+};
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var db = mongoose.createConnection('localhost', 'smallmimall');
@@ -75,9 +77,8 @@ db.once('open', function() {
         userModel.findByIdAndUpdate(id, data, function(err, doc) {});
     }
 
-    db.init = function(callback)
-    {
-         var address = {
+    db.init = function(callback) {
+        var address = {
             // name: "小米6",
             // activity: "7月14日早10点，小米6 64GB 亮白色 首卖",
             // brief: "变焦双摄，4 轴防抖 / 骁龙835 旗舰处理器，6GB 大内存，最大可选128GB 闪存 / 5.15吋 护眼屏 / 四曲面玻璃/陶瓷机身",
@@ -94,10 +95,10 @@ db.once('open', function() {
             pwd: "123",
             hphoto: "",
             sex: "男",
-            payment: [{orderId:"5160607962200971",orderState:"已完成",orderItemsPic:[{"url":"img/orderItem1.jpg"}],orderItemsName:[{"name":"小米手环 2 黑色"}],orderDate:"2016/04/22 17:46",orderPayMethod:"微信支付",orderBuyer:"张三",orderRecDate:"2016/04/23 17:46",orderRecAddr:"辽宁省沈阳市浑南新区东北大学浑南校区",orderItemNum:"1",orderItemMoney:"149"}],
+            payment: [{ orderId: "5160607962200971", orderState: "已完成", orderItemsPic: [{ "url": "img/orderItem1.jpg" }], orderItemsName: [{ "name": "小米手环 2 黑色" }], orderDate: "2016/04/22 17:46", orderPayMethod: "微信支付", orderBuyer: "张三", orderRecDate: "2016/04/23 17:46", orderRecAddr: "辽宁省沈阳市浑南新区东北大学浑南校区", orderItemNum: "1", orderItemMoney: "149" }],
             address: []
         };
-         db.addUser(address, function(cb){
+        db.addUser(address, function(cb) {
             callback(cb);
         });
     }

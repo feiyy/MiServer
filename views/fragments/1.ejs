@@ -16,9 +16,16 @@
             </a>
         </div>
         <div id="login_button" class="<%=login?"hide":""%>">
-            <a href="#">
+            <a href="/users/login">
                 <span id="login_button_text">
 					登录
+				</span>
+            </a>
+        </div>
+        <div id="login_button" class="<%=login?"":"hide"%>">
+            <a href="/mine">
+                <span id="login_button_text">
+					<img src="<%=login?login.hphoto:""%>">
 				</span>
             </a>
         </div>
@@ -35,21 +42,21 @@
     <div id="smallheader" class="row">
         <ul class="smallfrag_ul">
             <li class="smallfrag_li">
-                <a href="javascript:frag_switch('.content', '1_1', function(){})">
+                <a href="javascript:frag_switch('.content', '1_1', function(){touchLoad()})">
                     <div class="smallfrag_name">
                         <p class="smallfrag_active">推荐</p>
                     </div>
                 </a>
             </li>
             <li class="smallfrag_li">
-                <a href="javascript:frag_switch('.content', '1_2', function(){})">
+                <a href="javascript:frag_switch('.content', '1_2', function(){touchLoad()})">
                     <div class="smallfrag_name">
                         <p>手机</p>
                     </div>
                 </a>
             </li>
             <li class="smallfrag_li">
-                <a href="javascript:frag_switch('.content', '1_3', function(){})">
+                <a href="javascript:frag_switch('.content', '1_3', function(){touchLoad()})">
                     <div class="smallfrag_name">
                         <p>智能</p>
                     </div>
