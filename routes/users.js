@@ -59,4 +59,12 @@ router.get('/person', function(req, res, next) {
     res.render('person');
 });
 
+router.get('/login', function(req, res, next) {
+    res.render('login');
+});
+
+
+
+
+
 module.exports = router;
