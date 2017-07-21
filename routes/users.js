@@ -59,12 +59,8 @@ router.get('/person', function(req, res, next) {
     res.render('person');
 });
 
-router.get('/login', function(req, res, next) {
-    res.render('login');
+router.get('/forget', function(req, res, next) {
+    res.send('<h1 style="font-size: 2rem">可怕，程序员竟然没写这个功能，我帮你打个电话催一下╮(╯▽╰)╭</h1>');
 });
-
-
-
-
 
 module.exports = router;
