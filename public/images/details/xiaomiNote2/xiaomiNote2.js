@@ -16,6 +16,6 @@ var detail = {
                    {name: "全球版", ram: "6GB", rom: "128GB", color: "冰川银",pic: "/img/xiaomiNote2/icesilver.webp", price: "3499", stock: "0"}],
             urls1: [{ url: "/img/xiaomiNote2/url1_1.jpg" }, { url: "/img/xiaomiNote2/url1_2.jpg" }, { url: "/img/xiaomiNote2/url1_3.jpg" }, { url: "/img/xiaomiNote2/url1_4.jpg" }, { url: "/img/xiaomiNote2/url1_5.jpg" }, { url: "/img/xiaomiNote2/url1_6.jpg" }, { url: "/img/xiaomiNote2/url1_7.jpg" }, { url: "/img/xiaomiNote2/url1_8.jpg" }],
             urls2: [{ url: "/img/xiaomiNote2/url2_1.jpg" }, { url: "/img/xiaomiNote2/url2_2.jpg" }, { url: "/img/xiaomiNote2/url2_3.jpg" }, { url: "/img/xiaomiNote2/url2_4.jpg" }, { url: "/img/xiaomiNote2/url2_5.jpg" }, { url: "/img/xiaomiNote2/url2_6.jpg" }],    
-            urls3: [{ url: "/img/xiaomiNote2/3_1.png" }]
+            urls3: [{ url: "/img/xiaomiNote2/3_1.png" }],
             slideurl: [{ url: "/img/xiaomiNote2/slide1.webp" },{ url: "/img/xiaomiNote2/slide2.webp" },{ url: "/img/xiaomiNote2/slide3.webp" }]
         };

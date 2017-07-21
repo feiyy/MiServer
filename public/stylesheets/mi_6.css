@@ -130,11 +130,49 @@
 	/*border: 1px solid #f4f4f4;*/
 	padding-right: 1rem;
 }
-.zk_commit
+
+#detail_footer
 {
 	position: fixed;
 	bottom: 0;
 	z-index: 3;
-	background-color: white;
+	height: 3.5rem;
+	width: inherit;
+	margin: 0;
+	padding: 0;
+}
+#home_button{
+	height: inherit;
+	border-right: 1px solid #DCDCDC;
+}
+#home_button img{
+	height: 1.8rem;
+	width: 1.8rem;
+	margin-left: 2rem;
+}
+#home_button p{
+	font-size: .85rem;
 	text-align: center;
+}
+#shopcart_button{
+	height: inherit;
+}
+#shopcart_button img{
+	height: 1.8rem;
+	width: 1.8rem;
+	margin-left: 1.8rem;
+}
+#shopcart_button p{
+	font-size: .85rem;
+	text-align: center;
+}
+
+.zk_commit
+{	
+	right: 0;
+	height: inherit;
+	padding-top: .8rem;
+	color: white;
+	text-align: center;
+	background-color:#f95b07;
 }
