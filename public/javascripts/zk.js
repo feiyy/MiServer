@@ -1,9 +1,10 @@
 var jid;
 phoneInfo = function(id) {
     jid = id;
+    console.log("here is "+jid);
     $.ajax({
         type: "get",
-        url: "/json/" + jid, //此处要改为相应的id
+        url: "/json/" + jid, 
         async: true,
         success: function(item) {
             //$.each(data.phone, function(i, item) {

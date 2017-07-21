@@ -18,7 +18,7 @@ router.get('/mine', function(req, res, next) {
 router.get('/detail/:id', function(req, res, next) {
     var detailId = req.params.id;
     db.queryDetailById(detailId, function(detail) {
-        console.log(detail);
+        console.log("here is "+detail);
         res.render('detail', { detailName: detail.name, detailId: detailId });
     });
 });
@@ -32,7 +32,10 @@ router.get('/myorder', function(req, res, next) {
         res.render('login');
     } else {
         console.log(req.session.user._id);
-        res.render('myorder', { detailName: '小米6' });
+        db.queryUserById(req.session.user._id, function(user){
+            console.log(user);
+            res.render('myorder', { userId: user._id });
+        })
     }
 });
 
@@ -110,12 +113,20 @@ router.get('/img/:file', function(req, res, next) {
 });
 
 router.get('/json/:id', function(req, res, next) {
-    // db.queryDetailById(req.params.id, function(detail){
-    //     console.log(detail);
-    //     res.send(detail);
-    // });
-    console.log(req.params.id);
-    res.sendFile('/models/' + req.params.id, options);
+    db.queryDetailById(req.params.id, function(detail){
+        console.log("the json detail is "+detail);
+        res.send(detail);
+    });
+    // console.log(req.params.id);
+    // res.sendFile('/models/' + req.params.id, options);
+});
+router.get('/order/:id', function(req, res, next) {
+    db.queryUserById(req.params.id, function(detail){
+        console.log("the json detail is "+detail);
+        res.send(detail);
+    });
+    // console.log(req.params.id);
+    // res.sendFile('/models/' + req.params.id, options);
 });
 
 router.get('/init', function(req, res, next) {
