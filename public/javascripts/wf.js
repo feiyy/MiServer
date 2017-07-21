@@ -24,7 +24,8 @@
      * 判断是否拥有某个class
      */
     function hasClass(dom, classSingle) {
-        return dom.className.match(new RegExp('(\\s|^)' + classSingle + '(\\s|$)'));
+        // return dom.className.match(new RegExp('(\\s|^)' + classSingle + '(\\s|$)'));
+        return true;
     }
 
     /**
@@ -205,10 +206,9 @@
         //触屏开始
         function touchStart(e) {
             //缓存事件
-            eventMark = e;
-
-            x1 = e.touches[0].pageX;
-            y1 = e.touches[0].pageY;
+            var event = e.touches[0];
+            x1 = event.pageX;
+            y1 = event.pageY;
             x2 = 0;
             y2 = 0;
             isActive = true;
@@ -260,8 +260,8 @@
             if (!isActive) {
                 return
             }
-            x2 = e.touches[0].pageX
-            y2 = e.touches[0].pageY
+            x2 = e.touches[0].pageX;
+            y2 = e.touches[0].pageY;
             if (Math.abs(x1 - x2) > 2 || Math.abs(y1 - y2) > 2) {
                 //断定此次事件为移动手势
                 var direction = swipeDirection(x1, x2, y1, y2);
@@ -277,40 +277,32 @@
         /**
          * 对开始手势的监听
          */
-        DOM.addEventListener('touchstart', touchStart);
-        DOM.addEventListener('MSPointerDown', touchStart);
-        DOM.addEventListener('pointerdown', touchStart);
+        document.addEventListener('touchstart', touchStart);
 
         /**
          * 对手势结束的监听（轻击）
          */
-        DOM.addEventListener('touchend', touchend);
-        DOM.addEventListener('MSPointerUp', touchend);
-        DOM.addEventListener('pointerup', touchend);
+        document.addEventListener('touchend', touchend);
 
         /**
          * 对移动手势的监听
          */
-        DOM.addEventListener('touchmove', touchmove);
-        DOM.addEventListener('MSPointerMove', touchmove);
-        DOM.addEventListener('pointermove', touchmove);
+        document.addEventListener('touchmove', touchmove);
 
         /**
          * 对移动结束的监听
          */
-        DOM.addEventListener('touchcancel', actionOver);
-        DOM.addEventListener('MSPointerCancel', actionOver);
-        DOM.addEventListener('pointercancel', actionOver);
+        document.addEventListener('touchcancel', actionOver);
     }
 
     /**
      * touch类
      * 
      */
-    function touch(DOM, param) {
+    function touch(document, param) {
         var param = param || {};
 
-        this.dom = DOM;
+        this.dom = document;
         //监听DOM原生事件
         eventListener.call(this, this.dom);
     }
