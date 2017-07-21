@@ -29,10 +29,10 @@ $(document).ready(function() {
             var fragbtn = fragbtns[index];
             var target = (index + 1) * 2;
             if ((id - 1) == index) {
-                $(fragbtn).find(".footerimg>img").attr('src', 'images/footer/footer' + (target - 1) + '.png');
+                $(fragbtn).find(".footerimg>img").attr('src', '/images/footer/footer' + (target - 1) + '.png');
                 $(fragbtn).find(".frag_name>p").addClass('active');
             } else {
-                $(fragbtn).find(".footerimg>img").attr('src', 'images/footer/footer' + target + '.png');
+                $(fragbtn).find(".footerimg>img").attr('src', '/images/footer/footer' + target + '.png');
                 $(fragbtn).find(".frag_name>p").removeClass('active');
             }
         }

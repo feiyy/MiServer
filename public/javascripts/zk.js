@@ -1,9 +1,9 @@
 var jid;
 phoneInfo = function(id) {
-    jid=id;
+    jid = id;
     $.ajax({
         type: "get",
-        url: "/json/" + jid,//此处要改为相应的id
+        url: "/json/" + jid, //此处要改为相应的id
         async: true,
         success: function(item) {
             //$.each(data.phone, function(i, item) {
@@ -30,10 +30,10 @@ function changePic(num) {
     $("#top" + num).siblings().css("color", "#333");
     $.ajax({
         type: "get",
-        url: "/json/"+jid,
+        url: "/json/" + jid,
         async: true,
         success: function(item) {
-               
+
             var str = "";
             switch (num) {
                 case 1:
@@ -62,7 +62,7 @@ function up() {
     $(".zk_mi6standard1").html("");
     $.ajax({
         type: "get",
-        url: "/json/"+jid,
+        url: "/json/" + jid,
         async: true,
         success: function(item) {
             var types = new Array();
