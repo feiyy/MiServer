@@ -35,7 +35,7 @@
 							<div class="dd_logcontent">
 								<div>
 									<div class="dd_logarea">
-										<form action="/users/login" method="post" id="dd_loginmainform">
+										<form action="/users/login" method="post" id="dd_loginmainform" submit="">
 											<div class="dd_loginbox">
 												<div class="dd_loginput">
 													<div class="dd_singleimgarea"></div>
@@ -47,8 +47,6 @@
 														<input type="password" placeholder="密码" autocomplete="off" name="pwd" id="pwd" />
 													</label>
 												</div>
-												
-												<div class="dd_logincode"></div>
 												<div id="dd_errorname" class="dd_errtip">
 													<div class="dd_disbox">
 														<img class="dd_erricon" src="images/login/error.png"/>
@@ -68,7 +66,7 @@
 													</div>
 												</div>
 												<div class="dd_btn1">
-													<input class="dd_loginbtn" id="loginbutton" type="submit" value="立即登录" />
+													<input class="dd_loginbtn" id="loginbutton" type="button" value="立即登录" />
 												</div>
 												<div class="dd_otherlogin">
 													<fieldset class="dd_othertitle">
@@ -107,12 +105,6 @@
 			</div>
 		</div>
 		<div class="dd_footer">
-			<div class="dd_clearfix">
-				<a href="" class="lang-select-li">简体</a>|
-				<a href="" class="lang-select-li">繁体</a>|
-				<a href="" class="lang-select-li">English</a>|
-				<a href="" class="lang-select-li" target="_blank">常见问题</a>	
-			</div>
 			<p class="dd_intro">
 				<span>小米公司版权所有-京ICP备10046444-
 					<a class="dd_recordlink" target="_blank" href="">
