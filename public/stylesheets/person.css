@@ -258,3 +258,10 @@ a {
 {
 	outline: 0;
 }
+
+.dd_modPassword
+{
+	margin-bottom: 0.5rem;
+	width: auto;
+	height: auto;
+}
