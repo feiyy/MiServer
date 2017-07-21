@@ -14,7 +14,7 @@ phoneInfo = function(id) {
                     $(".zk_mi6price").text(item.type[0].price);
                     $(".zk_mi6choosen>.col-xs-10").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color + " x1");
                     $(".zk_mi6stock>.col-xs-10").text("剩余" + item.type[0].stock + "件");
-                    $(".zk_mi6Store").text(item.stock);
+                    $(".zk_mi6Store").text(item.stock); 
                     $(".zk_mi6pics").html("<img src=" + item.urls1[0].url + " />" + "<img src=" + item.urls1[1].url + " />" + "<img src=" + item.urls1[2].url + " />" + "<div class='col-xs-12 zk_mi6more' style='text-align: center;font-size:2rem;background-color:white;color:#FF5722' onclick='showMore()'>点击查看更多</div>");
                     $(".zk_mi6nameAndSpec").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color);
                     $(".zk_mi6icon").html("<img src=" + item.type[0].pic + "  />");
