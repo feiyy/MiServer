@@ -271,16 +271,19 @@ html {
     box-shadow: 0 0.075rem 0.075rem rgba(11, 3, 5, 0.1);
 }
 
-.dd_eye {
-    width: 2rem;
-    height: 2.7rem;
-    padding-left: 0.375rem;
-    display: block;
-    float: right;
-    padding: 0.75rem 0;
-    background-image: url(../images/login/eye.png);
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
+<<<<<<< HEAD
+.dd_eye
+{
+	width: 2rem;
+	height: 2.7rem;
+	padding-left: 0.375rem;
+	display: block;
+	float: right;
+	padding: 0.75rem 0;
+	background-image: url(../images/login/eye.png);
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 100% auto;
 }
 
 .dd_pwd input {
@@ -488,8 +491,10 @@ html {
     font-size: 1.05rem;
 }
 
-.dd_intro {
-    padding: 0.75rem;
+.dd_intro
+{
+	padding: 0.75rem;
+	margin: 0;
 }
 
 .dd_intro span {
