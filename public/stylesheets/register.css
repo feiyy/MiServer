@@ -97,133 +97,118 @@ a {
     padding-left: 0.25rem;
 }
 
-
-.dd
-{
+.dd {
     width: 100%;
     height: 100%;
     background: #f9f9f9;
     color: #9d9d9d;
     font-size: 1.05rem;
-    font-family: arial,"Hiragino Sans GB", "Microsoft YaHei","微軟正黑體","儷黑 Pro", sans-serif;
+    font-family: arial, "Hiragino Sans GB", "Microsoft YaHei", "微軟正黑體", "儷黑 Pro", sans-serif;
     display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.dd_wrapper
-{
-	width: 100%;
-	height: 42.225rem;
-	background: #f9f9f9;
+.dd_wrapper {
+    width: 100%;
+    height: 42.225rem;
+    background: #f9f9f9;
 }
 
-.dd_wrap
-{
-	width: 100%;
-	height: 42.225rem;
-	padding-bottom: 6.75rem;
+.dd_wrap {
+    width: 100%;
+    height: 42.225rem;
+    padding-bottom: 6.75rem;
 }
 
-.dd_layout
-{
-	width: 100%;
-	height: 34.725rem;
-	margin-bottom: 0.75rem;
+.dd_layout {
+    width: 100%;
+    height: 34.725rem;
+    margin-bottom: 0.75rem;
 }
 
-.dd_maincontainer
-{
-	padding-bottom: 2.25rem;
-	height: 34.725rem;
+.dd_maincontainer {
+    padding-bottom: 2.25rem;
+    height: 34.725rem;
 }
 
-.dd_itemtitle
-{
-	height: 5.25rem;
-	border-bottom: none;
-	padding: 1.725rem 0 1.5rem;
+.dd_itemtitle {
+    height: 5.25rem;
+    border-bottom: none;
+    padding: 1.725rem 0 1.5rem;
     text-align: center;
 }
 
-.dd_title
-{
-	font-size: 1.5rem;
+.dd_title {
+    font-size: 1.5rem;
     font-weight: normal;
     color: #666;
     margin: 0;
 }
 
-.dd_regbox
-{
-	height: 27.225rem;
-	width: 100%;
+.dd_regbox {
+    height: 27.225rem;
+    width: 100%;
     font-size: 1.05rem;
     padding: 0 1.5rem;
     box-sizing: border-box;
 }
 
-#dd_registermainform
-{
-	height: 27.225rem;
-	width: 100%;
+#dd_registermainform {
+    height: 27.225rem;
+    width: 100%;
 }
 
-.dd_regphone
-{
-	height: 27.225rem;
-	width: 100%;
+.dd_regphone {
+    height: 27.225rem;
+    width: 100%;
 }
 
-.dd_inputbtn
-{
-	padding-bottom: 1.125rem;
-	height: 4.2rem;
+.dd_inputbtn {
+    padding-bottom: 1.125rem;
+    height: 4.2rem;
 }
 
-.dd_errtip
-{
-	display: none;
-	margin-bottom: 0.375rem;
+.dd_errtip {
+    display: none;
+    margin-top: -1rem;
     line-height: 1.5rem;
     color: red;
     font-size: 1.05rem;
 }
 
-.dd_erricon
-{
-	width: 1.05rem;
+.dd_erricon {
+    width: 1.05rem;
     height: 1.05rem;
     margin-right: 0.375rem;
     overflow: hidden;
 }
 
-.dd_errtip span
-{
-	vertical-align: middle;
-	margin: 0;
-	padding: 0;
-	line-height: 1.5rem;
+.dd_errtip span {
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5rem;
     color: red;
     font-size: 1.05rem;
 }
 
-.dd_labelbox
-{
-	height: 3.15rem;
-	width: 100%;
-	overflow: hidden;
-	background: #fff;
-    border: 0.075rem solid rgba(0,0,0,0.3);
+.dd_labelbox {
+    height: 3.15rem;
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+    border: 0.075rem solid rgba(0, 0, 0, 0.3);
     margin: 0;
     border-radius: 0.6rem;
     outline: 0 none;
     cursor: default;
 }
 
-.dd_labelbox input
-{
-	width: 100%;
-	height: 3rem;
-	margin: 0;
+.dd_labelbox input {
+    width: 100%;
+    height: 3rem;
+    margin: 0;
     padding: 0.75rem;
     line-height: 1.5rem;
     outline: none;
@@ -237,34 +222,30 @@ a {
     text-shadow: none;
 }
 
-#dd_phoneinput
-{
-	width:  9.5rem;
-	float: left;
+#dd_phoneinput {
+    width: 9.5rem;
+    float: left;
 }
 
-#regmobile_btn
-{
-	width: 9rem;
-	height: 3rem;
-	float: right;
+#regmobile_btn {
+    width: 9rem;
+    height: 3rem;
+    float: right;
 }
 
-.dd_subphone
-{
-	height: 7.725rem;
-	padding-top: 2.25rem;
+.dd_subphone {
+    height: 7.725rem;
+    padding-top: 2.25rem;
     padding-bottom: 0.75rem;
 }
 
-.dd_subbtn
-{
-	height: 3.225rem;
-	width: 100%;
-	background-color: #33b4ff;
+.dd_subbtn {
+    height: 3.225rem;
+    width: 100%;
+    background-color: #33b4ff;
     margin-top: 1.125rem;
     padding: 0.75rem 0;
-    border: 0.075rem solid rgba(186,186,186,0.3);
+    border: 0.075rem solid rgba(186, 186, 186, 0.3);
     color: #fff;
     text-align: center;
     /*font: 0.9rem Arial;*/
@@ -277,33 +258,24 @@ a {
     text-shadow: none;
 }
 
-.dd_msg
-{
-	width: 100%;
-	height: 2.7rem;
-	margin-top: 0.75rem;
+.dd_msg {
+    width: 100%;
+    height: 2.7rem;
+    margin-top: 0.75rem;
     color: #9d9d9d;
     margin: 0;
     padding: 0;
     font-size: 1.05rem;
 }
 
-.dd_msglink
-{
-	color: #333;
+.dd_msglink {
+    color: #333;
     font-weight: bold;
     font-size: 1.05rem;
 }
 
-
-
-
-
-
-
-.dd_footer
-{
-	color: #757575;
+.dd_footer {
+    color: #757575;
     line-height: 1.5;
     text-align: center;
     font-size: 1.05rem;
@@ -312,36 +284,29 @@ a {
     width: 100%;
 }
 
-.dd_clearfix
-{
-	text-align: center;
+.dd_clearfix {
+    text-align: center;
 }
 
-.dd_clearfix a
-{
+.dd_clearfix a {
     padding: 0 0.75rem;
     font-size: 1.05rem;
 }
 
-.dd_intro
-{
-	padding: 0.75rem;
-	margin: 0;
+.dd_intro {
+    padding: 0.75rem;
+    margin: 0;
 }
 
-.dd_intro span
-{
-	font-size: 1.05rem;
+.dd_intro span {
+    font-size: 1.05rem;
 }
 
-.dd_intro a
-{
-	font-size: 1.05rem;
+.dd_intro a {
+    font-size: 1.05rem;
 }
 
-.dd_recordlink img
-{
-	width: 1.5rem;
-	height: 1.5rem;
+.dd_recordlink img {
+    width: 1.5rem;
+    height: 1.5rem;
 }
-

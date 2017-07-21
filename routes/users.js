@@ -38,21 +38,24 @@ router.get('/register', function(req, res, next) {
 
 router.post('/register', function(req, res, next) {
     //获取表单数据
-    var uname = req.body.user;
+    var phone = req.body.phone;
     var pwd = req.body.pwd;
     var user = {
-        uname: uname,
-        pwd: pwd
+        phone: phone,
+        uname: 'p_' + phone,
+        pwd: pwd,
+        hphoto: "/images/account/userimg.png",
+        sex: "male",
+        payment: [],
+        address: []
     };
     console.log(user);
-    user = db.queryUserByName(uname, function(user) {
-        console.log(user);
-        if (pwd == user.pwd) {
-            console.log(uname + " login: success");
-        } else {
-            console.log(uname + " login: fail");
+    db.addUser(user, function(cb) {
+        if (cb == "success") {
+            req.session.user = user;
+            res.render('index', { title: 'Express', fragment: 1 });
         }
-    });
+    })
 });
 
 router.get('/person', function(req, res, next) {

@@ -1,4 +1,5 @@
 var user = {
+    phone: "",
     uname: "13080868092",
     pwd: "123456",
     hphoto: "/images/account/userimg.png",
