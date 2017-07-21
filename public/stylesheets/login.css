@@ -122,7 +122,8 @@ html {
     color: #666;
     font-size: 1.05rem;
     font-family: arial, "Hiragino Sans GB", "Microsoft YaHei", "微軟正黑體", "儷黑 Pro", sans-serif;
-    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0;
     display: block;
 }
