@@ -28,7 +28,12 @@ router.get('/payment', function(req, res, next) {
 });
 
 router.get('/myorder', function(req, res, next) {
-    res.render('myorder', { detailName: '小米6' });
+    if (!req.session.user) {
+        res.render('login');
+    } else {
+        console.log(req.session.user._id);
+        res.render('myorder', { detailName: '小米6' });
+    }
 });
 
 router.get('/ordernull', function(req, res, next) {
