@@ -1,3 +1,4 @@
+var payingMoney=0;
 function comedown(divCtrl, divName) {
     if (divCtrl.classList.contains("zk_down")) {
         $("." + divName).css("display", "block");
@@ -27,6 +28,13 @@ function chooseAddr(divName, divCtrl) {
         divCtrl.classList.add("zk_noChoose");
     }
 }
+function pay()
+{
+
+	var data={
+		orderItemsMoney:
+	}
+}
 init=function(id)
 {
 	$.ajax({
@@ -35,7 +43,6 @@ init=function(id)
 		async:true,
 		success:function(item)
 		{
-			console.log("进来了");
 			var str="<div class='col-xs-12 zk_address'>"+
 						"<div class='col-xs-10'>"+
 							"<div class='col-xs-12' style='padding-bottom: 0.5rem;'>"+
@@ -74,14 +81,15 @@ init=function(id)
 			{
 				if(item.payment[i].orderState=="代付款")
 				{
+					payingMoney=item.payment[i].orderItemsMoney;
+					payingItem=item.pay
 					for(var k=0;k<item.payment[i].orderItemsName.length;k++)
 					{
 						str="<div class='zk_payMethod col-xs-12'>"+
 								"<div class='col-xs-2 zk_logo'>"+
 									"<img src='"+item.payment[i].orderItemsPic[k].url+"' />"+
 								"</div>"+
-								"<div class='col-xs-8 zk_proName'>"+item.payment[i].orderItemsName[k].name+"</div>"+
-								"<div class='col-xs-2 zk_number'>x"+12+"</div>"+
+								"<div class='col-xs-10 zk_proName'>"+item.payment[i].orderItemsName[k].name+"</div>"+
 							"</div>";
 						$("#zk_paymentPush").append(str);
 					}
