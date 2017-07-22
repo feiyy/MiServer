@@ -98,13 +98,32 @@ router.get('/fragments/:id', function(req, res, next) {
 //     urls2: [{ url: "img/parameter1.jpg" }, { url: "img/parameter2.jpg" }, { url: "img/parameter3.jpg" }, { url: "img/parameter4.jpg" }],
 //     urls3: [{ url: "img/ yushou.jpg" }]
 // }];
-var details
 
 router.get('/shopcart', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
+    } else {
+        db.queryUserById(req.session.user._id, function(user) {
+        var details = user.shoppingcart;
+        console.log(details); 
+        res.render('fragments/' + 3, { details: details });
+    });
     }
-    res.render('fragments/' + 3, { details: details });
+});
+
+router.get('/shopcart/:id', function(req, res, next){
+    db.queryUserById(req.session.user._id,function(user){
+        var shoppingcart = user.shoppingcart;
+        console.log(shoppingcart);
+        shoppingcart.splice(req.params.id, 1);
+        console.log(shoppingcart);
+        db.updateUser(req.session.user._id, {shoppingcart: shoppingcart}, function(success) {
+            console.log(success);
+            if(success) {
+                res.send("success");
+            }
+        });
+    })
 });
 
 router.get('/img/:file', function(req, res, next) {

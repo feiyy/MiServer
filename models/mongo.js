@@ -99,8 +99,8 @@ db.once('open', function() {
             sex: "男",
             payment: [{ orderId: "5160607962200971", orderState: "已完成", orderItemsPic: [{ "url": "img/orderItem1.jpg" }], orderItemsName: [{ "name": "小米手环 2 黑色" }], orderDate: "2016/04/22 17:46", orderPayMethod: "微信支付", orderBuyer: "张三", orderRecDate: "2016/04/23 17:46", orderRecAddr: "辽宁省沈阳市浑南新区东北大学浑南校区", orderItemNum: "1", orderItemMoney: "149" }],
             address: [],
-            shoppingcart:[{goodsId:"1",goodsName:"小米随身wifi",goodsPrice:"19.00",goodsCount:"2",url:"/img/mi63.jpg"},
-                          {goodsId:"2",goodsName:"米兔故事机",goodsPrice:"149.00",goodsCount:"4",url:"/img/mi62.jpg"}]
+            shoppingcart:[{goodsId:"1",goodsName:"小米随身wifi",goodsPrice:"19.00",goodsCount:"2",url:"/img/lightblack.jpg"},
+                          {goodsId:"2",goodsName:"米兔故事机",goodsPrice:"149.00",goodsCount:"4",url:"/img/lightblack.jpg"}]
         };
         db.addUser(address, function(cb) {
             callback(cb);
