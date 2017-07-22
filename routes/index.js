@@ -23,25 +23,6 @@ router.get('/detail/:id', function(req, res, next) {
     });
 });
 
-router.post('/detail/shopcart', function(req, res, next) {
-    if (!req.session.user) {
-        res.send('login');
-    } else {
-        var datail = req.body;
-        db.queryUserById(req.session.user._id, function(user) {
-            var shoppingcart = user.shoppingcart;
-            shoppingcart.push(detail);
-            console.log(shoppingcart);
-            db.updateUser(req.session.user._id, { shoppingcart: shoppingcart }, function(success) {
-                console.log(success);
-                if (success) {
-
-                }
-            });
-            res.send("success");
-        })
-    }
-});
 router.get('/payment', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -119,38 +100,88 @@ router.get('/fragments/:id', function(req, res, next) {
         res.render('fragments/' + frag_id);
     }
 });
+// var details = [{
+//     name: "小米6",
+//     activity: "7月14日早10点，小米6 64GB 亮白色 首卖",
+//     brief: "变焦双摄，4 轴防抖 / 骁龙835 旗舰处理器，6GB 大内存，最大可选128GB 闪存 / 5.15吋 护眼屏 / 四曲面玻璃/陶瓷机身",
+//     type: "陶瓷尊享版",
+//     ram: "6GB",
+//     rom: "128GB",
+//     color: "亮黑色",
+//     pic: "img/lightblack.jpg",
+//     price: "2999",
+//     stock: "0",
+//     urls1: [{ url: "img/mi61.jpg" }, { url: "img/mi62.jpg" }, { url: "img/mi63.jpg" }, { url: "img/mi64.jpg" }, { url: "img/mi65.jpg" }, { url: "img/mi66.jpg" }, { url: "img/mi67.jpg" }, { url: "img/mi68.jpg" }, { url: "img/mi69.jpg" }, { url: "img/mi610.jpg" }, { url: "img/mi611.jpg" }, { url: "img/mi612.jpg" }, { url: "img/mi613.jpg" }, { url: "img/mi614.jpg" }, { url: "img/mi615.jpg" }],
+//     urls2: [{ url: "img/parameter1.jpg" }, { url: "img/parameter2.jpg" }, { url: "img/parameter3.jpg" }, { url: "img/parameter4.jpg" }],
+//     urls3: [{ url: "img/yushou.jpg" }]
+// }, {
+//     name: "小米6",
+//     activity: "7月14日早10点，小米6 64GB 亮白色 首卖",
+//     brief: "变焦双摄，4 轴防抖 / 骁龙835 旗舰处理器，6GB 大内存，最大可选128GB 闪存 / 5.15吋 护眼屏 / 四曲面玻璃/陶瓷机身",
+//     type: "陶瓷尊享版",
+//     ram: "6GB",
+//     rom: "128GB",
+//     color: "亮黑色",
+//     pic: "img/lightblack.jpg",
+//     price: "2999",
+//     stock: "0",
+//     urls1: [{ url: "img/mi61.jpg" }, { url: "img/mi62.jpg" }, { url: "img/mi63.jpg" }, { url: "img/mi64.jpg" }, { url: "img/mi65.jpg" }, { url: "img/mi66.jpg" }, { url: "img/mi67.jpg" }, { url: "img/mi68.jpg" }, { url: "img/mi69.jpg" }, { url: "img/mi610.jpg" }, { url: "img/mi611.jpg" }, { url: "img/mi612.jpg" }, { url: "img/mi613.jpg" }, { url: "img/mi614.jpg" }, { url: "img/mi615.jpg" }],
+//     urls2: [{ url: "img/parameter1.jpg" }, { url: "img/parameter2.jpg" }, { url: "img/parameter3.jpg" }, { url: "img/parameter4.jpg" }],
+//     urls3: [{ url: "img/yushou.jpg" }]
+// }, {
+//     name: "小米6",
+//     activity: "7月14日早10点，小米6 64GB 亮白色 首卖",
+//     brief: "变焦双摄，4 轴防抖 / 骁龙835 旗舰处理器，6GB 大内存，最大可选128GB 闪存 / 5.15吋 护眼屏 / 四曲面玻璃/陶瓷机身",
+//     type: "陶瓷尊享版",
+//     ram: "6GB",
+//     rom: "128GB",
+//     color: "亮黑色",
+//     pic: "img/lightblack.jpg",
+//     price: "2999",
+//     stock: "0",
+//     urls1: [{ url: "img/mi61.jpg" }, { url: "img/mi62.jpg" }, { url: "img/mi63.jpg" }, { url: "img/mi64.jpg" }, { url: "img/mi65.jpg" }, { url: "img/mi66.jpg" }, { url: "img/mi67.jpg" }, { url: "img/mi68.jpg" }, { url: "img/mi69.jpg" }, { url: "img/mi610.jpg" }, { url: "img/mi611.jpg" }, { url: "img/mi612.jpg" }, { url: "img/mi613.jpg" }, { url: "img/mi614.jpg" }, { url: "img/mi615.jpg" }],
+//     urls2: [{ url: "img/parameter1.jpg" }, { url: "img/parameter2.jpg" }, { url: "img/parameter3.jpg" }, { url: "img/parameter4.jpg" }],
+//     urls3: [{ url: "img/ yushou.jpg" }]
+// }];
 
 router.get('/shopcart', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
     } else {
         db.queryUserById(req.session.user._id, function(user) {
-            var details = user.shoppingcart;
-            console.log(details);
-            res.render('fragments/' + 3, { details: details });
-        });
+        var details = user.shoppingcart;
+        console.log(details); 
+        res.render('fragments/' + 3, { details: details });
+    });
     }
 });
 
-router.get('/shopcart/:id', function(req, res, next) {
-    db.queryUserById(req.session.user._id, function(user) {
+router.get('/shopcart/:id', function(req, res, next){
+    db.queryUserById(req.session.user._id,function(user){
         var shoppingcart = user.shoppingcart;
         console.log(shoppingcart);
         shoppingcart.splice(req.params.id, 1);
         console.log(shoppingcart);
-        db.updateUser(req.session.user._id, { shoppingcart: shoppingcart }, function(success) {
+        db.updateUser(req.session.user._id, {shoppingcart: shoppingcart}, function(success) {
             console.log(success);
-            if (success) {
+            if(success) {
                 res.send("success");
             }
         });
     })
 });
 
-router.get('/clearbutton', function(req, res, next) {
-    db.queryUserById(req.session.user._id, function(user) {
+router.get('/clearbutton', function(req, res, next){
+    db.queryUserById(req.session.user._id,function(user){
         var shoppingcart = user.shoppingcart;
-        var neworder = { orderId: "5160607962200971", orderState: "已完成", orderItemsPic: [{ url: "img/orderItem1.jpg" }], orderItemsName: [{ name: "小米手环 2 黑色" }], orderDate: "2016/04/22 17:46", orderPayMethod: "微信支付", orderBuyer: "张三", orderRecDate: "2016/04/23 17:46", orderRecAddr: "辽宁省沈阳市浑南新区东北大学浑南校区", orderItemNum: "1", orderItemMoney: "149" };
+        var neworder={orderId:"",orderState:"待付款",orderItemsPic:[{url:"img/orderItem1.jpg"}],orderItemsName:[{name:"小米手环 2 黑色"}],orderDate:"",orderPayMethod:"",orderBuyer:"",orderRecDate:"",orderRecAddr:"",orderItemNum:"1",orderItemMoney:"149"};
+        for(index=0;index<shoppingcart.lenth;index++){
+            neworder.orderItemsPic.url=shoppingcart.url;
+            neworder.orderItemsName.name=shoppingcart.goodsName;
+        }
+        neworder.orderItemNum = $(".all_counts").value ;
+        neworder.orderItemMoney = $(".all_price").value ;
+
     });
 });
 
@@ -164,8 +195,9 @@ router.get('/json/:id', function(req, res, next) {
         console.log("the json detail is " + detail);
         res.send(detail);
     });
+    // console.log(req.params.id);
+    // res.sendFile('/models/' + req.params.id, options);
 });
-
 router.get('/order/:id', function(req, res, next) {
     db.queryUserById(req.params.id, function(detail) {
         console.log("the json detail is " + detail);
