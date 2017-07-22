@@ -45,7 +45,7 @@ router.post('/register', function(req, res, next) {
         uname: 'p_' + phone,
         pwd: pwd,
         hphoto: "/images/account/userimg.png",
-        sex: "male",
+        sex: "男",
         payment: [],
         address: []
     };
@@ -59,7 +59,9 @@ router.post('/register', function(req, res, next) {
 });
 
 router.get('/person', function(req, res, next) {
-    res.render('person');
+    db.queryUserByID(req.session.user._id, function(user) {
+        res.render('person', { user: user });
+    });
 });
 
 router.get('/forget', function(req, res, next) {
