@@ -144,6 +144,7 @@
 #home_button{
 	height: inherit;
 	border-right: 1px solid #DCDCDC;
+	background-color: white;
 }
 #home_button img{
 	height: 1.8rem;
@@ -156,6 +157,7 @@
 }
 #shopcart_button{
 	height: inherit;
+	background-color: white;
 }
 #shopcart_button img{
 	height: 1.8rem;

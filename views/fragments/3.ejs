@@ -8,15 +8,15 @@
 
 		<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
-		<link rel="stylesheet" type="text/css" href="/stylesheets/footer.css" />
-		<link rel="stylesheet" type="text/css" href="/stylesheets/index_header.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="/stylesheets/footer.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/index_header.css" /> -->
 		<link rel="stylesheet" type="text/css" href="/stylesheets/zk.css" />
-		<link rel="stylesheet" type="text/css" href="/stylesheets/wf.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="/stylesheets/wf.css" /> -->
 
 		<script src="/javascripts/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/javascripts/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/javascripts/script.js" type="text/javascript" charset="utf-8"></script>
-		<script src="/javascripts/toucher.js" type="text/javascript" charset="utf-8"></script>
+		<!-- <script src="/javascripts/toucher.js" type="text/javascript" charset="utf-8"></script> -->
 		<script src="/javascripts/wf.js" type="text/javascript" charset="UTF-8"></script>
 
 	</head>
@@ -47,18 +47,18 @@
 							<% for (var index = 0; index < details.length; index++) {%>
 							<li class="wf_item">
 								<div class="col-xs-2 wf_checkbox" check="0"></div>
-								<div class="col-xs-3 wf_goods"><img src="<%=details[index].pic %>"></div>
+								<div class="col-xs-3 wf_goods"><img src="<%=details[index].url %>"></div>
 								<div class="col-xs-7 goods_element">
 									<div class="wf_goods_info">
-										<%=details[index].name %>
+										<%=details[index].goodsName %>
 									</div>
-									<div class="wf_goods_price" value="<%=details[index].price %>">售价
-										<%=details[index].price %>
+									<div class="wf_goods_price" value="<%=details[index].goodsPrice %>">售价
+										<%=details[index].goodsPrice %>
 									</div>
 									<div class="wf_goods_counts">
 										<div class="col-xs-5 wf_input">
 											<div class="input_sub col-xs-4">-</div>
-											<div class="input_value col-xs-4" value='1'>1</div>
+											<div class="input_value col-xs-4" value='<%=details[index].goodsCount%>'><%=details[index].goodsCount%></div>
 											<div class="input_add col-xs-4">+</div>
 										</div>
 										<div class="col-xs-2"></div>

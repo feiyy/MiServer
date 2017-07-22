@@ -370,7 +370,7 @@ $(document).ready(function() {
         $(".all_price").html(total);
     });
 
-    $(".goods_delete").click(function() {
+    $(".goods_delete").on("click", function() {
         $.ajax({
             type: "get",
             url: "/shopcart/" + $(this).attr("id"),
@@ -378,7 +378,8 @@ $(document).ready(function() {
             //  		data:{id:$(".wf_item").attr("id")}
             async: true,
             success: function(data) {
-                if (data == "1") {
+                console.log(data);
+                if (data == "success") {
                     location.reload();
                 }
             }
@@ -393,4 +394,9 @@ $(document).ready(function() {
             $('.left').click();
         });
     }
+
+    // db.queryUserById("5972c1944f2d5f2d6c252a49", function(user) {
+    // var details = user('shoppingcart');
+    // console.log(details);
+    // });
 });
