@@ -59,8 +59,9 @@ router.post('/register', function(req, res, next) {
 });
 
 router.get('/person', function(req, res, next) {
-    db.queryUserByID(req.session.user._id, function(user) {
-        res.render('person', { user: user });
+    db.queryUserById(req.session.user._id, function(user) {
+        console.log(user);
+        res.render('person', { person: user });
     });
 });
 
@@ -69,13 +70,38 @@ router.get('/forget', function(req, res, next) {
 });
 
 router.post('/changeuname', function(req, res, next) {
+    console.log(req.body.name);
     if (!req.session.user) {
         res.send('login');
     } else {
-        var datail = req.body;
         db.updateUser(req.session.user._id, { uname: req.body.name }, function(success) {
             if (success) {
+                res.send('person');
+            }
+        })
+    }
+});
 
+
+router.post('/changesex', function(req, res, next) {
+    if (!req.session.user) {
+        res.send('login');
+    } else {
+        db.updateUser(req.session.user._id, { sex: req.body.sex }, function(success) {
+            if (success) {
+                res.send('person');
+            }
+        })
+    }
+});
+
+router.post('/changepwd', function(req, res, next) {
+    if (!req.session.user) {
+        res.send('login');
+    } else {
+        db.updateUser(req.session.user._id, { pwd: req.body.pwd }, function(success) {
+            if (success) {
+                res.send('person');
             }
         })
     }
