@@ -27,8 +27,7 @@ router.post('/detail/shopcart', function(req, res, next) {
     if (!req.session.user) {
         res.send('login');
     } else {
-        var datail = req.body;
-        console.log("the detail is"+detail);
+        var detail = req.body;
         db.queryUserById(req.session.user._id, function(user) {
             var shoppingcart = user.shoppingcart;
             shoppingcart.push(detail);

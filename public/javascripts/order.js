@@ -1,4 +1,5 @@
-var payingMoney=0;
+var itemMoney=0;
+var itemNum=0;
 function comedown(divCtrl, divName) {
     if (divCtrl.classList.contains("zk_down")) {
         $("." + divName).css("display", "block");
@@ -32,7 +33,9 @@ function pay()
 {
 
 	var data={
-		orderItemsMoney:
+		orderItemMoney:itemsMoney,
+		orderItemNum:itemNum,
+		orderRecAddr:
 	}
 }
 init=function(id)
@@ -81,8 +84,8 @@ init=function(id)
 			{
 				if(item.payment[i].orderState=="代付款")
 				{
-					payingMoney=item.payment[i].orderItemsMoney;
-					payingItem=item.pay
+					itemsMoney=item.payment[i].orderItemsMoney;
+					itemNum=item.payment[i].orderItemsName;
 					for(var k=0;k<item.payment[i].orderItemsName.length;k++)
 					{
 						str="<div class='zk_payMethod col-xs-12'>"+
