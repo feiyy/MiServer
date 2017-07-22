@@ -45,7 +45,7 @@ router.post('/register', function(req, res, next) {
         uname: 'p_' + phone,
         pwd: pwd,
         hphoto: "/images/account/userimg.png",
-        sex: "male",
+        sex: "男",
         payment: [],
         address: []
     };
