@@ -115,7 +115,7 @@ $(function(){
 				{
 					$("#dd_phonemovenum").css("display","block");
 				}
-				else if(password.length == 0 && password2.length == 0)
+				else if(password.length == 0 || password2.length == 0)
 				{
 					$("#dd_pwdnum").css("display","block");
 				}
