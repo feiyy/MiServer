@@ -7,20 +7,77 @@
     <title>小mi帐号 - 个人信息</title>
 
 		<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
 		<link rel="stylesheet" href="/stylesheets/person.css" />
+		<link rel="stylesheet" href="/stylesheets/order.css" />
 
 		<script src="/javascripts/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/javascripts/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/javascripts/script.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/javascripts/changeinformation.js" ></script>
 </head>
 
 <body>
+	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">						
+		<div class="modal-dialog" id="myModalFace1" role="document">
+		    <div class="modal-content">
+			    <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			               修改姓名
+			    </div>
+			    <div class="modal-body col-xs-10 col-xs-offset-1">
+		            <div class="col-xs-3">姓名：</div>
+		            <input type="text" class="col-xs-9 dd_modName" placeholder="请输入名称"/>						        
+		        </div>
+		        <div class="modal-footer">		       
+		        </div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">						
+		<div class="modal-dialog" id="myModalFace2" role="document">
+		    <div class="modal-content">
+			    <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			               修改性别
+			    </div>
+			    <div class="modal-body col-xs-10 col-xs-offset-1">
+		            <div class="col-xs-3">性别：</div>
+		            <input type="button" class="dd_sexoption col-xs-4" id="dd_male" value="男" />
+		            <input type="button" class="dd_sexoption col-xs-4" id="dd_female" value="女" />
+		        </div>
+		        <div class="modal-footer">		       
+		        </div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">						
+		<div class="modal-dialog" id="myModalFace1" role="document">
+		    <div class="modal-content">
+			    <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			               修改密码
+			    </div>
+			    <div class="modal-body col-xs-10 col-xs-offset-1">
+		            <div class="col-xs-4">旧密码：</div>
+		            <input type="text" class="col-xs-12 dd_modPassword" placeholder="请输入旧密码"/>
+		            <div class="col-xs-4">新密码：</div>
+		            <input type="text" class="col-xs-12 dd_modPassword" placeholder="请输入新密码"/>
+		            <div class="col-xs-4">确认密码：</div>
+		            <input type="text" class="col-xs-12 dd_modPassword" placeholder="请再次输入新密码"/>
+		        </div>
+		        <div class="modal-footer">		       
+		        </div>
+			</div>
+		</div>
+	</div>
     <div class="wrapper">
         <div id="tvbox" class="wrapper">
             <div class="dd">
 				<div class="dd_wrapper">
+				    
 					<div class="dd_header">								
-						<span onclick="window.location.href='account.html';"><</span>
+						<span onclick="window.location.href='/mine'"><</span>
 						<cite>个人资料</cite>
 					</div>
 					<div class="dd_content">
@@ -32,49 +89,43 @@
 								</a>
 							</li>
 							<li>
-								<a href="changename.html">
+								<a data-toggle='modal' onclick= "modifyName()" data-target="#myModal1">
 									<cite>姓名</cite>							
 									<span>></span>
-									<p>dd</p>
+									<div class="dd_text" id="dd_uname">dd</div>
 								</a>
 							</li>
 							<li>
-								<a href="changemale.html">
+								<a data-toggle='modal' onclick= "modifySex()" data-target="#myModal2">
 									<cite>性别</cite>							
 									<span>></span>
-									<p>男</p>
+									<div class="dd_text" id="dd_usex">女</div>
 								</a>
 							</li>
 							<li>
-								<a href=" ">
-									<cite>生日</cite>							
-									<span>></span>
-									<p>1995-04-05</p>
-								</a>
-							</li>
-							<li>
-								<a href="changepassword.html">
+								<a>
 									<cite>小米账号</cite>						
 									<span></span>
-									<p>912231414</p>
+									<div class="dd_text">13947991414</div>
 								</a>
 							</li>
 						</ul>
 						<ul class="dd_mode2">
 							<li>
-								<a href="">
+								<a data-toggle='modal' data-target="#myModal3">
 									<cite>修改密码</cite>
 									<span>></span>
 								</a>
 							</li>
 							<li>
-								<a href="">
+								<a href="/users/address">
 									<cite>收货地址</cite>
 									<span>></span>
 								</a>
 							</li>
 						</ul>
 					</div>
+					
 				</div>
 			</div>
         </div>

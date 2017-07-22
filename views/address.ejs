@@ -13,6 +13,9 @@
 	    <script src="/javascripts/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/javascripts/script.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="/javascripts/address.js" ></script>
+		<script>
+			initialize("<%= userId%>");
+		</script>
 	</head>
 	<body>
 		<div class="wrapper">
@@ -28,7 +31,7 @@
 				</div>
 				<div class="col-xs-12 zk_addrs">
 				</div>
-			<!-- Modal -->
+			
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
@@ -68,8 +71,7 @@
 			        <input type="text" class="col-xs-9 zk_modAddr" placeholder="请输入收货地址"/>
 			      </div>
 			      <div class="modal-footer">
-			        <!--<div class="col-xs-6 zk_addrHold" onclick="keepInDB()">保存</div>
-					<div class="col-xs-6 zk_addrConcel">取消</div>-->
+			       
 			      </div>
 			    </div>
 			  </div>

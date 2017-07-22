@@ -1,3 +1,12 @@
+var user = {
+    phone: "",
+    uname: "13080868092",
+    pwd: "123456",
+    hphoto: "/images/account/userimg.png",
+    sex: "male",
+    payment: [],
+    address: []
+};
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var db = mongoose.createConnection('localhost', 'smallmimall');
@@ -69,9 +78,8 @@ db.once('open', function() {
         userModel.findByIdAndUpdate(id, data, function(err, doc) {});
     }
 
-    db.init = function(callback)
-    {
-         var address = {
+    db.init = function(callback) {
+        var address = {
             // name: "小米6",
             // activity: "7月14日早10点，小米6 64GB 亮白色 首卖",
             // brief: "变焦双摄，4 轴防抖 / 骁龙835 旗舰处理器，6GB 大内存，最大可选128GB 闪存 / 5.15吋 护眼屏 / 四曲面玻璃/陶瓷机身",
@@ -91,10 +99,12 @@ db.once('open', function() {
             payment: [{orderId:"5160607962200971",orderState:"已完成",orderItemsPic:[{url:"img/orderItem1.jpg"}],orderItemsName:[{name:"小米手环 2 黑色"}],orderDate:"2016/04/22 17:46",orderPayMethod:"微信支付",orderBuyer:"张三",orderRecDate:"2016/04/23 17:46",orderRecAddr:"辽宁省沈阳市浑南新区东北大学浑南校区",orderItemNum:"1",orderItemMoney:"149"},
                         {orderId:"232456786543333",orderState:"已完成",orderItemsPic:[{url:"img/orderItem21.jpg"},{url:"img/orderItem22.jpg"},{url:"img/orderItem23.jpg"}],orderItemsName:[{name:"小米手环 石墨黑"},{name:"红米Note 2 移动版 灰色 16GB"},{name:"小米礼品袋 透明"}],orderDate:"2016/04/22 17:46",orderPayMethod:"微信支付",orderBuyer:"张三",orderRecDate:"2015/09/21 14:11",orderRecAddr:"辽宁省沈阳市浑南新区东北大学浑南校区",orderItemNum:"3",orderItemMoney:"869"},
                         {orderId:"232456786543333",orderState:"代付款",orderItemsPic:[{url:"img/orderItem21.jpg"},{url:"img/orderItem22.jpg"},{url:"img/orderItem23.jpg"}],orderItemsName:[{name:"小米手环 石墨黑"},{name:"红米Note 2 移动版 灰色 16GB"},{name:"小米礼品袋 透明"}],orderDate:"",orderPayMethod:"",orderBuyer:"",orderRecDate:"",orderRecAddr:"",orderItemNum:"3",orderItemMoney:"869"}],
-            address: [],
+            address: [{name:"张三",phone:"177****1234",addr:"辽宁省沈阳市浑南新区东北大学浑南校区"},
+                        {name:"李四",phone:"172****3456",addr:"广东省深圳市南山区西丽镇宝珠花园"},
+                        {name:"王五",phone:"176****5678",addr:"湖北省武汉市洪山区东方雅苑二期"}],
             shoppingcart:[]
         };
-         db.addUser(address, function(cb){
+        db.addUser(address, function(cb) {
             callback(cb);
         });
     }

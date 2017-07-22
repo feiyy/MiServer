@@ -17,58 +17,15 @@
     <script src="javascripts/zk.js" type="text/javascript" charset="utf-8"></script>
     <script src="javascripts/order.js" type="text/javascript" charset="utf-8"></script>
 </head>
-
+<script>
+        init("<%= userId%>");
+ </script>
 <body>
     <div class="wrapper">
-        <div class="push">
+        <div class="push" id="zk_paymentPush">
             <div class="col-xs-12 zk_topBorder"></div>
-            <div class="col-xs-12">
-                <div class="col-xs-12 zk_address">
-                    <div class="col-xs-10">
-                        <div class="col-xs-12" style="padding-bottom: 0.5rem;">
-                            <div class="zk_username">张三</div>
-                            <div class="zk_userPhone">177****5678</div>
-                        </div>
-                        <div class="col-xs-12 zk_position">
-                            辽宁 沈阳市 浑南新区 白塔街道 东北大学浑南校区 (110179)
-                        </div>
-                    </div>
-                    <div class="col-xs-2 zk_noChoose" onclick="chooseAddr('zk_address',this)">
-                        <img src="img/check_normal.png" />
-                    </div>
-                </div>
-                <div class="col-xs-12 zk_address zk_address_hide" style="display: none;">
-                    <div class="col-xs-10">
-                        <div class="col-xs-12" style="padding-bottom: 0.5rem;">
-                            <div class="zk_username">张三</div>
-                            <div class="zk_userPhone">177****5678</div>
-                        </div>
-                        <div class="col-xs-12 zk_position">
-                            辽宁 沈阳市 浑南新区 白塔街道 东北大学浑南校区 (110179)
-                        </div>
-                    </div>
-                    <div class="col-xs-2 zk_noChoose" onclick="chooseAddr('zk_address',this)">
-                        <img src="img/check_normal.png" />
-                    </div>
-                </div>
-                <div class="col-xs-12 zk_address zk_address_hide" style="display: none;">
-                    <div class="col-xs-10">
-                        <div class="col-xs-12" style="padding-bottom: 0.5rem;">
-                            <div class="zk_username">张三</div>
-                            <div class="zk_userPhone">177****5678</div>
-                        </div>
-                        <div class="col-xs-12 zk_position">
-                            辽宁 沈阳市 浑南新区 白塔街道 东北大学浑南校区 (110179)
-                        </div>
-                    </div>
-                    <div class="col-xs-2 zk_noChoose" onclick="chooseAddr('zk_address',this)">
-                        <img src="img/check_normal.png" />
-                    </div>
-                </div>
-                <div class="col-xs-12 zk_turnDown">
-                    <div class="col-xs-8" style="text-align: right;font-size: 1rem;color: #bdbdbd;">使用其他地址</div>
-                    <div class="col-xs-1 zk_down" onclick="comedown(this,'zk_address_hide')"><img src="img/getDown.png"></div>
-                </div>
+            <div class="col-xs-12" id="zk_userAddr">
+                
             </div>
 
             <div class="col-xs-12 space"></div>
@@ -118,8 +75,8 @@
                 <div class="col-xs-2 zk_logo">
                     <img src="img/usb.jpg" />
                 </div>
-                <div class="col-xs-7 zk_proName">USB Type-C 转接头 黑色</div>
-                <div class="col-xs-3 zk_number">x10=50.00</div>
+                <div class="col-xs-8 zk_proName">USB Type-C 转接头 黑色</div>
+                <div class="col-xs-2 zk_number">x10</div>
             </div>
         </div>
     </div>

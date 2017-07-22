@@ -24,9 +24,27 @@ router.get('/detail/:id', function(req, res, next) {
 });
 
 router.get('/payment', function(req, res, next) {
-    res.render('payment', { detailName: '小米6' });
+    if (!req.session.user) {
+        res.render('login');
+    } else {
+        console.log(req.session.user._id);
+        db.queryUserById(req.session.user._id, function(user){
+            console.log(user);
+            res.render('payment', { userId: user._id });
+        })
+    }
 });
-
+router.get('/address', function(req, res, next) {
+    if (!req.session.user) {
+        res.render('login');
+    } else {
+        console.log(req.session.user._id);
+        db.queryUserById(req.session.user._id, function(user){
+            console.log(user);
+            res.render('address', { userId: user._id });
+        })
+    }
+});
 router.get('/myorder', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -50,7 +68,9 @@ router.get('/search', function(req, res, next) {
 router.get('/fragments/:id', function(req, res, next) {
     var frag_id = req.params.id;
     if (frag_id == 1) {
-        res.render('fragments/' + frag_id, { login: req.session.user });
+        res.render('fragments/' + 1, { login: req.session.user });
+    } else if (frag_id == 4) {
+        res.render('fragments/' + 4, { login: req.session.user });
     } else {
         res.render('fragments/' + frag_id);
     }

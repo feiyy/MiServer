@@ -12,7 +12,7 @@
 		<script src="/javascripts/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/javascripts/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/javascripts/script.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript" src="/sjavascripts/login.js" ></script>
+		<script type="text/javascript" src="/javascripts/login.js" ></script>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
 							<div class="dd_logcontent">
 								<div>
 									<div class="dd_logarea">
-										<form action="/users/login" method="post" id="dd_loginmainform">
+										<form action="/users/login" method="post" id="dd_loginmainform" submit="">
 											<div class="dd_loginbox">
 												<div class="dd_loginput">
 													<div class="dd_singleimgarea"></div>
@@ -47,28 +47,26 @@
 														<input type="password" placeholder="密码" autocomplete="off" name="pwd" id="pwd" />
 													</label>
 												</div>
-												
-												<div class="dd_logincode"></div>
 												<div id="dd_errorname" class="dd_errtip">
 													<div class="dd_disbox">
-														<img class="dd_erricon" src="images/login/error.png"/>
+														<img class="dd_erricon" src="/images/login/error.png"/>
 														<span>账号不能为空</span>
 													</div>
 												</div>
 												<div id="dd_errorpwd" class="dd_errtip">
 													<div class="dd_disbox">
-														<img class="dd_erricon" src="images/login/error.png"/>
+														<img class="dd_erricon" src="/images/login/error.png"/>
 														<span>请输入密码</span>
 													</div>
 												</div>
 												<div id="dd_errorforbidden" class="dd_errtip">
 													<div class="dd_disbox">
-														<img class="dd_erricon" src="images/login/error.png"/>
+														<img class="dd_erricon" src="/images/login/error.png"/>
 														<span>账号或密码错误</span>
 													</div>
 												</div>
 												<div class="dd_btn1">
-													<input class="dd_loginbtn" id="loginbutton" type="submit" value="立即登录" />
+													<input class="dd_loginbtn" id="loginbutton" type="button" value="立即登录" />
 												</div>
 												<div class="dd_otherlogin">
 													<fieldset class="dd_othertitle">
@@ -94,9 +92,9 @@
 									</div>
 								</div>
 								<div class="dd_linkarea">
-									<a class="outerlink" href="register.html">注册小米账号</a>
+									<a class="outerlink" href="/users/register">注册小米账号</a>
 									<span>|</span>
-									<a class="outerlink" href="">忘记密码？</a>
+									<a class="outerlink" href="/users/forget">忘记密码？</a>
 								</div>
 							</div>
 							<div class="tabs_con"></div><!--待定-->
@@ -107,17 +105,11 @@
 			</div>
 		</div>
 		<div class="dd_footer">
-			<div class="dd_clearfix">
-				<a href="" class="lang-select-li">简体</a>|
-				<a href="" class="lang-select-li">繁体</a>|
-				<a href="" class="lang-select-li">English</a>|
-				<a href="" class="lang-select-li" target="_blank">常见问题</a>	
-			</div>
 			<p class="dd_intro">
 				<span>小米公司版权所有-京ICP备10046444-
 					<a class="dd_recordlink" target="_blank" href="">
 						<span>
-							<img src="images/login/police.png" />
+							<img src="/images/login/police.png" />
 						</span>京公网安备11010802020134号
 					</a>-京ICP证110507号
 				</span>
