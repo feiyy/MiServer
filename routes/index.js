@@ -27,7 +27,7 @@ router.post('/detail/shopcart', function(req, res, next) {
     if (!req.session.user) {
         res.send('login');
     } else {
-        var datail = req.body;
+        var detail = req.body;
         db.queryUserById(req.session.user._id, function(user) {
             var shoppingcart = user.shoppingcart;
             shoppingcart.push(detail);
@@ -125,32 +125,39 @@ router.get('/shopcart', function(req, res, next) {
         res.render('login');
     } else {
         db.queryUserById(req.session.user._id, function(user) {
-            var details = user.shoppingcart;
-            console.log(details);
-            res.render('fragments/' + 3, { details: details });
-        });
+        var details = user.shoppingcart;
+        console.log(details); 
+        res.render('fragments/' + 3, { details: details });
+    });
     }
 });
 
-router.get('/shopcart/:id', function(req, res, next) {
-    db.queryUserById(req.session.user._id, function(user) {
+router.get('/shopcart/:id', function(req, res, next){
+    db.queryUserById(req.session.user._id,function(user){
         var shoppingcart = user.shoppingcart;
         console.log(shoppingcart);
         shoppingcart.splice(req.params.id, 1);
         console.log(shoppingcart);
-        db.updateUser(req.session.user._id, { shoppingcart: shoppingcart }, function(success) {
+        db.updateUser(req.session.user._id, {shoppingcart: shoppingcart}, function(success) {
             console.log(success);
-            if (success) {
+            if(success) {
                 res.send("success");
             }
         });
     })
 });
 
-router.get('/clearbutton', function(req, res, next) {
-    db.queryUserById(req.session.user._id, function(user) {
+router.get('/clearbutton', function(req, res, next){
+    db.queryUserById(req.session.user._id,function(user){
         var shoppingcart = user.shoppingcart;
-        var neworder = { orderId: "5160607962200971", orderState: "已完成", orderItemsPic: [{ url: "img/orderItem1.jpg" }], orderItemsName: [{ name: "小米手环 2 黑色" }], orderDate: "2016/04/22 17:46", orderPayMethod: "微信支付", orderBuyer: "张三", orderRecDate: "2016/04/23 17:46", orderRecAddr: "辽宁省沈阳市浑南新区东北大学浑南校区", orderItemNum: "1", orderItemMoney: "149" };
+        var neworder={orderId:"",orderState:"待付款",orderItemsPic:[{url:"img/orderItem1.jpg"}],orderItemsName:[{name:"小米手环 2 黑色"}],orderDate:"",orderPayMethod:"",orderBuyer:"",orderRecDate:"",orderRecAddr:"",orderItemNum:"1",orderItemMoney:"149"};
+        for(index=0;index<shoppingcart.lenth;index++){
+            neworder.orderItemsPic.url=shoppingcart.url;
+            neworder.orderItemsName.name=shoppingcart.goodsName;
+        }
+        neworder.orderItemNum = $(".all_counts").value ;
+        neworder.orderItemMoney = $(".all_price").value ; 
+
     });
 });
 
@@ -165,14 +172,11 @@ router.get('/json/:id', function(req, res, next) {
         res.send(detail);
     });
 });
-
 router.get('/order/:id', function(req, res, next) {
     db.queryUserById(req.params.id, function(detail) {
         console.log("the json detail is " + detail);
         res.send(detail);
     });
-    // console.log(req.params.id);
-    // res.sendFile('/models/' + req.params.id, options);
 });
 
 router.get('/init', function(req, res, next) {

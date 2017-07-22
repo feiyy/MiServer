@@ -1,30 +1,30 @@
 var jid;
-var thePrice=0;
-var theStock=0;
+var thePrice = 0;
+var theStock = 0;
 phoneInfo = function(id) {
     jid = id;
-    console.log("here is "+jid);
+    console.log("here is " + jid);
     $.ajax({
         type: "get",
-        url: "/json/" + jid, 
+        url: "/json/" + jid,
         async: true,
         success: function(item) {
             //$.each(data.phone, function(i, item) {
-                // if (item.name == "小米6") {
-                    console.log(item);
-                    $(".zk_mi6Name").text(item.name);
-                    $(".zk_mi6brief").html("<font color='#ff4a00'>【" + item.activity + "】</font>" + item.brief);
-                    $(".zk_mi6price").text(item.type[0].price);
-                    thePrice=parseInt(item.type[0].price);
-                    $(".zk_mi6choosen>.col-xs-10").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color + " x1");
-                    $(".zk_mi6stock>.col-xs-10").text("剩余" + item.type[0].stock + "件");
-                    $(".zk_mi6Store").text(item.type[0].stock); 
-                    theStock=parseInt(item.type[0].stock);
-                    $(".zk_mi6pics").html("<img src=" + item.urls1[0].url + " />" + "<img src=" + item.urls1[1].url + " />" + "<img src=" + item.urls1[2].url + " />" + "<div class='col-xs-12 zk_mi6more' style='text-align: center;font-size:2rem;background-color:white;color:#FF5722' onclick='showMore()'>点击查看更多</div>");
-                    $(".zk_mi6nameAndSpec").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color);
-                    $(".zk_mi6icon").html("<img src=" + item.type[0].pic + "  />");
-                //     return false;
-                // }
+            // if (item.name == "小米6") {
+            console.log(item);
+            $(".zk_mi6Name").text(item.name);
+            $(".zk_mi6brief").html("<font color='#ff4a00'>【" + item.activity + "】</font>" + item.brief);
+            $(".zk_mi6price").text(item.type[0].price);
+            thePrice = parseInt(item.type[0].price);
+            $(".zk_mi6choosen>.col-xs-10").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color + " x1");
+            $(".zk_mi6stock>.col-xs-10").text("剩余" + item.type[0].stock + "件");
+            $(".zk_mi6Store").text(item.type[0].stock);
+            theStock = parseInt(item.type[0].stock);
+            $(".zk_mi6pics").html("<img src='" + item.urls1[0].url + "' />" + "<img src='" + item.urls1[1].url + "' />" + "<img src='" + item.urls1[2].url + "' />" + "<div class='col-xs-12 zk_mi6more' style='text-align: center;font-size:2rem;background-color:white;color:#FF5722' onclick='showMore()'>点击查看更多</div>");
+            $(".zk_mi6nameAndSpec").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color);
+            $(".zk_mi6icon").html("<img src='" + item.type[0].pic + "' />");
+            //     return false;
+            // }
             //});
         }
     });
@@ -43,15 +43,15 @@ function changePic(num) {
             switch (num) {
                 case 1:
                     for (var j = 0; j < 3; j++)
-                        str += "<img src=" + item.urls1[j].url + "/>";
+                        str += "<img src='" + item.urls1[j].url + "'/>";
                     break;
                 case 2:
                     for (var j = 0; j < item.urls2.length; j++)
-                        str += "<img src=" + item.urls2[j].url + "/>";
+                        str += "<img src='" + item.urls2[j].url + "'/>";
                     break;
                 case 3:
                     for (var j = 0; j < item.urls3.length; j++)
-                        str += "<img src=" + item.urls3[j].url + "/>";
+                        str += "<img src='" + item.urls3[j].url + "'/>";
                     break;
             }
             $(".zk_mi6pics").html(str);
@@ -71,10 +71,8 @@ function up() {
         async: true,
         success: function(item) {
             var types = new Array();
-            if (item.name == str[0]) 
-            {
-                for(var j=0;j<item.type.length;j++)
-                {
+            if (item.name == str[0]) {
+                for (var j = 0; j < item.type.length; j++) {
                     var typeStr = item.type[j].name + " " + item.type[j].ram + " " + item.type[j].rom;
                     var isRepeated = false;
                     for (var i = 0; i < types.length; i++) {
@@ -87,12 +85,9 @@ function up() {
                         types.push(typeStr);
                 }
                 //按照系统的逻辑来看，规格+颜色具体地将每一部手机区别开，因此当规格选定了之后，颜色不应该出现重复的情况,这里应该还有点问题
-                for(var j=0;j<item.type.length;j++)
-                {
-                    if (item.type[j].name == str[1] && item.type[j].ram == str[2] && item.type[j].rom == str[3]) 
-                    {
-                        if (item.type[j].color == str[4]) 
-                        {
+                for (var j = 0; j < item.type.length; j++) {
+                    if (item.type[j].name == str[1] && item.type[j].ram == str[2] && item.type[j].rom == str[3]) {
+                        if (item.type[j].color == str[4]) {
                             if (parseInt(item.type[j].stock) > 0)
                                 $(".zk_mi6standard1").append("<div class='col-xs-3' style='text-align: center;margin-right: 1rem;border: 1px solid #f56600;color:#f56600'>" + item.type[j].color + "</div>");
                             else {
@@ -138,21 +133,21 @@ function addGoods(num) {
 function showMore() {
     $.ajax({
         type: "get",
-        url: "/json/"+jid,
+        url: "/json/" + jid,
         async: true,
         success: function(item) {
             console.log("shsaodhasha");
-                if (item.name == "小米6") {
-                    var str = "";
-                    for (var j = 0; j < item.urls1.length; j++)
-                        str += "<img src=" + item.urls1[j].url + "/>";
-                    $(".zk_mi6pics").html(str);
-                }
+            if (item.name == "小米6") {
+                var str = "";
+                for (var j = 0; j < item.urls1.length; j++)
+                    str += "<img src='" + item.urls1[j].url + "/>";
+                $(".zk_mi6pics").html(str);
+            }
         }
     });
 }
-function commitOrder(divCtrl)
-{
+
+function commitOrder(divCtrl) {
     var data = {
         goodsName: $(".zk_mi6Name").text(),
         url: $(".zk_mi6icon>img").attr("src"),
@@ -166,10 +161,10 @@ function commitOrder(divCtrl)
         data: data,
         async: true,
         success: function(item) {
-           console.log(item);
-           if(item == "login"){
-               window.location.href = "/users/login";
-           }
+            console.log(item);
+            if (item == "login") {
+                window.location.href = "/users/login";
+            }
         }
     });
 }
@@ -200,14 +195,13 @@ $(function() {
                 var str = divCtrl.text().split(" ");
                 $.ajax({
                     type: "get",
-                    url: "/json/"+jid,
+                    url: "/json/" + jid,
                     async: true,
                     success: function(item) {
                         $(".zk_mi6standard1").html("");
-                        for(var i=0;i<item.type.length;i++)
-                        {
-                           if (item.type[i].name == str[0] && item.type[i].ram == str[1] && item.type[i].rom == str[2])
-                                    $(".zk_mi6standard1").append("<div class='col-xs-3' style='text-align: center;margin-right: 1rem;'>" + item.type[i].color + "</div>");  
+                        for (var i = 0; i < item.type.length; i++) {
+                            if (item.type[i].name == str[0] && item.type[i].ram == str[1] && item.type[i].rom == str[2])
+                                $(".zk_mi6standard1").append("<div class='col-xs-3' style='text-align: center;margin-right: 1rem;'>" + item.type[i].color + "</div>");
                         }
                     }
                 });
@@ -230,24 +224,22 @@ $(function() {
                 var specs = $(".zk_mi6choosed").text().split(" ");
                 $.ajax({
                     type: "get",
-                    url: "/json/"+jid,
+                    url: "/json/" + jid,
                     async: true,
                     success: function(item) {
-                        for(var i=0;i<item.type.length;i++)
-                        {
+                        for (var i = 0; i < item.type.length; i++) {
                             console.log(specs[1]);
-                            if (item.type[i].name == specs[0] && item.type[i].ram == specs[1] && item.type[i].rom == specs[2] && item.type[i].color == str) 
-                            {
+                            if (item.type[i].name == specs[0] && item.type[i].ram == specs[1] && item.type[i].rom == specs[2] && item.type[i].color == str) {
                                 $(".zk_mi6brief").html("<font color='#ff4a00'>【" + item.activity + "】</font>" + item.brief);
-                                console.log(item.type[i].price+"元");
+                                console.log(item.type[i].price + "元");
                                 $(".zk_mi6price").text(item.type[i].price);
                                 $(".zk_mi6choosen>.col-xs-10").text(item.name + " " + item.type[i].name + " " + item.type[i].ram + " " + item.type[i].rom + " " + item.type[i].color + " x1");
                                 $(".zk_mi6stock>.col-xs-10").text("剩余" + item.type[i].stock + "件");
-                                thePrice=parseInt(item.type[i].price);
-                                theStock=parseInt(item.type[i].stock);
-                                $(".zk_mi6pics").html("<img src=" + item.urls1[0].url + " />" + "<img src=" + item.urls1[1].url + " />" + "<img src=" + item.urls1[2].url + " />");
+                                thePrice = parseInt(item.type[i].price);
+                                theStock = parseInt(item.type[i].stock);
+                                $(".zk_mi6pics").html("<img src='" + item.urls1[0].url + "' />" + "<img src='" + item.urls1[1].url + "' />" + "<img src='" + item.urls1[2].url + "' />");
                                 $(".zk_mi6nameAndSpec").text(item.name + " " + item.type[i].name + " " + item.type[i].ram + " " + item.type[i].rom + " " + item.type[i].color);
-                                $(".zk_mi6icon").html("<img src=" + item.type[i].pic + "/>");
+                                $(".zk_mi6icon").html("<img src='" + item.type[i].pic + "/>");
                                 $(".zk_mi6Store").text(item.type[i].stock);
                                 if (parseInt(item.type[i].stock) > 0) {
                                     $(".zk_commit").text("确定");
