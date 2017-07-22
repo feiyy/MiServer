@@ -66,4 +66,17 @@ router.get('/forget', function(req, res, next) {
     res.send('<h1 style="font-size: 2rem">可怕，程序员竟然没写这个功能，我帮你打个电话催一下╮(╯▽╰)╭</h1>');
 });
 
+router.post('/changeuname', function(req, res, next) {
+    if (!req.session.user) {
+        res.send('login');
+    } else {
+        var datail = req.body;
+        db.updateUser(req.session.user._id, { uname: req.body.name }, function(success) {
+            if (success) {
+
+            }
+        })
+    }
+});
+
 module.exports = router;
