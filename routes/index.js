@@ -121,7 +121,10 @@ router.get('/fragments/:id', function(req, res, next) {
         res.render('fragments/' + frag_id);
     }
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5a34ea1fb27e9f1669da739ba774ae25ae36c6e7
 // var details = [{
 //     name: "小米6",
 //     activity: "7月14日早10点，小米6 64GB 亮白色 首卖",
@@ -191,6 +194,13 @@ router.get('/shopcart/:id', function(req, res, next){
             }
         });
     })
+});
+
+router.get('/clearbutton', function(req, res, next){
+    db.queryUserById(req.session.user._id,function(user){
+        var shoppingcart = user.shoppingcart;
+        var neworder={orderId:"5160607962200971",orderState:"已完成",orderItemsPic:[{url:"img/orderItem1.jpg"}],orderItemsName:[{name:"小米手环 2 黑色"}],orderDate:"2016/04/22 17:46",orderPayMethod:"微信支付",orderBuyer:"张三",orderRecDate:"2016/04/23 17:46",orderRecAddr:"辽宁省沈阳市浑南新区东北大学浑南校区",orderItemNum:"1",orderItemMoney:"149"};
+    });
 });
 
 router.get('/img/:file', function(req, res, next) {
