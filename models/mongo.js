@@ -65,7 +65,7 @@ db.once('open', function() {
 
     db.queryUserById = function(id, callback) {
         userModel.findById(id, function(err, doc) {
-            callback(doc[0]);
+            callback(doc);
         })
     }
 
