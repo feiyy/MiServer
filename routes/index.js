@@ -45,6 +45,27 @@ router.get('/address', function(req, res, next) {
         })
     }
 });
+
+router.post('/address/update', function(req, res, next) {
+    if (!req.session.user) {
+        res.render('login');
+    } else {
+        console.log(req.session.user._id);
+        db.queryUserById(req.session.user._id, function(user){
+            var address = user.address;
+            var item = req.body;
+            address[item.number].name = item.name;
+            address[item.number].phone = item.phone;
+            address[item.number].addr = item.addr;
+            db.updateUser(req.session.user._id, {address: address}, function(success){
+                console.log(success);
+                if(success){
+                    res.render("address",  { userId: user._id });
+                }
+            });
+        })
+    }
+});
 router.get('/myorder', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -75,7 +96,6 @@ router.get('/fragments/:id', function(req, res, next) {
         res.render('fragments/' + frag_id);
     }
 });
-
 var details = [{
     name: "小米6",
     activity: "7月14日早10点，小米6 64GB 亮白色 首卖",

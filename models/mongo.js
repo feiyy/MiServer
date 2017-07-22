@@ -74,8 +74,10 @@ db.once('open', function() {
         });
     }
 
-    db.updateUser = function(id, data) {
-        userModel.findByIdAndUpdate(id, data, function(err, doc) {});
+    db.updateUser = function(id, data, callback) {
+        userModel.findByIdAndUpdate(id, data, function(err, doc) {
+            callback(!err);
+        });
     }
 
     db.init = function(callback) {

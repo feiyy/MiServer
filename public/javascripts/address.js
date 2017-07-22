@@ -30,10 +30,22 @@ initialize = function(id) {
     });
 }
 
-function keepInDB(divNum) {
-    //这是修改地址在数据库信息的方法
-    console.log(divNum);
-}
+// function keepInDB(divNum) {
+//     //这是修改地址在数据库信息的方法
+//     var body = "";
+//     body += "number=" + divNum + "&";
+//     body += $(".zk_modName").attr("name") + "=" + $(".zk_modName").val() + "&";
+//     body += $(".zk_modPhone").attr("name") + "=" + $(".zk_modPhone").val() + "&";
+//     body += $(".zk_modAddr").attr("name") + "=" + $(".zk_modAddr").val();
+//     $.ajax({
+//         type: "get",
+//         url: "/address/update/"+body,
+//         async: true,
+//         success: function(data) {
+//             $("html").click();
+//         }
+//     });
+// }
 function removeAddr(divNum)
 {
     //这是将对应的地址从数据库删除的方法
@@ -44,8 +56,9 @@ $(function() {
         function(event) {
             console.log("come in")
             var button = $(event.relatedTarget);
-            var recipient = button.data('whatever');
+            // var recipient = button.data('whatever');
+            $("#number").val(button.data('whatever'));
             $(this).find(".modal-footer").html("");
-            $(this).find(".modal-footer").append("<div class='col-xs-6 zk_addrHold' onclick='keepInDB(" + parseInt(recipient) + ")'>保存</div><div class='col-xs-6 zk_addrConcel'>取消</div>");
+            // $(".zk_addrHold").attr("onclick", "keepInDB(" + recipient + ")");
         });
 });
