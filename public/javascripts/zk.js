@@ -1,4 +1,6 @@
 var jid;
+var thePrice=0;
+var theStock=0;
 phoneInfo = function(id) {
     jid = id;
     console.log("here is "+jid);
@@ -13,9 +15,11 @@ phoneInfo = function(id) {
                     $(".zk_mi6Name").text(item.name);
                     $(".zk_mi6brief").html("<font color='#ff4a00'>【" + item.activity + "】</font>" + item.brief);
                     $(".zk_mi6price").text(item.type[0].price);
+                    thePrice=parseInt(item.type[0].price);
                     $(".zk_mi6choosen>.col-xs-10").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color + " x1");
                     $(".zk_mi6stock>.col-xs-10").text("剩余" + item.type[0].stock + "件");
-                    $(".zk_mi6Store").text(item.stock); 
+                    $(".zk_mi6Store").text(item.type[0].stock); 
+                    theStock=parseInt(item.type[0].stock);
                     $(".zk_mi6pics").html("<img src=" + item.urls1[0].url + " />" + "<img src=" + item.urls1[1].url + " />" + "<img src=" + item.urls1[2].url + " />" + "<div class='col-xs-12 zk_mi6more' style='text-align: center;font-size:2rem;background-color:white;color:#FF5722' onclick='showMore()'>点击查看更多</div>");
                     $(".zk_mi6nameAndSpec").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color);
                     $(".zk_mi6icon").html("<img src=" + item.type[0].pic + "  />");
@@ -147,6 +151,28 @@ function showMore() {
         }
     });
 }
+function commitOrder(divCtrl)
+{
+    var data = {
+        name: $(".zk_mi6Name").text(),
+        pic: $(".zk_mi6icon>img").attr("src"),
+        price: thePrice,
+        stock: theStock,
+        id: jid
+    };
+    $.ajax({
+        type: "post",
+        url: "/detail/shopcart",
+        data: data,
+        async: true,
+        success: function(item) {
+           console.log(item);
+           if(item == "login"){
+               window.location.href = "/users/login";
+           }
+        }
+    });
+}
 $(function() {
 
     $(".content").scroll(
@@ -217,6 +243,8 @@ $(function() {
                                 $(".zk_mi6price").text(item.type[i].price);
                                 $(".zk_mi6choosen>.col-xs-10").text(item.name + " " + item.type[i].name + " " + item.type[i].ram + " " + item.type[i].rom + " " + item.type[i].color + " x1");
                                 $(".zk_mi6stock>.col-xs-10").text("剩余" + item.type[i].stock + "件");
+                                thePrice=parseInt(item.type[i].price);
+                                theStock=parseInt(item.type[i].stock);
                                 $(".zk_mi6pics").html("<img src=" + item.urls1[0].url + " />" + "<img src=" + item.urls1[1].url + " />" + "<img src=" + item.urls1[2].url + " />");
                                 $(".zk_mi6nameAndSpec").text(item.name + " " + item.type[i].name + " " + item.type[i].ram + " " + item.type[i].rom + " " + item.type[i].color);
                                 $(".zk_mi6icon").html("<img src=" + item.type[i].pic + "/>");

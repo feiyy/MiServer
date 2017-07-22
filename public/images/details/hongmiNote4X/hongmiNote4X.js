@@ -1,9 +1,11 @@
 var detail = {
             name: "红米Note4X",
+            category:"phone",
             //search页图标,shopcart页图标
        		spic: "/img/homgmiNote4X/spic.webp",
        		//category页图标
        		cpic: "/img/homgmiNote4X/cpic.png",
+       		activity:"",
             brief: "5.5'金属机身 / 4100mAh 超长续航 / 骁龙 625处理器",
             type: [{name: "全网通", ram: "4GB", rom: "64GB", color: "浅蓝色",pic: "/img/homgmiNote4X/lightblue.webp", price: "1299", stock: "1"},
                    {name: "全网通", ram: "3GB", rom: "16GB", color: "樱花粉",pic: "/img/homgmiNote4X/pink.webp", price: "799", stock: "1"},

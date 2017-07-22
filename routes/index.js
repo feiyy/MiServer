@@ -23,6 +23,18 @@ router.get('/detail/:id', function(req, res, next) {
     });
 });
 
+router.post('/detail/shopcart', function(req, res, next) {
+    if (!req.session.user) {
+        res.send('login');
+    } else {
+        var datail = req.body;
+        db.queryUserById(req.session.user._id, function(user){
+            var shoppingcart = user.shoppingcart;
+            
+            res.send("success");
+        })
+    }
+});
 router.get('/payment', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -38,8 +50,12 @@ router.get('/address', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
     } else {
+<<<<<<< HEAD
+        db.queryUserById(req.session.user._id, function(user){
+=======
         console.log(req.session.user._id);
         db.queryUserById(req.session.user._id, function(user) {
+>>>>>>> 497e475fdf180773faccf983b40729572e243d77
             console.log(user);
             res.render('address', { userId: user._id });
         })

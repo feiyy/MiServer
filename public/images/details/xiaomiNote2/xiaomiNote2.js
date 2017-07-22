@@ -1,10 +1,11 @@
 var detail = {
             name: "小米Note2",
+            category:"phone",
             //search页图标
        		spic: "/img/xiaomiNote2/spic.webp",
        		//category页图标
        		cpic: "/img/xiaomiNote2/cpic.png",
-            activity: "限时特惠 下单立减300，还享花呗6期分期免息",
+            activity: "【限时特惠 下单立减300，还享花呗6期分期免息】",
             brief: "5.7' 双曲面柔性屏 / 3D曲面玻璃 / 骁龙 821 性能版 / 2256万超高像素相机 / 4070mAh 超长续航",
             type: [{name: "全网通", ram: "4GB", rom: "64GB", color: "亮银黑",pic: "/img/xiaomiNote2/silverblack.webp", price: "2799", stock: "2"},
                    {name: "全网通", ram: "4GB", rom: "64GB", color: "冰川银",pic: "/img/xiaomiNote2/icesilver.webp", price: "2799", stock: "0"},
