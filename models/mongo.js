@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var db = mongoose.createConnection('localhost', 'smallmimall');
+var db = mongoose.createConnection('192.168.43.35', 'smallmimall');
 
 db.on('error', function(doc) { console.log(doc) });
 db.once('open', function() {
@@ -10,6 +10,7 @@ db.once('open', function() {
         pwd: String,
         hphoto: String,
         sex: String,
+        phone: String,
         payment: Array,
         address: Array,
         shoppingcart: Array
@@ -17,6 +18,7 @@ db.once('open', function() {
 
     detailSchema = new Schema({
         name: String,
+        category: String,
         activity: String,
         brief: String,
         type: Array,
@@ -74,11 +76,11 @@ db.once('open', function() {
 }
 
 {
-    db.addDetail = function(Detail, callback) {
+    db.addDetail = function(detail, callback) {
         //3. Entity
-        var DetailEntity = new DetailModel(Detail);
+        var detailEntity = new DetailModel(Detail);
         //保存到数据库
-        DetailEntity.save();
+        detailEntity.save();
         callback('success');
     }
 
@@ -100,12 +102,6 @@ db.once('open', function() {
             // console.log(doc);
             callback(doc);
         })
-    }
-
-    db.deleteDetail = function(id) {
-        DetailModel.findById(id, function(err, doc) {
-            doc.remove();
-        });
     }
 
     db.updateDetail = function(id, data) {
