@@ -378,12 +378,27 @@ $(document).ready(function() {
             //  		data:{id:$(".wf_item").attr("id")}
             async: true,
             success: function(data) {
-                console.log(data);
                 if (data == "success") {
                     location.reload();
                 }
             }
         });
+    });
+
+    $(".clear_button ").on("click",function(){
+        $.ajax({
+            type: "get",
+            url: "/clearbutton/",
+            //  		dataType:"String",
+            //  		data:{id:$(".wf_item").attr("id")}
+            async: true,
+            success: function(data) {
+                if (data == "success") {
+                    location.reload();
+                }
+            }
+        });
+
     });
 
     touchLoad = function() {
@@ -395,8 +410,4 @@ $(document).ready(function() {
         });
     }
 
-    // db.queryUserById("5972c1944f2d5f2d6c252a49", function(user) {
-    // var details = user('shoppingcart');
-    // console.log(details);
-    // });
 });
