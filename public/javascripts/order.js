@@ -27,3 +27,66 @@ function chooseAddr(divName, divCtrl) {
         divCtrl.classList.add("zk_noChoose");
     }
 }
+init=function(id)
+{
+	$.ajax({
+		type:"get",
+		url:"/order/"+id,
+		async:true,
+		success:function(item)
+		{
+			console.log("进来了");
+			var str="<div class='col-xs-12 zk_address'>"+
+						"<div class='col-xs-10'>"+
+							"<div class='col-xs-12' style='padding-bottom: 0.5rem;'>"+
+								"<div class='zk_username'>"+item.address[0].name+"</div>"+
+								"<div class='zk_userPhone'>"+item.address[0].phone+"</div>"+
+							"</div>"+
+							"<div class='col-xs-12 zk_position'>"+item.address[0].addr+"</div>"+
+						"</div>"+
+						"<div class='col-xs-2 zk_noChoose' onclick='chooseAddr(\"zk_address\",this)'>"+
+							"<img src='img/check_normal.png' />"+
+						"</div>"+
+					"</div>";
+			$("#zk_userAddr").append(str);
+			for(var i=1;i<item.address.length;i++)
+			{
+				str="<div class='col-xs-12 zk_address zk_address zk_address_hide' style='display:none'>"+
+						"<div class='col-xs-10'>"+
+							"<div class='col-xs-12' style='padding-bottom: 0.5rem;'>"+
+								"<div class='zk_username'>"+item.address[i].name+"</div>"+
+								"<div class='zk_userPhone'>"+item.address[i].phone+"</div>"+
+							"</div>"+
+							"<div class='col-xs-12 zk_position'>"+item.address[i].addr+"</div>"+
+						"</div>"+
+						"<div class='col-xs-2 zk_noChoose' onclick='chooseAddr(\"zk_address\",this)'>"+
+							"<img src='img/check_normal.png' />"+
+						"</div>"+
+					"</div>";
+				$("#zk_userAddr").append(str);
+			}
+			str="<div class='col-xs-12 zk_turnDown'>"+
+						"<div class='col-xs-8' style='text-align: right;font-size: 1rem;color: #bdbdbd;'>使用其他地址</div>"+
+						"<div class='col-xs-1 zk_down' onclick='comedown(this,\"zk_address_hide\")'><img src='img/getDown.png'></div>"+
+				"</div>";
+			$("#zk_userAddr").append(str);
+			for(var i=0;i<item.payment.length;i++)
+			{
+				if(item.payment[i].orderState=="代付款")
+				{
+					for(var k=0;k<item.payment[i].orderItemsName.length;k++)
+					{
+						str="<div class='zk_payMethod col-xs-12'>"+
+								"<div class='col-xs-2 zk_logo'>"+
+									"<img src='"+item.payment[i].orderItemsPic[k].url+"' />"+
+								"</div>"+
+								"<div class='col-xs-8 zk_proName'>"+item.payment[i].orderItemsName[k].name+"</div>"+
+								"<div class='col-xs-2 zk_number'>x"+12+"</div>"+
+							"</div>";
+						$("#zk_paymentPush").append(str);
+					}
+				}
+			}
+		}
+	});
+}

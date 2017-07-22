@@ -18,21 +18,63 @@ router.get('/mine', function(req, res, next) {
 router.get('/detail/:id', function(req, res, next) {
     var detailId = req.params.id;
     db.queryDetailById(detailId, function(detail) {
-        console.log(detail);
+        console.log("here is " + detail);
         res.render('detail', { detailName: detail.name, detailId: detailId });
     });
 });
 
 router.get('/payment', function(req, res, next) {
-    res.render('payment', { detailName: '小米6' });
+    if (!req.session.user) {
+        res.render('login');
+    } else {
+        console.log(req.session.user._id);
+        db.queryUserById(req.session.user._id, function(user) {
+            console.log(user);
+            res.render('payment', { userId: user._id });
+        })
+    }
+});
+router.get('/address', function(req, res, next) {
+    if (!req.session.user) {
+        res.render('login');
+    } else {
+        console.log(req.session.user._id);
+        db.queryUserById(req.session.user._id, function(user) {
+            console.log(user);
+            res.render('address', { userId: user._id });
+        })
+    }
 });
 
+router.post('/address/update', function(req, res, next) {
+    if (!req.session.user) {
+        res.render('login');
+    } else {
+        console.log(req.session.user._id);
+        db.queryUserById(req.session.user._id, function(user) {
+            var address = user.address;
+            var item = req.body;
+            address[item.number].name = item.name;
+            address[item.number].phone = item.phone;
+            address[item.number].addr = item.addr;
+            db.updateUser(req.session.user._id, { address: address }, function(success) {
+                console.log(success);
+                if (success) {
+                    res.render("address", { userId: user._id });
+                }
+            });
+        })
+    }
+});
 router.get('/myorder', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
     } else {
         console.log(req.session.user._id);
-        res.render('myorder', { detailName: '小米6' });
+        db.queryUserById(req.session.user._id, function(user) {
+            console.log(user);
+            res.render('myorder', { userId: user._id });
+        })
     }
 });
 
@@ -49,12 +91,15 @@ router.get('/fragments/:id', function(req, res, next) {
     if (frag_id == 1) {
         res.render('fragments/' + 1, { login: req.session.user });
     } else if (frag_id == 4) {
-        res.render('fragments/' + 4, { login: req.session.user });
+        if (req.session.user) {
+            res.render('fragments/' + 4, { login: req.session.user });
+        } else {
+            res.render('login');
+        }
     } else {
         res.render('fragments/' + frag_id);
     }
 });
-
 var details = [{
     name: "小米6",
     activity: "7月14日早10点，小米6 64GB 亮白色 首卖",
@@ -112,12 +157,20 @@ router.get('/img/:file', function(req, res, next) {
 });
 
 router.get('/json/:id', function(req, res, next) {
-    // db.queryDetailById(req.params.id, function(detail){
-    //     console.log(detail);
-    //     res.send(detail);
-    // });
-    console.log(req.params.id);
-    res.sendFile('/models/' + req.params.id, options);
+    db.queryDetailById(req.params.id, function(detail) {
+        console.log("the json detail is " + detail);
+        res.send(detail);
+    });
+    // console.log(req.params.id);
+    // res.sendFile('/models/' + req.params.id, options);
+});
+router.get('/order/:id', function(req, res, next) {
+    db.queryUserById(req.params.id, function(detail) {
+        console.log("the json detail is " + detail);
+        res.send(detail);
+    });
+    // console.log(req.params.id);
+    // res.sendFile('/models/' + req.params.id, options);
 });
 
 router.get('/init', function(req, res, next) {
