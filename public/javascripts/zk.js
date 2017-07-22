@@ -120,13 +120,13 @@ function down() {
     $(".zk_mi6hide").css("display", "none");
 }
 
-function commitOrder(divCtrl) {
-    if ($(divCtrl).hasClass("zk_noStock")) {
-        /*$(".zk_wrongInfo").text("您所选择的颜色已售罄");*/
-    } else {
-        //此处应该跳转到购物车页面
-    }
-}
+// function commitOrder(divCtrl) {
+//     if ($(divCtrl).hasClass("zk_noStock")) {
+//         /*$(".zk_wrongInfo").text("您所选择的颜色已售罄");*/
+//     } else {
+//         //此处应该跳转到购物车页面
+//     }
+// }
 
 function addGoods(num) {
     if (num < 0 && parseInt($(".zk_mi6number").text()) > 0)
@@ -154,11 +154,11 @@ function showMore() {
 function commitOrder(divCtrl)
 {
     var data = {
-        name: $(".zk_mi6Name").text(),
-        pic: $(".zk_mi6icon>img").attr("src"),
-        price: thePrice,
-        stock: theStock,
-        id: jid
+        goodsName: $(".zk_mi6Name").text(),
+        url: $(".zk_mi6icon>img").attr("src"),
+        goodsRrice: thePrice,
+        goodsStock: theStock,
+        goodsId: jid
     };
     $.ajax({
         type: "post",
