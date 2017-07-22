@@ -1,6 +1,7 @@
 .zk_topBack
 {
 	padding-bottom: 0.1rem;
+	margin-top: .6rem;
 }
 .zk_topBorder
 {
@@ -205,4 +206,30 @@
 .modal-body>input
 {
 	border: none;
+}
+#footer{
+	height: 2.9rem;
+	background-color: #FF5722;
+	position: fixed;
+	text-align: center;
+	bottom: 0;
+}
+#footer p{
+	line-height: 2.9rem;
+	font-size: 1rem;
+	color: white;
+	
+}
+#footerp{
+	height: 2.9rem;
+	background-color: #FF5722;
+	position: fixed;
+	text-align: center;
+	bottom: 0;
+}
+#footerp p{
+	line-height: 2.9rem;
+	font-size: 1rem;
+	color: white;
+	
 }

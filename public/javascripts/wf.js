@@ -370,7 +370,7 @@ $(document).ready(function() {
         $(".all_price").html(total);
     });
 
-    $(".goods_delete").click(function() {
+    $(".goods_delete").on("click", function() {
         $.ajax({
             type: "get",
             url: "/shopcart/" + $(this).attr("id"),
@@ -378,11 +378,27 @@ $(document).ready(function() {
             //  		data:{id:$(".wf_item").attr("id")}
             async: true,
             success: function(data) {
-                if (data == "1") {
+                if (data == "success") {
                     location.reload();
                 }
             }
         });
+    });
+
+    $(".clear_button ").on("click",function(){
+        $.ajax({
+            type: "get",
+            url: "/clearbutton/",
+            //  		dataType:"String",
+            //  		data:{id:$(".wf_item").attr("id")}
+            async: true,
+            success: function(data) {
+                if (data == "success") {
+                    location.reload();
+                }
+            }
+        });
+
     });
 
     touchLoad = function() {
@@ -393,4 +409,5 @@ $(document).ready(function() {
             $('.left').click();
         });
     }
+
 });

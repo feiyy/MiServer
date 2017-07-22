@@ -1,9 +1,11 @@
 var detail = {
             name: "小米5sPlus",
+            category:"phone",
             //search页图标,shopcart页图标
        		spic: "/img/xiaomi5sPlus/spic.webp",
        		//category页图标
        		cpic: "/img/xiaomi5sPlus/cpic.png",
+       		activity: "",
             brief: "5.7' 大屏双摄像头 / 骁龙 821 旗舰处理器 / 轻薄金属机身 / 4GB内存+64GB容量",
             type: [{name: "全网通版", ram: "4GB", rom: "64GB", color: "拉丝深灰",pic: "/img/xiaomi5sPlus/lsdarkgary.webp", price: "2299", stock: "2"},
                    {name: "全网通版", ram: "4GB", rom: "64GB", color: "拉丝金色",pic: "/img/xiaomi5sPlus/lsgolden.webp", price: "2299", stock: "3"}],
