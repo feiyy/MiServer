@@ -26,7 +26,6 @@ db.once('open', function() {
         urls2: Array,
         urls3: Array
     });
-
     //2. Model 
     userModel = db.model('User', userSchema);
     DetailModel = db.model('Detail', detailSchema);
@@ -76,7 +75,7 @@ db.once('open', function() {
     {
         db.addDetail = function(detail, callback) {
             //3. Entity
-            var detailEntity = new DetailModel(Detail);
+            var detailEntity = new DetailModel(detail);
             //保存到数据库
             detailEntity.save();
             callback('success');
