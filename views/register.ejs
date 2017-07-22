@@ -7,7 +7,6 @@
     <title>小mi帐号 - 注册</title>
 
 		<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css" />
-		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
 		<link rel="stylesheet" href="/stylesheets/register.css" />
 
 		<script src="/javascripts/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
@@ -29,8 +28,8 @@
 								</div>
 								<div>
 									<div class="dd_regbox">
-										<form action="" method="post" id="dd_registermainform">
-											<div class="dd_regphone">										
+										<form action="/users/register" method="post" id="dd_registermainform">
+											<div class="dd_regphone">
 											    <div class="dd_inputbtn">
 											    	<label class="dd_labelbox">
 											    		<input type="button" id="regmobile_btn" value="获取动态码" />
@@ -97,12 +96,6 @@
 						</div>
 					</div>
 					<div class="dd_footer">
-						<div class="dd_clearfix">
-							<a href="" class="lang-select-li">简体</a>|
-							<a href="" class="lang-select-li">繁体</a>|
-							<a href="" class="lang-select-li">English</a>|
-							<a href="" class="lang-select-li" target="_blank">常见问题</a>
-						</div>
 						<p class="dd_intro">
 							<span>小米公司版权所有-京ICP备10046444-
 							<a class="dd_recordlink" target="_blank" href="">

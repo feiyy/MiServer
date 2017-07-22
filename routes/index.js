@@ -47,7 +47,9 @@ router.get('/search', function(req, res, next) {
 router.get('/fragments/:id', function(req, res, next) {
     var frag_id = req.params.id;
     if (frag_id == 1) {
-        res.render('fragments/' + frag_id, { login: req.session.user });
+        res.render('fragments/' + 1, { login: req.session.user });
+    } else if (frag_id == 4) {
+        res.render('fragments/' + 4, { login: req.session.user });
     } else {
         res.render('fragments/' + frag_id);
     }

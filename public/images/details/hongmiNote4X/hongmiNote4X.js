@@ -1,6 +1,6 @@
 var detail = {
             name: "红米Note4X",
-            //search页图标
+            //search页图标,shopcart页图标
        		spic: "/img/homgmiNote4X/spic.webp",
        		//category页图标
        		cpic: "/img/homgmiNote4X/cpic.png",
@@ -12,6 +12,6 @@ var detail = {
                    {name: "移动4G+版", ram: "4GB", rom: "64GB", color: "磨砂黑",pic: "/img/homgmiNote4X/black.webp", price: "1299", stock: "9"}],
             urls1: [{ url: "/img/homgmiNote4X/url1_1.jpg" }, { url: "/img/homgmiNote4X/url1_2.jpg" }, { url: "/img/homgmiNote4X/url1_3.jpg" }, { url: "/img/homgmiNote4X/url1_4.jpg" }, { url: "/img/homgmiNote4X/url1_5.jpg" }, { url: "/img/homgmiNote4X/url1_6.jpg" }, { url: "/img/homgmiNote4X/url1_7.jpg" }, { url: "/img/homgmiNote4X/url1_8.jpg" }, { url: "/img/homgmiNote4X/url1_9.jpg" }],
             urls2: [{ url: "/img/homgmiNote4X/url2_1.jpg" }, { url: "/img/homgmiNote4X/url2_2.jpg" }, { url: "/img/homgmiNote4X/url2_3.jpg" }, { url: "/img/homgmiNote4X/url2_4.jpg" }, { url: "/img/homgmiNote4X/url2_5.jpg" }],    
-            urls3: [{ url: "/img/homgmiNote4X/3_1.png" }]
+            urls3: [{ url: "/img/homgmiNote4X/3_1.png" }],
             slideurl: [{ url: "/img/homgmiNote4X/slide1.webp" },{ url: "/img/homgmiNote4X/slide2.webp" }]
         };
