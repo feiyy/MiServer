@@ -59,7 +59,9 @@ router.post('/register', function(req, res, next) {
 });
 
 router.get('/person', function(req, res, next) {
-    res.render('person');
+    db.queryUserByID(req.session.user._id, function(user) {
+        res.render('person', { user: user });
+    });
 });
 
 router.get('/forget', function(req, res, next) {
