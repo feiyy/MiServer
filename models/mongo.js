@@ -28,7 +28,8 @@ db.once('open', function() {
         type: Array,
         urls1: Array,
         urls2: Array,
-        urls3: Array
+        urls3: Array,
+        slideurl: Array
     });
     //2. Model 
     userModel = db.model('User', userSchema);

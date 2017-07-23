@@ -3,16 +3,15 @@ function modifyAddr(j) {
     $(".zk_modPhone").val($("#zk_address" + j + " .zk_addrPhone").text());
     $(".zk_modAddr").val($("#zk_address" + j + " .zk_addrSpecific").text());
 }
-initialize = function(id) {
+
+initialize = function() {
     $.ajax({
         type: "get",
-        url: "/order/"+id,
+        url: "/order",
         async: true,
         success: function(item) {
-            console.log(id);
             var j = 0;
-            for(var i=0;i<item.address.length;i++)
-            {
+            for (var i = 0; i < item.address.length; i++) {
                 var str = "<div class='zk_addrDetail col-xs-12' id='zk_address" + j + "'>" +
                     "<div class='col-xs-12'>" +
                     "<div class='col-xs-3 zk_addrUser'>" + item.address[i].name + "</div>" +
@@ -26,31 +25,22 @@ initialize = function(id) {
                 $(".zk_addrs").append(str);
                 j++;
             }
+
         }
     });
 }
 
-// function keepInDB(divNum) {
-//     //这是修改地址在数据库信息的方法
-//     var body = "";
-//     body += "number=" + divNum + "&";
-//     body += $(".zk_modName").attr("name") + "=" + $(".zk_modName").val() + "&";
-//     body += $(".zk_modPhone").attr("name") + "=" + $(".zk_modPhone").val() + "&";
-//     body += $(".zk_modAddr").attr("name") + "=" + $(".zk_modAddr").val();
-//     $.ajax({
-//         type: "get",
-//         url: "/address/update/"+body,
-//         async: true,
-//         success: function(data) {
-//             $("html").click();
-//         }
-//     });
-// }
-function removeAddr(divNum)
-{
-    //这是将对应的地址从数据库删除的方法
-    console.log("remove"+divNum);
+function removeAddr(divNum) {
+    $.ajax({
+        type: "get",
+        url: "/order/delete/" + divNum,
+        async: true,
+        success: function(item) {
+            $("#zk_address" + divNum).fadeOut();
+        }
+    });
 }
+
 $(function() {
     $("#myModal").on("show.bs.modal",
         function(event) {

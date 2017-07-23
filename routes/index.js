@@ -8,9 +8,6 @@ var options = {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    req.session.user = {
-        _id: "5974096afbe6f076f80f724a"
-    }
     res.render('index', { fragment: 1 })
 });
 
@@ -18,7 +15,7 @@ router.get('/detail/:id', function(req, res, next) {
     var detailId = req.params.id;
     db.queryDetailById(detailId, function(detail) {
         console.log("here is " + detail);
-        res.render('detail', { detailName: detail.name, detailId: detailId });
+        res.render('detail', { detailName: detail.name, detailId: detailId, slideshow: detail.slideurl });
     });
 });
 
@@ -32,13 +29,13 @@ router.post('/detail/shopcart', function(req, res, next) {
             shoppingcart.push(detail);
             db.updateUser(req.session.user._id, { shoppingcart: shoppingcart }, function(success) {
                 console.log(success);
-                if (success) {
-                }
+                if (success) {}
             });
             res.send("success");
         })
     }
 });
+
 router.post('/payment/topay', function(req, res, next) {
     if (!req.session.user) {
         res.send('login');
@@ -47,18 +44,16 @@ router.post('/payment/topay', function(req, res, next) {
         console.log(detail);
         db.queryUserById(req.session.user._id, function(user) {
             var payment = user.payment;
-            for(var i=0;i<payment.length;i++)
-            {
-                if(payment[i].orderState=="待付款")
-                {
-                    payment[i].orderRecAddr=detail.orderRecAddr;
-                    payment[i].orderRecDate=detail.orderRecDate;
-                    payment[i].orderBuyer=detail.orderBuyer;
-                    payment[i].orderPayMethod=detail.orderPayMethod;
-                    payment[i].orderDate=detail.orderDate;
-                    payment[i].orderState=detail.orderState;
-                    payment[i].orderId=detail.orderId;
-                    break;    
+            for (var i = 0; i < payment.length; i++) {
+                if (payment[i].orderState == "待付款") {
+                    payment[i].orderRecAddr = detail.orderRecAddr;
+                    payment[i].orderRecDate = detail.orderRecDate;
+                    payment[i].orderBuyer = detail.orderBuyer;
+                    payment[i].orderPayMethod = detail.orderPayMethod;
+                    payment[i].orderDate = detail.orderDate;
+                    payment[i].orderState = detail.orderState;
+                    payment[i].orderId = detail.orderId;
+                    break;
                 }
             }
             db.updateUser(req.session.user._id, { payment: payment }, function(success) {
@@ -105,7 +100,7 @@ router.post('/address/update', function(req, res, next) {
         console.log(req.session.user._id);
         db.queryUserById(req.session.user._id, function(user) {
             var address = user.address;
-            var item = req.body;
+            var item = req.body.key;
             address[item.number].name = item.name;
             address[item.number].phone = item.phone;
             address[item.number].addr = item.addr;
@@ -118,6 +113,7 @@ router.post('/address/update', function(req, res, next) {
         })
     }
 });
+
 router.get('/myorder/:id', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -125,10 +121,11 @@ router.get('/myorder/:id', function(req, res, next) {
         console.log(req.session.user._id);
         db.queryUserById(req.session.user._id, function(user) {
             console.log(user);
-            res.render('myorder', { userId: user._id,state: req.params.id });
+            res.render('myorder', { userId: user._id, state: req.params.id });
         })
     }
 });
+
 router.post('/myorder/changestate', function(req, res, next) {
     if (!req.session.user) {
         res.send('login');
@@ -136,18 +133,19 @@ router.post('/myorder/changestate', function(req, res, next) {
         var detail = req.body;
         db.queryUserById(req.session.user._id, function(user) {
             var payment = user.payment;
-            console.log("detail-count="+detail.count);
+            console.log("detail-count=" + detail.count);
             payment[detail.count].orderState = "已完成";
             db.updateUser(req.session.user._id, { payment: payment }, function(success) {
                 console.log(success);
                 if (success) {
-                    
+
                 }
             });
             res.send("success");
         })
     }
 });
+
 router.get('/ordernull', function(req, res, next) {
     res.render('ordernull', { detailName: '小米6' });
 });
@@ -230,33 +228,34 @@ router.post('/clearbutton', function(req, res, next) {
         var check = req.body.check;
         console.log("111111111111");
         console.log(check);
-        var neworder={
-            orderId:"",
-            orderState:"待付款",
-            orderItemsPic:[],
-            orderItemsName:[],
-            orderDate:"",
-            orderPayMethod:"",
-            orderBuyer:"",
-            orderRecDate:"",
-            orderRecAddr:"",
-            orderItemNum:"",
-            orderItemMoney:""};
-        for(index=0;index<shoppingcart.length;index++){
-            if(check[index]=="1"){
-                 neworder.orderItemsPic.push({url:shoppingcart[index].url});
-                 neworder.orderItemsName.push({name:shoppingcart[index].goodsName});
-                 shoppingcart.splice(index,1);
+        var neworder = {
+            orderId: "",
+            orderState: "待付款",
+            orderItemsPic: [],
+            orderItemsName: [],
+            orderDate: "",
+            orderPayMethod: "",
+            orderBuyer: "",
+            orderRecDate: "",
+            orderRecAddr: "",
+            orderItemNum: "",
+            orderItemMoney: ""
+        };
+        for (index = 0; index < shoppingcart.length; index++) {
+            if (check[index] == "1") {
+                neworder.orderItemsPic.push({ url: shoppingcart[index].url });
+                neworder.orderItemsName.push({ name: shoppingcart[index].goodsName });
+                shoppingcart.splice(index, 1);
             }
-        } 
+        }
         neworder.orderItemNum = req.body.allcounts;
         neworder.orderItemMoney = req.body.allprice;
         console.log("44444444");
         console.log(req.body.allcounts);
 
-        if(req.body.allcounts!='0'){
-            payment.unshift(neworder); 
-            db.updateUser(req.session.user._id, {shoppingcart: shoppingcart, payment:payment}, function(success) {
+        if (req.body.allcounts != '0') {
+            payment.unshift(neworder);
+            db.updateUser(req.session.user._id, { shoppingcart: shoppingcart, payment: payment }, function(success) {
                 console.log(success);
                 if (success) {
                     res.send("success");
@@ -277,9 +276,19 @@ router.get('/json/:id', function(req, res, next) {
         res.send(detail);
     });
 });
-router.get('/order/:id', function(req, res, next) {
-    db.queryUserById(req.params.id, function(detail) {
-        res.send(detail);
+
+router.get('/order', function(req, res, next) {
+    db.queryUserById(req.session.user._id, function(user) {
+        res.send(user);
+    });
+});
+
+router.get('/order/delete/:id', function(req, res, next) {
+    db.queryUserById(req.session.user, function(user) {
+        user.address.splice(req.params.id, 1);
+        db.updateUser(req.session.user, { address: user.address }, function(success) {
+            res.send(success);
+        })
     });
 });
 
@@ -297,4 +306,4 @@ router.post('/search', function(req, res, next) {
     })
 });
 
-module.exports = router; 
+module.exports = router;

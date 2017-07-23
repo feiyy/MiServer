@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css" />
 	    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
@@ -14,7 +15,7 @@
 		<script src="/javascripts/script.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" src="/javascripts/address.js" ></script>
 		<script>
-			initialize("<%= userId%>");
+			initialize();
 		</script>
 	</head>
 	<body>
@@ -31,45 +32,45 @@
 				</div>
 				<div class="col-xs-12 zk_addrs">
 				</div>
-				<div class="col-xs-12" id="footer">
+				<div class="col-xs-12" id="footer" data-toggle='modal' data-target='#myModal' data-whatever="999" onclick='addAddr()'>
 					<p>新增地址</p>
 				</div>
 			
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
-			  <div class="modal-dialog" role="document" style="width:20rem">
+			  <div class="modal-dialog" role="document" style="width:23rem">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			               修改地址
 			      </div>
 			      <div class="modal-body col-xs-12" style="background-color:white">
-							<form action="/address/update" class="form-horizontal" role="form" method="post">
-								<div class="col-xs-12">
-									<input type="text" name="number" id="number" class="hide"/>
+						<form action="/address/update" class="form-horizontal" role="form" method="post">
+							<div class="col-xs-12">
+								<input type="text" name="number" id="number" class="hide"/>
+							</div>
+							<div class="col-xs-12" style="padding-top:1rem">
+								<div class="col-xs-3" style="font-size:0.8rem">姓名：</div>
+								<div class="col-xs-9">
+									<input type="text" name="name" class="zk_modName" style="border:0" placeholder="请输入名称"/>
 								</div>
-								<div class="col-xs-12" style="padding-top:1rem">
-									<div class="col-xs-3" style="font-size:0.8rem">姓名：</div>
-									<div class="col-xs-9">
-										<input type="text" name="name" class="zk_modName" style="border:0" placeholder="请输入名称"/>
-									</div>
+							</div>
+							<div class="col-xs-12" style="padding-top:1rem">
+								<div class="col-xs-3" style="font-size:0.8rem">手机:</div>
+								<div class="col-xs-9">
+									<input type="text" name="phone" class="zk_modPhone" style="border:0" placeholder="请输入收货人手机号码"/>
 								</div>
-								<div class="col-xs-12" style="padding-top:1rem">
-									<div class="col-xs-3" style="font-size:0.8rem">手机:</div>
-									<div class="col-xs-9">
-										<input type="text" name="phone" class="zk_modPhone" style="border:0" placeholder="请输入收货人手机号码"/>
-									</div>
+							</div>
+							<div class="col-xs-12" style="padding-top:1rem">
+								<div class="col-xs-3" style="font-size:0.8rem">地址:</div>
+								<div class="col-xs-9">
+									<input type="text" name="addr" class="zk_modAddr" style="border:0" placeholder="请输入收货地址"/>
 								</div>
-								<div class="col-xs-12" style="padding-top:1rem">
-									<div class="col-xs-3" style="font-size:0.8rem">地址:</div>
-									<div class="col-xs-9">
-										<input type="text" name="addr" class="zk_modAddr" style="border:0" placeholder="请输入收货地址"/>
-									</div>
-								</div>
-								<div class="col-xs-12">
-										<button class='col-xs-6 zk_addrHold' type="submit">保存</button>
-								<button class='col-xs-6 zk_addrConcel' type="cancel">取消</button>
-								</div>
-							</form>
+							</div>
+							<div class="col-xs-12">
+								<button class='col-xs-6 zk_addrHold' type="submit">保存</button>
+								<button class='col-xs-6 zk_addrConcel' type="">取消</button>
+							</div>
+						</form>
 			      </div>
 			      <div class="modal-footer">
 			       

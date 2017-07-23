@@ -23,7 +23,7 @@ var user = {
 }
 
 var details = [{
-        name: "小米笔记本Air13.3英寸",
+        name: "小米笔记本Air",
         category: "notebook",
         //search页图标，shopcart页图标
         spic: "/images/details/Air13.3/spic.webp",
@@ -32,7 +32,7 @@ var details = [{
         price: 4999,
         activity: "",
         brief: "NVIDIA 940MX 独立显卡 / 轻薄全金属机身 / 8GB 内存 + 256GB SSD / 第六代 Intel 酷睿i5 处理器 / FHD 全贴合屏幕 / 高能量密度电池",
-        type: [{ name: "小米笔记本Air 13.3英寸", ram: "8GB", rom: "256GB", color: "silver", pic: "/images/details/Air13.3/silver.webp", price: "4999", stock: "3" }],
+        type: [{ name: "小米笔记本Air", ram: "8GB", rom: "256GB", color: "银色13.3英寸", pic: "/images/details/Air13.3/silver.webp", price: "4999", stock: "3" }],
         urls1: [{ url: "/images/details/Air13.3/url1_1.jpg" }, { url: "/images/details/Air13.3/url1_2.jpg" }, { url: "/images/details/Air13.3/url1_3.jpg" }, { url: "/images/details/Air13.3/url1_4.jpg" }, { url: "/images/details/Air13.3/url1_5.jpg" }, { url: "/images/details/Air13.3/url1_6.jpg" }, { url: "/images/details/Air13.3/url1_7.jpg" }, { url: "/images/details/Air13.3/url1_8.jpg" }],
         urls2: [{ url: "/images/details/Air13.3/url2_1.png" }, { url: "/images/details/Air13.3/url2_2.png" }, { url: "/images/details/Air13.3/url2_3.jpg" }, { url: "/images/details/Air13.3/url2_4.jpg" }],
         slideurl: [{ url: "/images/details/Air13.3/slide1.webp" }, { url: "/images/details/Air13.3/slide2.webp" }]
@@ -184,7 +184,7 @@ var details = [{
         urls3: [{ url: "/images/details/xiaomiNote2/3_1.png" }],
         slideurl: [{ url: "/images/details/xiaomiNote2/slide1.webp" }, { url: "/images/details/xiaomiNote2/slide2.webp" }, { url: "/images/details/xiaomiNote2/slide3.webp" }]
     }, {
-        name: "AMAZFIT运动手表",
+        name: "AMAZFIT手表",
         category: "smart",
         //search页图标，shopcart页图标
         spic: "/images/details/yundongshoubiao/spic.webp",

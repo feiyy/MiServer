@@ -220,8 +220,6 @@ a:-webkit-any-link {
 }
 
 .slideshow {
-    background: gainsboro;
-    height: 12rem;
     overflow: hidden;
 }
 
@@ -1571,14 +1569,13 @@ a:-webkit-any-link {
     height: 3.225rem;
     line-height: 3.225rem;
     border: 0;
-     /* background: url(../images/account/userimg.png) no-repeat; 
+    /* background: url(../images/account/userimg.png) no-repeat; 
     background-size: 100% auto; */
     margin: 0 0.528rem 0 1.056rem;
     float: left;
 }
 
-.dd_userimg img
-{
+.dd_userimg img {
     width: 3.225rem;
     height: 3.225rem;
     border: 0;
