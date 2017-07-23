@@ -56,25 +56,97 @@ $(function() {
             var button = $(event.relatedTarget);
 
             $(this).find(".modal-footer").html("");
-            $(this).find(".modal-footer").append("<div class='col-xs-6 dd_addrHold' onclick=''>保存</div><div class='col-xs-6 dd_addrCancel'>取消</div>");
+            $(this).find(".modal-footer").append("<div class='col-xs-6 dd_addrHold'>保存</div><div class='col-xs-6 dd_addrCancel'>取消</div>");
+            $("#myModal1 .dd_addrHold").on("click", function() {
+                var data = {
+                    name: $(".dd_modName").val()
+                };
+                $.ajax({
+                    type: "post",
+                    url: "/users/changeuname",
+                    data: data,
+                    async: true,
+                    success: function(item) {
+                        console.log(item);
+                        if (item == "login") {
+                            window.location.href = "/users/login";
+                        } else if (item == "person") {
+                            window.location.href = "/users/person";
+                        }
+                    }
+                });
+            })
+
+            $("#myModal2 .dd_addrHold").on("click", function() {
+                if ($("#dd_male").attr("checked")) {
+                    var data = {
+                        sex: "男"
+                    };
+                    $.ajax({
+                        type: "post",
+                        url: "/users/changesex",
+                        data: data,
+                        async: true,
+                        success: function(item) {
+                            console.log(item);
+                            if (item == "login") {
+                                window.location.href = "/users/login";
+                            } else if (item == "person") {
+                                window.location.href = "/users/person";
+                            }
+                        }
+                    });
+                } else {
+                    var data = {
+                        sex: "女"
+                    };
+                    $.ajax({
+                        type: "post",
+                        url: "/users/changesex",
+                        data: data,
+                        async: true,
+                        success: function(item) {
+                            console.log(item);
+                            if (item == "login") {
+                                window.location.href = "/users/login";
+                            } else if (item == "person") {
+                                window.location.href = "/users/person";
+                            }
+                        }
+                    });
+                }
+
+            })
+
+            $("#myModal3 .dd_addrHold").on("click", function() {
+                var data = {
+                    pwd: $("#dd_modpassword").val()
+                };
+                $.ajax({
+                    type: "post",
+                    url: "/users/changepwd",
+                    data: data,
+                    async: true,
+                    success: function(item) {
+                        console.log(item);
+                        if (item == "login") {
+                            window.location.href = "/users/login";
+                        } else if (item == "person") {
+                            window.location.href = "/users/person";
+                        }
+                    }
+                });
+            })
         });
 
-    $(".modal").on("show.bs.modal",
-        function(event) {
-            var button = $(event.relatedTarget);
-
-            $(this).find(".modal-footer").html("");
-            $(this).find(".modal-footer").append("<div class='col-xs-6 dd_addrHold' onclick=''>保存</div><div class='col-xs-6 dd_addrCancel'>取消</div>");
-        });
-
-    $("#dd_male").click(function() {
+    $("#dd_male").on("click", function() {
         $("#dd_male").css("background-color", "deepskyblue");
         $("#dd_male").css("color", "white");
         $("#dd_female").css("background-color", "lightgrey");
         $("#dd_female").css("color", "#333");
     })
 
-    $("#dd_female").click(function() {
+    $("#dd_female").on("click", function() {
         $("#dd_female").css("background-color", "pink");
         $("#dd_female").css("color", "white");
         $("#dd_male").css("background-color", "lightgrey");
@@ -87,26 +159,6 @@ $(function() {
         readFile(file, $(".dd_userimg"));
     });
 
-    $("#myModal1>.dd_addrHold").click(function() {
-        var data = {
-            name: $(".dd_modName").text(),
-            // pic: $(".zk_mi6icon>img").attr("src"),
-            // price: thePrice,
-            // stock: theStock,
-            // id: jid
-        };
-        $.ajax({
-            type: "post",
-            url: "/detail/shopcart",
-            data: data,
-            async: true,
-            success: function(item) {
-                console.log(item);
-                if (item == "login") {
-                    window.location.href = "/users/login";
-                }
-            }
-        });
-    })
+
 
 });

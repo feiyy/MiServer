@@ -152,9 +152,10 @@ function commitOrder(divCtrl) {
     var data = {
         goodsName: $(".zk_mi6Name").text(),
         url: $(".zk_mi6icon>img").attr("src"),
-        goodsRrice: thePrice,
+        goodsPrice: thePrice,
         goodsStock: theStock,
-        goodsId: jid
+        goodsId: jid,
+        goodsCount:1
     };
     $.ajax({
         type: "post",

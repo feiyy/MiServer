@@ -4,8 +4,8 @@ var itemAddr="";
 var payMethod="";
 var itemBuyer="";
 var itemPhone="";
-var itemsName=new Array();
-var itemsPic=new Array();
+var itemsName=[];
+var itemsPic=[];
 
 function comedown(divCtrl, divName) {
     if (divCtrl.classList.contains("zk_down")) {
@@ -50,18 +50,15 @@ function pay()
 	var createDate=""+date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate();
 
 	var data={
-		orderItemMoney:itemsMoney,
-		orderItemNum:itemNum,
 		orderRecAddr:itemAddr,
 		orderRecDate:"",
 		orderBuyer:itemBuyer,
 		orderPayMethod:payMethod,
 		orderDate:createDate,
-		orderItemsName:itemsName,
-		orderItemsPic:itemsPic,
 		orderState:"运输中",
-		orderId:""+itemPhone+itemPhone,
+		orderId:date.getTime().toString(16)
 	};
+	console.log(data);
 	$.ajax({
         type: "post",
         url: "/payment/topay",
@@ -122,7 +119,7 @@ init=function(id)
 			$("#zk_userAddr").append(str);
 			for(var i=0;i<item.payment.length;i++)
 			{
-				if(item.payment[i].orderState=="已完成")
+				if(item.payment[i].orderState=="待付款")
 				{
 					itemsMoney=item.payment[i].orderItemsMoney;
 					itemNum=item.payment[i].orderItemsName.length;

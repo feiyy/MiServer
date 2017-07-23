@@ -6,6 +6,7 @@ var itemBuyer="";
 var itemPhone="";
 var itemsName=new Array();
 var itemsPic=new Array();
+var jid="";
 
 function showDetail(divIdNum) {
     if ($("#zk_orderhide" + divIdNum).hasClass("zk_hide")) {
@@ -16,15 +17,22 @@ function showDetail(divIdNum) {
         $("#zk_orderhide" + divIdNum).css("display", "none");
     }
 }
-function changeState(divIdNum)
+function changeState(i)
 {
-    console.log("进啦");
-    
+    $.ajax({
+        type: "post",
+        url: "/myorder/changestate",
+        data: {count: i},
+        async: true,
+        success: function(item) {
+        }
+    });
 }
 initialize = function(id) {
+    jid=id;
     $.ajax({
         type: "get",
-        url: "/order/"+id,
+        url: "/order/"+jid,
         async: true,
         success: function(item) {
             var j = 0;
@@ -32,14 +40,27 @@ initialize = function(id) {
             console.log("有"+item.payment.length+"个订单");
             for(var i=0;i<item.payment.length;i++)
             {
+                console.log(i);
+                if(item.payment[i]==null||item.payment[i]==undefined)
+                {
+                    j++;
+                    continue;
+                }
                 if(item.payment[i].orderState=="运输中")
                 {
+                    console.log("进来了");
                     var str = "<div class='col-xs-9 zk_orderId'>" +
                     "<div class='col-xs-4'>订单编号</div>" +
                     "<div class='col-xs-5'>" + item.payment[i].orderId + "</div>" +
                     "</div>" +
                     "<div class='col-xs-3 zk_orderState'>" + item.payment[i].orderState + "</div>" +
                     "<div class='zk_Space col-xs-12'></div>";
+
+                    if(item.payment[i].orderItemsPic==null||item.payment[i].orderItemsPic==undefined)
+                    {
+                        j++;
+                        continue;
+                    }
                 console.log(i+"订单中有"+item.payment[i].orderItemsPic.length+"个图片");
                 for (var k = 0; k < item.payment[i].orderItemsPic.length; k++) {
                     str += "<div class='zk_orderItem col-xs-12'>" +
