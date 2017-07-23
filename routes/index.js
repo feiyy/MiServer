@@ -251,6 +251,8 @@ router.post('/clearbutton', function(req, res, next) {
         } 
         neworder.orderItemNum = req.body.allcounts;
         neworder.orderItemMoney = req.body.allprice;
+        console.log("44444444");
+        console.log(req.body.allcounts);
 
         if(req.body.allcounts!='0'){
             payment.unshift(neworder); 
