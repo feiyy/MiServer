@@ -222,6 +222,7 @@ a:-webkit-any-link {
 .slideshow {
     background: gainsboro;
     height: 12rem;
+    overflow: hidden;
 }
 
 .push {

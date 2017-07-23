@@ -203,13 +203,16 @@ router.post('/clearbutton', function(req, res, next) {
         neworder.orderItemNum = req.body.allcounts;
         neworder.orderItemMoney = req.body.allprice;
 
-        payment.unshift(neworder); 
-        db.updateUser(req.session.user._id, {shoppingcart: shoppingcart, payment:payment}, function(success) {
-            console.log(success);
-            if (success) {
-                res.send("success");
-            }
-        });
+        if(req.body.allcounts!='0'){
+            payment.unshift(neworder); 
+            db.updateUser(req.session.user._id, {shoppingcart: shoppingcart, payment:payment}, function(success) {
+                console.log(success);
+                if (success) {
+                    res.send("success");
+                }
+            });
+        }
+
     });
 });
 

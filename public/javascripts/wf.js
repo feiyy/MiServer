@@ -408,7 +408,7 @@ $(document).ready(function() {
             async: true,
             success: function(data) {
                 if (data == "success") {
-                    location.reload();
+                    window.location.href="/payment";
                 }
             }
         });
