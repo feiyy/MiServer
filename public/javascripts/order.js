@@ -68,7 +68,11 @@ function pay()
             console.log(item);
             if (item == "login") {
                 window.location.href = "/users/login";
-            }
+			}
+			else if(item == "success")
+			{
+				window.location.href = "/myorder/all";
+			}
         }
     });
 }
