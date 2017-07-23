@@ -251,14 +251,19 @@ router.post('/clearbutton', function(req, res, next) {
         } 
         neworder.orderItemNum = req.body.allcounts;
         neworder.orderItemMoney = req.body.allprice;
+        console.log("44444444");
+        console.log(req.body.allcounts);
 
-        payment.unshift(neworder); 
-        db.updateUser(req.session.user._id, {shoppingcart: shoppingcart, payment:payment}, function(success) {
-            console.log(success);
-            if (success) {
-                res.send("success");
-            }
-        });
+        if(req.body.allcounts!='0'){
+            payment.unshift(neworder); 
+            db.updateUser(req.session.user._id, {shoppingcart: shoppingcart, payment:payment}, function(success) {
+                console.log(success);
+                if (success) {
+                    res.send("success");
+                }
+            });
+        }
+
     });
 });
 
@@ -282,6 +287,14 @@ router.get('/init', function(req, res, next) {
     db.init(function(cb) {
         res.send(cb);
     });
-})
+});
+
+router.post('/search', function(req, res, next) {
+    var key = req.body.key;
+    console.log(key);
+    db.queryDetailByValue(key, function(results) {
+        res.send(results);
+    })
+});
 
 module.exports = router; 

@@ -22,6 +22,7 @@ db.once('open', function() {
         category: String,
         spic: String,
         cpic: String,
+        price: Number,
         activity: String,
         brief: String,
         type: Array,
@@ -115,6 +116,17 @@ db.once('open', function() {
 
         db.updateDetail = function(id, data) {
             DetailModel.findByIdAndUpdate(id, data, function(err, doc) {});
+        }
+
+        db.queryDetailByValue = function(value, callback) {
+            var regexp = new RegExp(value);
+            console.log(regexp);
+            DetailModel.find({
+                    $or: [{ name: regexp }, { active: regexp }, { brief: regexp }]
+                }, 'name brief price spic',
+                function(err, docs) {
+                    callback(docs);
+                })
         }
     }
 });

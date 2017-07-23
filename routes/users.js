@@ -10,57 +10,57 @@ var formidable = require('formidable'),
 /* 图片上传路由 */
 router.post('/uploader', function(req, res) {
 
-  var form = new formidable.IncomingForm();   //创建上传表单
-  form.encoding = 'utf-8';        //设置编辑
-  form.uploadDir = 'public' + AVATAR_UPLOAD_FOLDER;     //设置上传目录
-  form.keepExtensions = true;     //保留后缀
-  form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小
+    var form = new formidable.IncomingForm(); //创建上传表单
+    form.encoding = 'utf-8'; //设置编辑
+    form.uploadDir = 'public' + AVATAR_UPLOAD_FOLDER; //设置上传目录
+    form.keepExtensions = true; //保留后缀
+    form.maxFieldsSize = 2 * 1024 * 1024; //文件大小
 
-  form.parse(req, function(err, fields, files) {
+    form.parse(req, function(err, fields, files) {
 
-    if (err) {
-      res.locals.error = err;
-      res.render('index', { title: TITLE });
-      return;
-    }
-    console.log(files);
+        if (err) {
+            res.locals.error = err;
+            res.render('index', { title: TITLE });
+            return;
+        }
+        console.log(files);
 
-    console.log(files.photo);  
+        console.log(files.photo);
 
-    var extName = '';  //后缀名
-    switch (files.photo.type) {
-      case 'image/pjpeg':
-        extName = 'jpg';
-        break;
-      case 'image/jpeg':
-        extName = 'jpg';
-        break;
-      case 'image/png':
-        extName = 'png';
-        break;
-      case 'image/x-png':
-        extName = 'png';
-        break;
-    }
+        var extName = ''; //后缀名
+        switch (files.photo.type) {
+            case 'image/pjpeg':
+                extName = 'jpg';
+                break;
+            case 'image/jpeg':
+                extName = 'jpg';
+                break;
+            case 'image/png':
+                extName = 'png';
+                break;
+            case 'image/x-png':
+                extName = 'png';
+                break;
+        }
 
-    console.log(extName);
+        console.log(extName);
 
-    if(extName.length == 0){
-      res.locals.error = '只支持png和jpg格式图片';
-      res.render('index', { title: TITLE });
-      return;
-    }
+        if (extName.length == 0) {
+            res.locals.error = '只支持png和jpg格式图片';
+            res.render('index', { title: TITLE });
+            return;
+        }
 
-    var avatarName = req.session.user._id + '.' + extName;
-    //图片写入地址；
-    var newPath = form.uploadDir + avatarName;
-    fs.unlink(newPath,function(){
-        fs.renameSync(files.photo.path, newPath);  //重命名
-        db.updateUser(req.session.user._id, {hphoto: "/avatar/" + avatarName}, function(success){
-            res.send(success);
+        var avatarName = req.session.user._id + '.' + extName;
+        //图片写入地址；
+        var newPath = form.uploadDir + avatarName;
+        fs.unlink(newPath, function() {
+            fs.renameSync(files.photo.path, newPath); //重命名
+            db.updateUser(req.session.user._id, { hphoto: "/avatar/" + avatarName }, function(success) {
+                res.send(success);
+            })
         })
-    })
-  });
+    });
 });
 
 /* GET users listing. */
@@ -107,7 +107,7 @@ router.post('/register', function(req, res, next) {
         payment: [],
         address: []
     };
- 
+
     db.addUser(user, function(cb) {
         if (cb == "success") {
             req.session.user = user;
@@ -118,7 +118,7 @@ router.post('/register', function(req, res, next) {
 
 router.get('/person', function(req, res, next) {
     db.queryUserById(req.session.user._id, function(user) {
-      
+
         res.render('person', { person: user });
     });
 });
@@ -128,7 +128,7 @@ router.get('/forget', function(req, res, next) {
 });
 
 router.post('/changeuname', function(req, res, next) {
-    
+
     if (!req.session.user) {
         res.send('login');
     } else {
