@@ -19,7 +19,7 @@ function modifySex() {
 
 
 function readFile(file, element) {
-   
+
 
     var reader = new FileReader();
     switch (file.type) {
@@ -32,7 +32,7 @@ function readFile(file, element) {
     }
 
     reader.addEventListener('load', function() {
-    
+
 
         switch (file.type) {
             case 'image/jpg':
@@ -56,7 +56,7 @@ $(function() {
             var button = $(event.relatedTarget);
 
             $(this).find(".modal-footer").html("");
-            $(this).find(".modal-footer").append("<div class='col-xs-6 dd_addrHold'>保存</div><div class='col-xs-6 dd_addrCancel' onclick="window.location.href='/users/person'">取消</div>");
+            $(this).find(".modal-footer").append("<div class='col-xs-6 dd_addrHold'>保存</div><div class='col-xs-6 dd_addrCancel'>取消</div>");
             $("#myModal1 .dd_addrHold").on("click", function() {
                 var data = {
                     name: $(".dd_modName").val()
@@ -165,16 +165,16 @@ $(function() {
     });
 
 
-    $("#dd_headimg cite").on("click", function(){
-         var formData = new FormData($("#myform")[0]);
-         var url = "/users/uploader";
-          $.ajax({
+    $("#dd_headimg cite").on("click", function() {
+        var formData = new FormData($("#myform")[0]);
+        var url = "/users/uploader";
+        $.ajax({
             url: url,
             type: 'POST',
             data: formData,
             processData: false,
             contentType: false,
-            success: function (responseStr) {
+            success: function(responseStr) {
                 alert(responseStr);
             }
         });

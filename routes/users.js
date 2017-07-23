@@ -99,20 +99,23 @@ router.post('/register', function(req, res, next) {
     var phone = req.body.phone;
     var pwd = req.body.pwd;
     var user = {
-        phone: phone,
         uname: 'p_' + phone,
         pwd: pwd,
         hphoto: "/images/account/userimg.png",
         sex: "男",
+        phone: phone,
         payment: [],
-        address: []
+        address: [],
+        shoppingcart: []
     };
 
-    db.addUser(user, function(cb) {
-        if (cb == "success") {
-            req.session.user = user;
-            res.render('index', { title: 'Express', fragment: 1 });
-        }
+    db.addUser(user, function() {
+        setTimeout(function() {
+            db.queryUserByName(user.uname, function(temp) {
+                req.session.user = temp;
+                res.render('index', { fragment: 1 });
+            });
+        }, 1000);
     })
 });
 

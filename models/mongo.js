@@ -42,7 +42,7 @@ db.once('open', function() {
             var userEntity = new userModel(user);
             //保存到数据库
             userEntity.save();
-            callback('succeed');
+            callback();
         }
 
         db.queryUser = function(callback) {
