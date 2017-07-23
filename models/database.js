@@ -27,6 +27,7 @@ var details = [{
         spic: "/images/details/Air13.3/spic.webp",
         //category页图标
         cpic: "/images/details/Air13.3/cpic.png",
+        price: 4999,
         activity: "",
         brief: "NVIDIA 940MX 独立显卡 / 轻薄全金属机身 / 8GB 内存 + 256GB SSD / 第六代 Intel 酷睿i5 处理器 / FHD 全贴合屏幕 / 高能量密度电池",
         type: [{ name: "小米笔记本Air 13.3英寸", ram: "8GB", rom: "256GB", color: "silver", pic: "/images/details/Air13.3/silver.webp", price: "4999", stock: "3" }],
@@ -40,6 +41,7 @@ var details = [{
         spic: "/images/details/homgmiNote4X/spic.webp",
         //category页图标
         cpic: "/images/details/homgmiNote4X/cpic.png",
+        price: 799,
         activity: "",
         brief: "5.5'金属机身 / 4100mAh 超长续航 / 骁龙 625处理器",
         type: [{ name: "全网通", ram: "4GB", rom: "64GB", color: "浅蓝色", pic: "/images/details/homgmiNote4X/lightblue.webp", price: "1299", stock: "1" },
@@ -59,6 +61,7 @@ var details = [{
         spic: "/images/details/mijiasaodijiqiren/spic.webp",
         //category页图标
         cpic: "/images/details/mijiasaodijiqiren/cpic.png",
+        price: 1699,
         activity: "【7.19-7.21，赠扫地机器人虚拟墙】",
         brief: "高精度激光测距，智能规划路径 / 1800Pa 大风压澎湃吸力 / 远程智能控制 ，定时清扫 / 大电池持久清扫",
         type: [{ name: "米家扫地机器人", ram: "2GB", rom: "8GB", color: "白色", pic: "/images/details/mijiasaodijiqiren/white.webp", price: "1699", stock: "3" }],
@@ -72,6 +75,7 @@ var details = [{
         spic: "/images/details/xiaomi5s/spic.webp",
         //category页图标
         cpic: "/images/details/xiaomi5s/cpic.png",
+        price: 1999,
         activity: "",
         brief: "“暗夜之眼”超感光相机 / 无孔式超声波指纹识别 / 骁龙 821 旗舰处理器 / 全金属一体化机身",
         type: [{ name: "全网通版", ram: "3GB", rom: "64GB", color: "哑光深灰", pic: "/images/details/xiaomi5s/darkgary.webp", price: "1999", stock: "2" },
@@ -88,6 +92,7 @@ var details = [{
         spic: "/images/details/xiaomi5sPlus/spic.webp",
         //category页图标
         cpic: "/images/details/xiaomi5sPlus/cpic.png",
+        price: 2299,
         activity: "",
         brief: "5.7' 大屏双摄像头 / 骁龙 821 旗舰处理器 / 轻薄金属机身 / 4GB内存+64GB容量",
         type: [{ name: "全网通版", ram: "4GB", rom: "64GB", color: "拉丝深灰", pic: "/images/details/xiaomi5sPlus/lsdarkgary.webp", price: "2299", stock: "2" },
@@ -104,6 +109,7 @@ var details = [{
         spic: "/images/details/xiaomi6/spic.webp",
         //category页图标
         cpic: "/images/details/xiaomi6/cpic.png",
+        price: 2499,
         activity: "【7月14日早10点，小米6 64GB 亮白色 首卖】",
         brief: "变焦双摄，4 轴防抖 / 骁龙835 旗舰处理器，6GB 大内存，最大可选128GB 闪存 / 5.15吋 护眼屏 / 四曲面玻璃/陶瓷机身",
         type: [{ name: "陶瓷尊享版", ram: "6GB", rom: "128GB", color: "亮黑色", pic: "/images/details/xiaomi6/lightblack.jpg", price: "2999", stock: "0" },
@@ -124,6 +130,7 @@ var details = [{
         spic: "/images/details/xiaomiMIX/spic.webp",
         //category页图标
         cpic: "/images/details/xiaomiMIX/cpic.png",
+        price: 3499,
         activity: "【小米MIX下单立减200元，领券再减50元，还享3/6期分期免息】",
         brief: "6.4' 全面屏 / 全陶瓷机身 / 骁龙 821 性能版 / 4GB内存+128GB闪存 / 4400mAh 大电量 / 陶瓷声学系统 / 超声波距离感应",
         type: [{ name: "全网通", ram: "4GB", rom: "128GB", color: "皓月白", pic: "/images/details/xiaomiMIX/white.webp", price: "3499", stock: "1" },
@@ -141,6 +148,7 @@ var details = [{
         spic: "/images/details/xiaomimofang/spic.webp",
         //category页图标
         cpic: "/images/details/xiaomimofang/cpic.png",
+        price: 69,
         activity: "",
         brief: "搭配小米多功能网关，做生活的魔术师 / 联动小米智能产品，6种动作操控",
         type: [{ name: "魔方控制器", ram: "", rom: "", color: "粉红", pic: "/images/details/xiaomimofang/pink.webp", price: "69", stock: "3" },
@@ -157,6 +165,7 @@ var details = [{
         spic: "/images/details/xiaomiNote2/spic.webp",
         //category页图标
         cpic: "/images/details/xiaomiNote2/cpic.png",
+        price: 2799,
         activity: "【限时特惠 下单立减300，还享花呗6期分期免息】",
         brief: "5.7' 双曲面柔性屏 / 3D曲面玻璃 / 骁龙 821 性能版 / 2256万超高像素相机 / 4070mAh 超长续航",
         type: [{ name: "全网通", ram: "4GB", rom: "64GB", color: "亮银黑", pic: "/images/details/xiaomiNote2/silverblack.webp", price: "2799", stock: "2" },
@@ -179,6 +188,7 @@ var details = [{
         spic: "/images/details/yundongshoubiao/spic.webp",
         //category页图标
         cpic: "/images/details/yundongshoubiao/cpic.png",
+        price: 799,
         activity: "【7.19-7.21日享小米分期6期免息】",
         brief: "蓝牙听歌 / 索尼28纳米GPS / 陶瓷表圈 / 运动心率 / 智能通知提醒 / 支付宝快捷支付 / 5天续航",
         type: [{ name: "Amazfit运动手表", ram: "1GB", rom: "4GB", color: "红色", pic: "/images/details/yundongshoubiao/red.webp", price: "799", stock: "3" },
