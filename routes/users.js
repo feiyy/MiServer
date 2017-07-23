@@ -6,7 +6,6 @@ var formidable = require('formidable'),
     fs = require('fs'),
     TITLE = 'formidable上传示例',
     AVATAR_UPLOAD_FOLDER = '/avatar/';
-    domain = "http://localhost";
 
 /* 图片上传路由 */
 router.post('/uploader', function(req, res) {
@@ -29,7 +28,7 @@ router.post('/uploader', function(req, res) {
     console.log(files.photo);  
 
     var extName = '';  //后缀名
-    switch (files.fulAvatar.type) {
+    switch (files.photo.type) {
       case 'image/pjpeg':
         extName = 'jpg';
         break;
@@ -44,56 +43,25 @@ router.post('/uploader', function(req, res) {
         break;
     }
 
+    console.log(extName);
+
     if(extName.length == 0){
       res.locals.error = '只支持png和jpg格式图片';
       res.render('index', { title: TITLE });
       return;
     }
 
-    var avatarName = Math.random() + '.' + extName;
+    var avatarName = req.session.user._id + '.' + extName;
     //图片写入地址；
     var newPath = form.uploadDir + avatarName;
-    //显示地址；
-    var showUrl = domain + AVATAR_UPLOAD_FOLDER + avatarName;
-    console.log("newPath",newPath);
-    fs.renameSync(files.fulAvatar.path, newPath);  //重命名
-    res.json({
-      "newPath":showUrl
-    });
+    fs.unlink(newPath,function(){
+        fs.renameSync(files.photo.path, newPath);  //重命名
+        db.updateUser(req.session.user._id, {hphoto: "/avatar/" + avatarName}, function(success){
+            res.send(success);
+        })
+    })
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -197,14 +165,9 @@ router.post('/changepwd', function(req, res, next) {
     }
 });
 
-<<<<<<< HEAD
-
-
-=======
 router.get('/logout', function(req, res, next) {
     delete req.session.user;
     res.render('index', { fragment: 1 });
 });
->>>>>>> 1103f391854b41ecb8bca4fb4b89399d5868a463
 
 module.exports = router;

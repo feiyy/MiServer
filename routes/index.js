@@ -107,7 +107,6 @@ router.get('/search', function(req, res, next) {
 
 router.get('/fragments/:id', function(req, res, next) {
     var frag_id = req.params.id;
-<<<<<<< HEAD
     switch (frag_id) {
         case "1":
             res.render('fragments/' + 1, { login: req.session.user });
@@ -139,18 +138,6 @@ router.get('/fragments/:id', function(req, res, next) {
         default:
             res.render('fragments/' + frag_id);
             break;
-=======
-    if (frag_id == 1) {
-        res.render('fragments/' + 1, { login: req.session.user });
-    } else if (frag_id == 4) {
-        if (req.session.user) {
-            res.render('fragments/' + 4, { login: req.session.user });
-        } else {
-            res.render('login');
-        }
-    } else {
-        res.render('fragments/' + frag_id);
->>>>>>> 0b229bd7029067010711e76a80a4571752cdfd95
     }
 });
 
