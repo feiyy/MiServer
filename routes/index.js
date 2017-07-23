@@ -31,11 +31,36 @@ router.post('/detail/shopcart', function(req, res, next) {
         db.queryUserById(req.session.user._id, function(user) {
             var shoppingcart = user.shoppingcart;
             shoppingcart.push(detail);
-            console.log(shoppingcart);
             db.updateUser(req.session.user._id, { shoppingcart: shoppingcart }, function(success) {
                 console.log(success);
                 if (success) {
-
+                }
+            });
+            res.send("success");
+        })
+    }
+});
+router.post('/payment/topay', function(req, res, next) {
+    if (!req.session.user) {
+        res.send('login');
+    } else {
+        var detail = req.body;
+        db.queryUserById(req.session.user._id, function(user) {
+            var payment = user.payment;
+            for(var i=0;i<payment.length;i++)
+            {
+                if(payment[i].orderState=="运输中")
+                {
+                    //存入的两个数组有点问题
+                    payment[i]=detail;
+                    break;    
+                }
+            }
+            db.updateUser(req.session.user._id, { payment: payment }, function(success) {
+                console.log(success);
+                if (success) {
+                    // //成功加入数据库之后跳转之订单详情页面
+                    // res.render('myorder',{uuserId: user._id});
                 }
             });
             res.send("success");
@@ -184,5 +209,9 @@ router.get('/init', function(req, res, next) {
         res.send(cb);
     });
 })
-
+// router.get('/addUser', function(req, res, next) {
+//     db.addUser(user,function(cb) {
+//         res.send(cb);
+//     });
+// })
 module.exports = router;

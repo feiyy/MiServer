@@ -13,7 +13,7 @@ phoneInfo = function(id) {
             // if (item.name == "小米6") {
             console.log(item);
             $(".zk_mi6Name").text(item.name);
-            $(".zk_mi6brief").html("<font color='#ff4a00'>【" + item.activity + "】</font>" + item.brief);
+            $(".zk_mi6brief").html("<font color='#ff4a00'>" + item.activity + "</font>" + item.brief);
             $(".zk_mi6price").text(item.type[0].price);
             thePrice = parseInt(item.type[0].price);
             $(".zk_mi6choosen>.col-xs-10").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color + " x1");
@@ -42,7 +42,7 @@ function changePic(num) {
             var str = "";
             switch (num) {
                 case 1:
-                    for (var j = 0; j < 3; j++)
+                    for (var j = 0; j < item.urls1.length; j++)
                         str += "<img src='" + item.urls1[j].url + "'/>";
                     break;
                 case 2:
@@ -71,6 +71,7 @@ function up() {
         async: true,
         success: function(item) {
             var types = new Array();
+            console.log("itemname="+item.name+" str[0]="+str[0]);
             if (item.name == str[0]) {
                 for (var j = 0; j < item.type.length; j++) {
                     var typeStr = item.type[j].name + " " + item.type[j].ram + " " + item.type[j].rom;
@@ -140,7 +141,7 @@ function showMore() {
             if (item.name == "小米6") {
                 var str = "";
                 for (var j = 0; j < item.urls1.length; j++)
-                    str += "<img src='" + item.urls1[j].url + "/>";
+                    str += "<img src='" + item.urls1[j].url + "'/>";
                 $(".zk_mi6pics").html(str);
             }
         }
