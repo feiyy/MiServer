@@ -21,7 +21,7 @@ var user = {
 }
 
 var details = [{
-        name: "小米笔记本Air 13.3英寸",
+        name: "小米笔记本Air13.3英寸",
         category: "notebook",
         //search页图标，shopcart页图标
         spic: "/images/details/Air13.3/spic.webp",

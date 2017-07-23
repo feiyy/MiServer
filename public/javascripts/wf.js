@@ -385,16 +385,20 @@ $(document).ready(function() {
         });
     });
 
-    $(".clear_button ").on("click",function(){
+    $(".clear_button").on("click",function(){
+        var data ={
+            allcounts:$(".all_counts").attr("value"),
+            allprice:$(".all_price").attr("value")
+        }
+        console.log(data);
         $.ajax({
-            type: "get",
-            url: "/clearbutton/",
-            //  		dataType:"String",
-            //  		data:{id:$(".wf_item").attr("id")}
+            type: "post",
+            url: "/clearbutton" ,
+            data:data,
             async: true,
             success: function(data) {
                 if (data == "success") {
-                    
+                    location.reload();
                 }
             }
         });
