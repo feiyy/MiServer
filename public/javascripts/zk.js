@@ -132,18 +132,16 @@ function addGoods(num) {
 }
 
 function showMore() {
+    console.log("展示更多");
     $.ajax({
         type: "get",
         url: "/json/" + jid,
         async: true,
         success: function(item) {
-            console.log("shsaodhasha");
-            if (item.name == "小米6") {
-                var str = "";
-                for (var j = 0; j < item.urls1.length; j++)
-                    str += "<img src='" + item.urls1[j].url + "'/>";
-                $(".zk_mi6pics").html(str);
-            }
+            var str = "";
+            for (var j = 0; j < item.urls1.length; j++)
+                str += "<img src='" + item.urls1[j].url + "'/>";
+            $(".zk_mi6pics").html(str);
         }
     });
 }
@@ -232,16 +230,16 @@ $(function() {
                         for (var i = 0; i < item.type.length; i++) {
                             console.log(specs[1]);
                             if (item.type[i].name == specs[0] && item.type[i].ram == specs[1] && item.type[i].rom == specs[2] && item.type[i].color == str) {
-                                $(".zk_mi6brief").html("<font color='#ff4a00'>【" + item.activity + "】</font>" + item.brief);
+                                $(".zk_mi6brief").html("<font color='#ff4a00'>" + item.activity + "</font>" + item.brief);
                                 console.log(item.type[i].price + "元");
                                 $(".zk_mi6price").text(item.type[i].price);
                                 $(".zk_mi6choosen>.col-xs-10").text(item.name + " " + item.type[i].name + " " + item.type[i].ram + " " + item.type[i].rom + " " + item.type[i].color + " x1");
                                 $(".zk_mi6stock>.col-xs-10").text("剩余" + item.type[i].stock + "件");
                                 thePrice = parseInt(item.type[i].price);
                                 theStock = parseInt(item.type[i].stock);
-                                $(".zk_mi6pics").html("<img src='" + item.urls1[0].url + "' />" + "<img src='" + item.urls1[1].url + "' />" + "<img src='" + item.urls1[2].url + "' />");
+                                $(".zk_mi6pics").html("<img src='" + item.urls1[0].url + "' />" + "<img src='" + item.urls1[1].url + "' />" + "<img src='" + item.urls1[2].url + "' />"+"<div class='col-xs-12 zk_mi6more' style='text-align: center;font-size:2rem;background-color:white;color:#FF5722' onclick='showMore()'>点击查看更多</div>");
                                 $(".zk_mi6nameAndSpec").text(item.name + " " + item.type[i].name + " " + item.type[i].ram + " " + item.type[i].rom + " " + item.type[i].color);
-                                $(".zk_mi6icon").html("<img src='" + item.type[i].pic + "/>");
+                                $(".zk_mi6icon").html("<img src='" + item.type[i].pic + "'/>");
                                 $(".zk_mi6Store").text(item.type[i].stock);
                                 if (parseInt(item.type[i].stock) > 0) {
                                     $(".zk_commit").text("确定");
