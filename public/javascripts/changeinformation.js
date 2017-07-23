@@ -3,6 +3,7 @@ function modifyName() {
 }
 
 function modifySex() {
+    console.log($("#dd_usex").text());
     if ($("#dd_usex").text() == "男") {
         $("#dd_male").css("background-color", "deepskyblue");
         $("#dd_male").css("color", "white");
@@ -78,7 +79,9 @@ $(function() {
             })
 
             $("#myModal2 .dd_addrHold").on("click", function() {
-                if ($("#dd_male").attr("checked")) {
+
+                if ($("#dd_male").css("background-color") == "rgb(0, 191, 255)") {
+
                     var data = {
                         sex: "男"
                     };
@@ -97,6 +100,7 @@ $(function() {
                         }
                     });
                 } else {
+
                     var data = {
                         sex: "女"
                     };
@@ -157,6 +161,26 @@ $(function() {
         $(".dd_userimg").empty();
         var file = this.files[0];
         readFile(file, $(".dd_userimg"));
+    });
+
+
+    $("#dd_headimg cite").on("click", function(){
+         var formData = new FormData($("#myform")[0]);
+         var url = "/users/uploader";
+          $.ajax({
+            url: url,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (responseStr) {
+                alert(responseStr.newPath);
+                $("img").attr({"src": responseStr.newPath}).prependTo($("body"));
+            },
+            error: function (responseStr) {
+                alert(responseStr.newPath);
+            }
+        });
     });
 
 

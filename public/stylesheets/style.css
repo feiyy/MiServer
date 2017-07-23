@@ -149,7 +149,7 @@ body,
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid #e6e6e6;
-    margin-left: .8rem;
+    margin-left: .9rem;
     display: inline-block;
 }
 
@@ -172,7 +172,6 @@ body,
 }
 
 #login_button_text img {
-    padding-top: .5rem;
     width: 2rem;
 }
 

@@ -224,27 +224,17 @@
 					<img src="images/category/category-xinpin-logo.webp"/>
 				</div>
 				<div class="ad-title">
-					<span>手机</span>
+					<span>新品上市</span>
 				</div>
-				<div class="ad-small-logo">
-					<img />
-					<p>小米6</p>
-				</div>
-				<div class="ad-small-logo">
-					<img />
-					<p>小米Max 2</p>
-				</div>
-				<div class="ad-small-logo">
-					<img />
-					<p>红米4X</p>
-				</div>
-			
-				<div class="ad-title">
-					<span>电视</span>
-				</div>
-				<div class="ad-title">
-					<span>电脑</span>
-				</div>
+
+				<% for (var index = 0; index < details.length; index++) { %>
+				<a href="/detail/<%=details[index]._id%>">
+					<div class="ad-small-logo">
+						<img src="<%=details[index].cpic%>"/>
+						<p><%=details[index].name%></p>
+					</div>
+				</a>
+				<% } %>
 			</div>
 		
 			<div id="co_shouji" class="ad-content">
@@ -254,6 +244,14 @@
 				<div class="ad-title">
 					<span>小米手机</span>
 				</div>
+				<% for (var index = 0; index < categories.phone.length; index++) { %>
+				<a href="/detail/<%=categories.phone[index]._id%>">
+					<div class="ad-small-logo">
+						<img src="<%=categories.phone[index].cpic%>"/>
+						<p><%=categories.phone[index].name%></p>
+					</div>
+				</a>
+				<% } %>
 				<!--<div class="ad-small-logo">
 					<img src:"item.pic"/>
 					<p>item.name</p>
@@ -320,6 +318,14 @@
 				<div class="ad-title">
 					<span>电脑</span>
 				</div>
+				<% for (var index = 0; index < categories.notebook.length; index++) { %>
+				<a href="/detail/<%=categories.notebook[index]._id%>">
+					<div class="ad-small-logo">
+						<img src="<%=categories.notebook[index].cpic%>"/>
+						<p><%=categories.notebook[index].name%></p>
+					</div>
+				</a>
+				<% } %>
 				<div class="ad-small-logo">
 					<img />
 					<p>笔记本12.5"</p>
@@ -388,6 +394,14 @@
 				<div class="ad-title">
 					<span>智能</span>
 				</div>
+				<% for (var index = 0; index < categories.smart.length; index++) { %>
+				<a href="/detail/<%=categories.smart[index]._id%>">
+					<div class="ad-small-logo">
+						<img src="<%=categories.smart[index].cpic%>"/>
+						<p><%=categories.smart[index].name%></p>
+					</div>
+				</a>
+				<% } %>
 				<div class="ad-small-logo">
 					<img />
 					<p>智能家庭</p>

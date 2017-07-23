@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+mongoose.Promise = global.Promise;
 var db = mongoose.createConnection('192.168.1.7', 'smallmimall');
 
 db.on('error', function(doc) { console.log(doc) });
@@ -19,6 +20,8 @@ db.once('open', function() {
     detailSchema = new Schema({
         name: String,
         category: String,
+        spic: String,
+        cpic: String,
         activity: String,
         brief: String,
         type: Array,
@@ -51,6 +54,15 @@ db.once('open', function() {
             userModel.find({ uname: name }, function(err, doc) {
                 callback(doc[0]);
             })
+        }
+
+        db.queryUserByValue = function(value, callback) {
+            userModel.find({
+                    $or: [{ uname: value }, { phone: value }]
+                },
+                function(err, doc) {
+                    callback(doc[0]);
+                })
         }
 
         db.queryUserById = function(id, callback) {
