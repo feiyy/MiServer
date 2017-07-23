@@ -114,13 +114,17 @@ router.get('/fragments/:id', function(req, res, next) {
             break;
         case "2":
             db.queryDetail(function(details) {
-                var category = [];
-
+                var categories = {};
                 for (var index = 0; index < details.length; index++) {
                     var element = details[index];
-
+                    if (categories[element.category]) {
+                        categories[element.category].push(element);
+                    } else {
+                        categories[element.category] = new Array();
+                        categories[element.category].push(element);
+                    }
                 }
-                res.render('fragments/' + 2, { details: details });
+                res.render('fragments/' + 2, { details: details, categories: categories });
             })
             break;
         case "4":
