@@ -292,6 +292,14 @@ router.get('/init', function(req, res, next) {
     db.init(function(cb) {
         res.send(cb);
     });
-})
+});
+
+router.post('/search', function(req, res, next) {
+    var key = req.body.key;
+    console.log(key);
+    db.queryDetailByValue(key, function(results) {
+        res.send(results);
+    })
+});
 
 module.exports = router; 
