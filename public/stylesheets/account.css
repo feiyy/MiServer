@@ -163,7 +163,7 @@ a {
 	color: #fff;
     font-size: 0.9rem;
     float: left;
-    font-family: Arial,Verdana,Sans-serif;	
+    font-family: Mi;	
 }
 
 .dd_item1
@@ -189,7 +189,7 @@ a {
 	padding-left: 1.06rem;
 	color: rgba(0,0,0,.87);
 	font-style: normal;
-	font-family: Arial,Verdana,Sans-serif;
+	font-family: Mi;
 }
 
 .dd_morebill
@@ -199,7 +199,7 @@ a {
 	float: right;
 	font-size: 0.85rem;
 	color: rgba(0,0,0,.54);
-	font-family: Arial,Verdana,Sans-serif;
+	font-family: Mi;
 }
 
 .dd_bill span
@@ -266,7 +266,7 @@ a {
 .dd_navitem span
 {
 	color: #333;
-	font-family: Arial,Verdana,Sans-serif;
+	font-family: Mi;
 	text-align: center;
     font-size: 0.9rem;
 }
@@ -307,7 +307,7 @@ a {
 .dd_item2 cite
 {
 	font-size: 0.924rem;
-	font-family: Arial,Verdana,Sans-serif;
+	font-family: Mi;
     color: rgba(0,0,0,.87);
     font-style: normal;
 }
