@@ -4,32 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>小mi商城</title>
-    <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css" />
-    <link rel="stylesheet" href="stylesheets/search.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css" />
+    <link rel="stylesheet" href="/stylesheets/search.css" />
+
     <script src="javascripts/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="javascripts/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="javascripts/script.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		search = function(){
+			var key = $("#search").val();
+			$.ajax({
+				type: "post",
+				url: "/search",
+				data: {key: key},
+				async: true,
+				success: function(items) {
+					$(".search_out_ul").html("");
+					for(var index = 0; index < items.length; index ++ ){
+						$(".search_out_ul").append(
+						'<a href="/detail/' + items[index]._id +'"><li class="search_out_li"><div class="search_out"><div class="search_out_img"><img src="' + items[index].spic + '"/></div><div class="search_out_info"><div class="search_out_info_name"><p>' + items[index].name + '</p></div><div class="search_out_info_brief"><p><font color="#ff4a00">【现货在售】</font>'+ items[index].brief + '</p></div><div class="search_out_info_price"><span>'+ items[index].price + '</span><em>起</em></div></div></div></li></a>'
+						)
+						console.log(items);
+					}
+				}
+			});
+		} 
+	</script>
 </head>
 <body>
     <div class="wrapper">
-    	<div class="search_header ">
-    		<a href="/">
-    			<div id="home_icon" class="col-xs-1">
-    				<img src="images/home_icon.png"/>
-    			</div>
-    		</a>  			
-    		<form>
-        		<div id="search_input" class="col-xs-10">
-        			<input type="text"/>
-        		</div>
-        		<a href="#">
-    			<div id="search_icon" class="col-xs-1">
-    				<img src="images/search_icon.png"/>
-    			</div>
-    		</a>  
-    		</form>
-    	</div>
-    	
+	<div class="search_header">
+		<a href="/">
+			<div id="home_icon" class="col-xs-1">
+				<img src="/images/home_icon.png"/>
+			</div>
+		</a>  			
+		<div id="search_input" class="col-xs-10">
+			<input id="search" type="text"/>
+		</div>
+		<a href="javascript:search()">
+			<div id="search_icon" class="col-xs-1">
+				<img src="/images/search_icon.png"/>
+			</div>
+		</a>  
+	</div>
+		<div class="content" style="padding-top:0">
     	<div id="remensousuo">热门搜索</div>
     	
     	<div id="search_ad">
@@ -44,118 +63,9 @@
     	</div>
     	
     	<ul class="search_out_ul">
-    		<li class="search_out_li">
-    			<div class="search_out">
-            		<div class="search_out_img">
-            			<img src="images/search_out_img.webp"/>
-            		</div>
-            		<div class="search_out_info">
-            			<div class="search_out_info_name">
-            				<p>小米Max 2 4GB+64GB</p>
-            			</div>
-            			<div class="search_out_info_brief">
-            				<p>
-            					<font color="#ff4a00">【现货在售】</font>
-            					6.44''大屏 / 5300mAh 充电宝级的大电量 / 大像素相机 / 轻薄全金属  / ​4GB 大内存 / 骁龙八核处理器
-            				</p>
-            			</div>
-            			<div class="search_out_info_price">
-            				<span>1699</span>
-            				<em>起</em>
-            			</div>
-            		</div>
-            	</div>
-    		</li>
-            <li class="search_out_li">
-    			<div class="search_out">
-            		<div class="search_out_img">
-            			<img src="images/search_out_img.webp"/>
-            		</div>
-            		<div class="search_out_info">
-            			<div class="search_out_info_name">
-            				<p>小米Max 2 4GB+64GB</p>
-            			</div>
-            			<div class="search_out_info_brief">
-            				<p>
-            					<font color="#ff4a00">【现货在售】</font>
-            					6.44''大屏 / 5300mAh 充电宝级的大电量 / 大像素相机 / 轻薄全金属  / ​4GB 大内存 / 骁龙八核处理器
-            				</p>
-            			</div>
-            			<div class="search_out_info_price">
-            				<span>1699</span>
-            				<em>起</em>
-            			</div>
-            		</div>
-            	</div>
-    		</li>
-            <li class="search_out_li">
-    			<div class="search_out">
-            		<div class="search_out_img">
-            			<img src="images/search_out_img.webp"/>
-            		</div>
-            		<div class="search_out_info">
-            			<div class="search_out_info_name">
-            				<p>小米Max 2 4GB+64GB</p>
-            			</div>
-            			<div class="search_out_info_brief">
-            				<p>
-            					<font color="#ff4a00">【现货在售】</font>
-            					6.44''大屏 / 5300mAh 充电宝级的大电量 / 大像素相机 / 轻薄全金属  / ​4GB 大内存 / 骁龙八核处理器
-            				</p>
-            			</div>
-            			<div class="search_out_info_price">
-            				<span>1699</span>
-            				<em>起</em>
-            			</div>
-            		</div>
-            	</div>
-    		</li>
-            <li class="search_out_li">
-    			<div class="search_out">
-            		<div class="search_out_img">
-            			<img src="images/search_out_img.webp"/>
-            		</div>
-            		<div class="search_out_info">
-            			<div class="search_out_info_name">
-            				<p>小米Max 2 4GB+64GB</p>
-            			</div>
-            			<div class="search_out_info_brief">
-            				<p>
-            					<font color="#ff4a00">【现货在售】</font>
-            					6.44''大屏 / 5300mAh 充电宝级的大电量 / 大像素相机 / 轻薄全金属  / ​4GB 大内存 / 骁龙八核处理器
-            				</p>
-            			</div>
-            			<div class="search_out_info_price">
-            				<span>1699</span>
-            				<em>起</em>
-            			</div>
-            		</div>
-            	</div>
-    		</li>
-            <li class="search_out_li">
-    			<div class="search_out">
-            		<div class="search_out_img">
-            			<img src="images/search_out_img.webp"/>
-            		</div>
-            		<div class="search_out_info">
-            			<div class="search_out_info_name">
-            				<p>小米Max 2 4GB+64GB</p>
-            			</div>
-            			<div class="search_out_info_brief">
-            				<p>
-            					<font color="#ff4a00">【现货在售】</font>
-            					6.44''大屏 / 5300mAh 充电宝级的大电量 / 大像素相机 / 轻薄全金属  / ​4GB 大内存 / 骁龙八核处理器
-            				</p>
-            			</div>
-            			<div class="search_out_info_price">
-            				<span>1699</span>
-            				<em>起</em>
-            			</div>
-            		</div>
-            	</div>
-    		</li>
+    		
     	</ul>
-    	
+    	</div>
     </div>
 </body>
 </html>

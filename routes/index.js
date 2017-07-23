@@ -64,9 +64,7 @@ router.post('/payment/topay', function(req, res, next) {
             db.updateUser(req.session.user._id, { payment: payment }, function(success) {
                 console.log(success);
                 if (success) {
-                    // //成功加入数据库之后跳转之订单详情页面
-                    // res.render('myorder',{uuserId: user._id});
-                    //res.redirect("/myorder");
+                    res.send("success");
                 }
             });
             res.send("success");
@@ -274,6 +272,13 @@ router.post('/clearbutton', function(req, res, next) {
             });
         }
 
+        payment.unshift(neworder); 
+        db.updateUser(req.session.user._id, {shoppingcart: shoppingcart, payment:payment}, function(success) {
+            console.log(success);
+            if (success) {
+                res.send("success");
+            }
+        });
     });
 });
 
@@ -297,6 +302,14 @@ router.get('/init', function(req, res, next) {
     db.init(function(cb) {
         res.send(cb);
     });
-})
+});
+
+router.post('/search', function(req, res, next) {
+    var key = req.body.key;
+    console.log(key);
+    db.queryDetailByValue(key, function(results) {
+        res.send(results);
+    })
+});
 
 module.exports = router; 
