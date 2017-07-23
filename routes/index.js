@@ -85,7 +85,17 @@ router.get('/payment', function(req, res, next) {
         })
     }
 });
-
+router.get('/payment:id', function(req, res, next) {
+    if (!req.session.user) {
+        res.render('login');
+    } else {
+        console.log(req.session.user._id);
+        db.queryUserById(req.session.user._id, function(user) {
+            console.log(user);
+            res.render('payment', { userId: user._id,state:req.params.id });
+        })
+    }
+});
 router.get('/address', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -242,7 +252,7 @@ router.post('/clearbutton', function(req, res, next) {
             orderRecAddr:"",
             orderItemNum:"",
             orderItemMoney:""};
-        for(index=0;index<shoppingcart.length;index++){
+        for(index=shoppingcart.length-1;index>-1;index--){
             if(check[index]=="1"){
                  neworder.orderItemsPic.push({url:shoppingcart[index].url});
                  neworder.orderItemsName.push({name:shoppingcart[index].goodsName});
@@ -252,7 +262,7 @@ router.post('/clearbutton', function(req, res, next) {
         neworder.orderItemNum = req.body.allcounts;
         neworder.orderItemMoney = req.body.allprice;
         console.log("44444444");
-        console.log(req.body.allcounts);
+        console.log(neworder);
 
         if(req.body.allcounts!='0'){
             payment.unshift(neworder); 

@@ -535,6 +535,7 @@ a:-webkit-any-link {
 
 .cart_list {
     height: auto;
+    padding-bottom: 6rem;
 }
 
 .cart_list ul {
@@ -615,7 +616,7 @@ a:-webkit-any-link {
     height: 4.5rem;
     position: fixed;
     bottom: 0;
-    /*background-color: black;*/
+    background-color: white;
     width: inherit;
 }
 
