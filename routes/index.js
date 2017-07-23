@@ -8,11 +8,10 @@ var options = {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express', fragment: 1 });
-});
-
-router.get('/mine', function(req, res, next) {
-    res.render('index', { title: 'Express', fragment: 4 });
+    req.session.user = {
+        _id: "5974096afbe6f076f80f724a"
+    }
+    res.render('index', { fragment: 1 })
 });
 
 router.get('/detail/:id', function(req, res, next) {
@@ -74,6 +73,7 @@ router.post('/payment/topay', function(req, res, next) {
         })
     }
 });
+
 router.get('/payment', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -85,6 +85,7 @@ router.get('/payment', function(req, res, next) {
         })
     }
 });
+
 router.get('/address', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -117,7 +118,12 @@ router.post('/address/update', function(req, res, next) {
         })
     }
 });
+<<<<<<< HEAD
 router.get('/myorder/:id', function(req, res, next) {
+=======
+
+router.get('/myorder', function(req, res, next) {
+>>>>>>> 1ed32f39e6c908a5d0c24b6f814615e3a9b1c25e
     if (!req.session.user) {
         res.render('login');
     } else {
@@ -157,6 +163,7 @@ router.get('/search', function(req, res, next) {
 
 router.get('/fragments/:id', function(req, res, next) {
     var frag_id = req.params.id;
+<<<<<<< HEAD
     if (frag_id == 1) {
         res.render('fragments/' + 1, { login: req.session.user });
     } else if (frag_id == 4) {
@@ -167,7 +174,44 @@ router.get('/fragments/:id', function(req, res, next) {
         }
     } else {
         res.render('fragments/' + frag_id);
+=======
+    switch (frag_id) {
+        case "1":
+            res.render('fragments/' + 1, { login: req.session.user });
+            break;
+        case "2":
+            db.queryDetail(function(details) {
+                var categories = {};
+                for (var index = 0; index < details.length; index++) {
+                    var element = details[index];
+                    if (categories[element.category]) {
+                        categories[element.category].push(element);
+                    } else {
+                        categories[element.category] = new Array();
+                        categories[element.category].push(element);
+                    }
+                }
+                res.render('fragments/' + 2, { details: details, categories: categories });
+            })
+            break;
+        case "4":
+            if (req.session.user) {
+                db.queryUserById(req.session.user._id, function(user) {
+                    res.render('fragments/' + 4, { login: user });
+                })
+            } else {
+                res.redirect('/users/login');
+            }
+            break;
+        default:
+            res.render('fragments/' + frag_id);
+            break;
+>>>>>>> 1ed32f39e6c908a5d0c24b6f814615e3a9b1c25e
     }
+});
+
+router.get('/mine', function(req, res, next) {
+    res.render('index', { fragment: 4 });
 });
 
 router.get('/shopcart', function(req, res, next) {
@@ -175,28 +219,29 @@ router.get('/shopcart', function(req, res, next) {
         res.render('login');
     } else {
         db.queryUserById(req.session.user._id, function(user) {
-        var details = user.shoppingcart;
-        console.log(details); 
-        res.render('fragments/' + 3, { details: details });
-    });
+            var details = user.shoppingcart;
+            console.log(details);
+            res.render('fragments/' + 3, { details: details });
+        });
     }
 });
 
-router.get('/shopcart/:id', function(req, res, next){
-    db.queryUserById(req.session.user._id,function(user){
+router.get('/shopcart/:id', function(req, res, next) {
+    db.queryUserById(req.session.user._id, function(user) {
         var shoppingcart = user.shoppingcart;
         console.log(shoppingcart);
         shoppingcart.splice(req.params.id, 1);
         console.log(shoppingcart);
-        db.updateUser(req.session.user._id, {shoppingcart: shoppingcart}, function(success) {
+        db.updateUser(req.session.user._id, { shoppingcart: shoppingcart }, function(success) {
             console.log(success);
-            if(success) {
+            if (success) {
                 res.send("success");
             }
         });
     })
 });
 
+<<<<<<< HEAD
 router.get('/clearbutton', function(req, res, next){
     db.queryUserById(req.session.user._id,function(user){
         var shoppingcart = user.shoppingcart;
@@ -208,6 +253,44 @@ router.get('/clearbutton', function(req, res, next){
         neworder.orderItemNum = $(".all_counts").value ;
         neworder.orderItemMoney = $(".all_price").value ; 
 
+=======
+router.post('/clearbutton', function(req, res, next) {
+    db.queryUserById(req.session.user._id, function(user) {
+        var shoppingcart = user.shoppingcart;
+        var payment = user.payment;
+        var check = req.body.check;
+        console.log("111111111111");
+        console.log(check);
+        var neworder={
+            orderId:"",
+            orderState:"待付款",
+            orderItemsPic:[],
+            orderItemsName:[],
+            orderDate:"",
+            orderPayMethod:"",
+            orderBuyer:"",
+            orderRecDate:"",
+            orderRecAddr:"",
+            orderItemNum:"",
+            orderItemMoney:""};
+        for(index=0;index<shoppingcart.length;index++){
+            if(check[index]=="1"){
+                 neworder.orderItemsPic.push({url:shoppingcart[index].url});
+                 neworder.orderItemsName.push({name:shoppingcart[index].goodsName});
+                 shoppingcart.splice(index,1);
+            }
+        } 
+        neworder.orderItemNum = req.body.allcounts;
+        neworder.orderItemMoney = req.body.allprice;
+
+        payment.unshift(neworder); 
+        db.updateUser(req.session.user._id, {shoppingcart: shoppingcart, payment:payment}, function(success) {
+            console.log(success);
+            if (success) {
+                res.send("success");
+            }
+        });
+>>>>>>> 1ed32f39e6c908a5d0c24b6f814615e3a9b1c25e
     });
 });
 
@@ -218,13 +301,11 @@ router.get('/img/:file', function(req, res, next) {
 
 router.get('/json/:id', function(req, res, next) {
     db.queryDetailById(req.params.id, function(detail) {
-        console.log("the json detail is " + detail);
         res.send(detail);
     });
 });
 router.get('/order/:id', function(req, res, next) {
     db.queryUserById(req.params.id, function(detail) {
-        console.log("the json detail is " + detail);
         res.send(detail);
     });
 });
@@ -234,9 +315,14 @@ router.get('/init', function(req, res, next) {
         res.send(cb);
     });
 })
+<<<<<<< HEAD
 // router.get('/addUser', function(req, res, next) {
 //     db.addUser(user,function(cb) {
 //         res.send(cb);
 //     });
 // })
 module.exports = router;
+=======
+
+module.exports = router; 
+>>>>>>> 1ed32f39e6c908a5d0c24b6f814615e3a9b1c25e

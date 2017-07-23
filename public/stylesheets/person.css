@@ -161,21 +161,27 @@ a {
 
 #dd_headimg {
     height: 6rem !important;
-    position: relative;
+
 }
 
-#dd_headimg a {
-    height: 6rem !important;
-    line-height: 6rem !important;
+#myform{
+     height: 6rem;
+     line-height: 6rem;
+     position: relative;
+     padding-left: 1rem;
+
 }
+
+
 
 .dd_userimg {
     width: 3.225rem;
     height: 6rem;
+    line-height: 6rem;
     border: 0;
-    background: url(../images/account/userimg.png) no-repeat;
+    /* background: url(../images/account/userimg.png) no-repeat; 
     background-position-y: 50%;
-    background-size: 100% auto;
+    background-size: 100% auto;  */
     margin-right: 1.056rem;
     float: right;
 }
