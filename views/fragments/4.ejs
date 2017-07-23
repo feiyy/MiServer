@@ -6,7 +6,9 @@
         <div class="dd_personalcenter">
             <div class="dd_head">
                 <div class="dd_user">
-                    <div class="dd_userimg" onclick="window.location.href='/users/person'"></div>
+                    <div class="dd_userimg" onclick="window.location.href='/users/person'">
+                         <img src="<%=login.hphoto%>"/>
+                    </div>
                     <div class="dd_username <%=login?'':'hide'%>" onclick="window.location.href='/users/person'"><%=login.uname%></div>
                     <div class="dd_username <%=login?'hide':''%>" onclick="window.location.href='/users/login'">登录账号</div>
                 </div>
@@ -21,7 +23,7 @@
                     <li id="dd_dfk" class="dd_navitem col-xs-2">
                         <a href="">
                             <div class="dd_icon"></div>
-                            <span>待付款</span>
+                            <span>已完成</span>
                         </a>
                     </li>
                     <li id="dd_dsh" class="dd_navitem col-xs-2 col-xs-offset-3">

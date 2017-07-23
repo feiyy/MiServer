@@ -18,22 +18,30 @@
     <script src="/javascripts/order.js" type="text/javascript" charset="utf-8"></script>
     <script src="/javascripts/myorder.js" type="text/javascript" charset="utf-8"></script>
     <script>
-        initialize("<%= userId%>");
+        
+        initialize("<%= userId%>", "<%= state%>");
+        
     </script>
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="push" id="zk_orderPush">
-            <div class="col-xs-12" style="background-color: #f2f2f2;">
-                <div class="col-xs-1 zk_topBack">
-                    <img src="img/icon_back.png">
+        <div class="wf_head">
+            <a href="/">
+                <div class="col-xs-1" id="back_button">
                 </div>
-                <div class="col-xs-10" style="text-align: center;color: #666;">
-                    我的订单
+            </a>		
+            <div class="col-xs-9" id="wf_head_content">我的订单</div>
+            <a href="/search">
+                <div class="col-xs-2" id="search_botton">
                 </div>
-            </div>
+            </a>
+        </div>
+        <div class="content row" style="padding-top:0">
+            <div class="push" id="zk_orderPush" style="overflow:scroll">
+            						
 
+            </div>
         </div>
     </div>
 </body>

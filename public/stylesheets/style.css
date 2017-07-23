@@ -1512,9 +1512,8 @@ a:-webkit-any-link {
 
 .ad-small-logo img {
     margin-left: 0.9rem;
-    width: 4rem;
-    height: 4rem;
-    border: 1px solid #F9F9F9;
+    width: 3.5rem;
+    height: 3.5rem;
 }
 
 .ad-small-logo p {
@@ -1532,7 +1531,7 @@ a:-webkit-any-link {
     background: transparent;
     color: #333;
     font-size: 0.66rem;
-    font-family: Arial, Verdana, Sans-serif;
+    font-family: Mi;
     display: block;
 }
 
@@ -1570,11 +1569,20 @@ a:-webkit-any-link {
 .dd_userimg {
     width: 3.225rem;
     height: 3.225rem;
+    line-height: 3.225rem;
     border: 0;
-    background: url(../images/account/userimg.png) no-repeat;
-    background-size: 100% auto;
+     /* background: url(../images/account/userimg.png) no-repeat; 
+    background-size: 100% auto; */
     margin: 0 0.528rem 0 1.056rem;
     float: left;
+}
+
+.dd_userimg img
+{
+    width: 3.225rem;
+    height: 3.225rem;
+    border: 0;
+    border-radius: 3.225rem;
 }
 
 .dd_username {
@@ -1606,7 +1614,7 @@ a:-webkit-any-link {
     padding-left: 1.06rem;
     color: rgba(0, 0, 0, .87);
     font-style: normal;
-    font-family: Arial, Verdana, Sans-serif;
+    font-family: Mi;
 }
 
 .dd_morebill {
@@ -1615,7 +1623,7 @@ a:-webkit-any-link {
     float: right;
     font-size: 0.85rem;
     color: rgba(0, 0, 0, .54);
-    font-family: Arial, Verdana, Sans-serif;
+    font-family: Mi;
 }
 
 .dd_bill span {
@@ -1674,7 +1682,7 @@ a:-webkit-any-link {
 
 .dd_navitem span {
     color: #333;
-    font-family: Arial, Verdana, Sans-serif;
+    font-family: Mi;
     text-align: center;
     font-size: 0.9rem;
 }
@@ -1709,7 +1717,7 @@ a:-webkit-any-link {
 
 .dd_item2 cite {
     font-size: 0.924rem;
-    font-family: Arial, Verdana, Sans-serif;
+    font-family: Mi;
     color: rgba(0, 0, 0, .87);
     font-style: normal;
 }
