@@ -11,10 +11,6 @@ router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express', fragment: 1 });
 });
 
-router.get('/mine', function(req, res, next) {
-    res.render('index', { title: 'Express', fragment: 4 });
-});
-
 router.get('/detail/:id', function(req, res, next) {
     var detailId = req.params.id;
     db.queryDetailById(detailId, function(detail) {
@@ -91,7 +87,6 @@ router.get('/myorder', function(req, res, next) {
     } else {
         console.log(req.session.user._id);
         db.queryUserById(req.session.user._id, function(user) {
-            console.log(user);
             res.render('myorder', { userId: user._id });
         })
     }
@@ -107,17 +102,30 @@ router.get('/search', function(req, res, next) {
 
 router.get('/fragments/:id', function(req, res, next) {
     var frag_id = req.params.id;
-    if (frag_id == 1) {
-        res.render('fragments/' + 1, { login: req.session.user });
-    } else if (frag_id == 4) {
-        if (req.session.user) {
-            res.render('fragments/' + 4, { login: req.session.user });
-        } else {
-            res.render('login');
-        }
-    } else {
-        res.render('fragments/' + frag_id);
+    switch (frag_id) {
+        case "1":
+            res.render('fragments/' + 1, { login: req.session.user });
+            break;
+        case "2":
+            res.render('fragments/' + 2);
+            break;
+        case "4":
+            if (req.session.user) {
+                db.queryUserById(req.session.user._id, function(user) {
+                    res.render('fragments/' + 4, { login: user });
+                })
+            } else {
+                res.redirect('/users/login');
+            }
+            break;
+        default:
+            res.render('fragments/' + frag_id);
+            break;
     }
+});
+
+router.get('/mine', function(req, res, next) {
+    res.render('index', { title: 'Express', fragment: 4 });
 });
 
 router.get('/shopcart', function(req, res, next) {
@@ -125,38 +133,38 @@ router.get('/shopcart', function(req, res, next) {
         res.render('login');
     } else {
         db.queryUserById(req.session.user._id, function(user) {
-        var details = user.shoppingcart;
-        console.log(details); 
-        res.render('fragments/' + 3, { details: details });
-    });
+            var details = user.shoppingcart;
+            console.log(details);
+            res.render('fragments/' + 3, { details: details });
+        });
     }
 });
 
-router.get('/shopcart/:id', function(req, res, next){
-    db.queryUserById(req.session.user._id,function(user){
+router.get('/shopcart/:id', function(req, res, next) {
+    db.queryUserById(req.session.user._id, function(user) {
         var shoppingcart = user.shoppingcart;
         console.log(shoppingcart);
         shoppingcart.splice(req.params.id, 1);
         console.log(shoppingcart);
-        db.updateUser(req.session.user._id, {shoppingcart: shoppingcart}, function(success) {
+        db.updateUser(req.session.user._id, { shoppingcart: shoppingcart }, function(success) {
             console.log(success);
-            if(success) {
+            if (success) {
                 res.send("success");
             }
         });
     })
 });
 
-router.get('/clearbutton', function(req, res, next){
-    db.queryUserById(req.session.user._id,function(user){
+router.get('/clearbutton', function(req, res, next) {
+    db.queryUserById(req.session.user._id, function(user) {
         var shoppingcart = user.shoppingcart;
-        var neworder={orderId:"",orderState:"待付款",orderItemsPic:[{url:"img/orderItem1.jpg"}],orderItemsName:[{name:"小米手环 2 黑色"}],orderDate:"",orderPayMethod:"",orderBuyer:"",orderRecDate:"",orderRecAddr:"",orderItemNum:"1",orderItemMoney:"149"};
-        for(index=0;index<shoppingcart.lenth;index++){
-            neworder.orderItemsPic.url=shoppingcart.url;
-            neworder.orderItemsName.name=shoppingcart.goodsName;
+        var neworder = { orderId: "", orderState: "待付款", orderItemsPic: [{ url: "img/orderItem1.jpg" }], orderItemsName: [{ name: "小米手环 2 黑色" }], orderDate: "", orderPayMethod: "", orderBuyer: "", orderRecDate: "", orderRecAddr: "", orderItemNum: "1", orderItemMoney: "149" };
+        for (index = 0; index < shoppingcart.lenth; index++) {
+            neworder.orderItemsPic.url = shoppingcart.url;
+            neworder.orderItemsName.name = shoppingcart.goodsName;
         }
-        neworder.orderItemNum = $(".all_counts").value ;
-        neworder.orderItemMoney = $(".all_price").value ; 
+        neworder.orderItemNum = $(".all_counts").value;
+        neworder.orderItemMoney = $(".all_price").value;
 
     });
 });
