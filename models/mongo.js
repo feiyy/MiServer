@@ -55,11 +55,11 @@ db.once('open', function() {
 
         db.queryUserByValue = function(value, callback) {
             userModel.find({
-                $or: [{ uname: value }, { phone: value }],
+                    $or: [{ uname: value }, { phone: value }]
+                },
                 function(err, doc) {
                     callback(doc[0]);
-                }
-            })
+                })
         }
 
         db.queryUserById = function(id, callback) {
