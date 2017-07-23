@@ -19,6 +19,8 @@ db.once('open', function() {
     detailSchema = new Schema({
         name: String,
         category: String,
+        spic: String,
+        cpic: String,
         activity: String,
         brief: String,
         type: Array,

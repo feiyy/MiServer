@@ -8,7 +8,10 @@ var options = {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express', fragment: 1 });
+    req.session.user = {
+        _id: "5974096afbe6f076f80f724a"
+    }
+    res.render('index', { fragment: 1 });
 });
 
 router.get('/detail/:id', function(req, res, next) {
@@ -110,7 +113,15 @@ router.get('/fragments/:id', function(req, res, next) {
             res.render('fragments/' + 1, { login: req.session.user });
             break;
         case "2":
-            res.render('fragments/' + 2);
+            db.queryDetail(function(details) {
+                var category = [];
+
+                for (var index = 0; index < details.length; index++) {
+                    var element = details[index];
+
+                }
+                res.render('fragments/' + 2, { details: details });
+            })
             break;
         case "4":
             if (req.session.user) {
