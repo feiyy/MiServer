@@ -151,6 +151,9 @@ router.post('/clearbutton', function(req, res, next){
     db.queryUserById(req.session.user._id,function(user){
         var shoppingcart = user.shoppingcart;
         var payment = user.payment;
+        var check = req.body.check;
+        console.log("111111111111");
+        console.log(check);
         var neworder={
             orderId:"",
             orderState:"待付款",
@@ -164,16 +167,16 @@ router.post('/clearbutton', function(req, res, next){
             orderItemNum:"",
             orderItemMoney:""};
         for(index=0;index<shoppingcart.length;index++){
-            neworder.orderItemsPic.push({url:shoppingcart[index].url});
-            neworder.orderItemsName.push({name:shoppingcart[index].goodsName});
+            if(check[index]=="1"){
+                 neworder.orderItemsPic.push({url:shoppingcart[index].url});
+                 neworder.orderItemsName.push({name:shoppingcart[index].goodsName});
+                 shoppingcart.splice(index,1);
+            }
         } 
         neworder.orderItemNum = req.body.allcounts;
         neworder.orderItemMoney = req.body.allprice; 
 
-        shoppingcart.splice(0,shoppingcart.length);
-        console.log(neworder);
-        payment.unshift(neworder);
-        console.log(payment);   
+        payment.unshift(neworder); 
         db.updateUser(req.session.user._id, {shoppingcart: shoppingcart, payment:payment}, function(success) {
             console.log(success);
             if(success) {
@@ -207,4 +210,4 @@ router.get('/init', function(req, res, next) {
     });
 })
 
-module.exports = router;
+module.exports = router; 

@@ -368,6 +368,8 @@ $(document).ready(function() {
         }
         $(".all_counts").html('共' + amount + '件 金额/元');
         $(".all_price").html(total);
+        $(".all_counts").attr('value',amount);
+        $(".all_price").attr('value',total);
     });
 
     $(".goods_delete").on("click", function() {
@@ -386,14 +388,22 @@ $(document).ready(function() {
     });
 
     $(".clear_button").on("click",function(){
+        var checks = $(".wf_item").find(".wf_checkbox");
+        var check = [];
+        for(index=0;index<checks.length;index++){
+            check.push($(checks[index]).attr('check'));
+        }
+        console.log("222222");
+        console.log(check);
         var data ={
             allcounts:$(".all_counts").attr("value"),
-            allprice:$(".all_price").attr("value")
+            allprice:$(".all_price").attr("value"),
+            check:check
         }
-        console.log(data);
         $.ajax({
             type: "post",
             url: "/clearbutton" ,
+            traditional: true,
             data:data,
             async: true,
             success: function(data) {
