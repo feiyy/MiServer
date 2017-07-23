@@ -197,14 +197,9 @@ router.post('/changepwd', function(req, res, next) {
     }
 });
 
-<<<<<<< HEAD
-
-
-=======
 router.get('/logout', function(req, res, next) {
     delete req.session.user;
     res.render('index', { fragment: 1 });
 });
->>>>>>> 1103f391854b41ecb8bca4fb4b89399d5868a463
 
 module.exports = router;
