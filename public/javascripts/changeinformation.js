@@ -78,7 +78,7 @@ $(function() {
             })
 
             $("#myModal2 .dd_addrHold").on("click", function() {
-                if ($("#dd_male").attr("checked")) {
+                if ($("#dd_male").css("background-color") == "deepskyblue") {
                     var data = {
                         sex: "男"
                     };
