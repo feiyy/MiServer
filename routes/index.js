@@ -38,6 +38,7 @@ router.post('/detail/shopcart', function(req, res, next) {
         })
     }
 });
+
 router.get('/payment', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -49,6 +50,7 @@ router.get('/payment', function(req, res, next) {
         })
     }
 });
+
 router.get('/address', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -81,6 +83,7 @@ router.post('/address/update', function(req, res, next) {
         })
     }
 });
+
 router.get('/myorder', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -125,7 +128,7 @@ router.get('/fragments/:id', function(req, res, next) {
 });
 
 router.get('/mine', function(req, res, next) {
-    res.render('index', { title: 'Express', fragment: 4 });
+    res.render('index', { fragment: 4 });
 });
 
 router.get('/shopcart', function(req, res, next) {
@@ -176,13 +179,12 @@ router.get('/img/:file', function(req, res, next) {
 
 router.get('/json/:id', function(req, res, next) {
     db.queryDetailById(req.params.id, function(detail) {
-        console.log("the json detail is " + detail);
         res.send(detail);
     });
 });
+
 router.get('/order/:id', function(req, res, next) {
     db.queryUserById(req.params.id, function(detail) {
-        console.log("the json detail is " + detail);
         res.send(detail);
     });
 });

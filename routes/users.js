@@ -19,7 +19,7 @@ router.post('/login', function(req, res, next) {
     //获取表单数据
     var uname = req.body.user;
     var pwd = req.body.pwd;
-    db.queryUserByName(uname, function(user) {
+    db.queryUserByValue(uname, function(user) {
         if (user && pwd == user.pwd) {
             req.session.user = user;
             res.render('index', { fragment: 1 });
