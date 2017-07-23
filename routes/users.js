@@ -104,4 +104,9 @@ router.post('/changepwd', function(req, res, next) {
     }
 });
 
+router.get('/logout', function(req, res, next) {
+    delete req.session.user;
+    res.render('index', { fragment: 1 });
+});
+
 module.exports = router;
