@@ -3,6 +3,7 @@ function modifyName() {
 }
 
 function modifySex() {
+    console.log($("#dd_usex").text());
     if ($("#dd_usex").text() == "男") {
         $("#dd_male").css("background-color", "deepskyblue");
         $("#dd_male").css("color", "white");
@@ -78,7 +79,9 @@ $(function() {
             })
 
             $("#myModal2 .dd_addrHold").on("click", function() {
-                if ($("#dd_male").attr("checked")) {
+
+                if ($("#dd_male").css("background-color") == "rgb(0, 191, 255)") {
+
                     var data = {
                         sex: "男"
                     };
@@ -97,6 +100,7 @@ $(function() {
                         }
                     });
                 } else {
+
                     var data = {
                         sex: "女"
                     };

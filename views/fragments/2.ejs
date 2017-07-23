@@ -226,6 +226,15 @@
 				<div class="ad-title">
 					<span>手机</span>
 				</div>
+
+				<% for (var index = 0; index < details.length; index++) { %>
+				<a href="/detail/<%=details[index]._id%>">
+					<div class="ad-small-logo">
+						<img src="<%=details[index].cpic%>"/>
+						<p><%=details[index].name%></p>
+					</div>
+				</a>
+				<% } %>
 				<div class="ad-small-logo">
 					<img />
 					<p>小米6</p>

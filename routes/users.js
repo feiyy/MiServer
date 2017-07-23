@@ -19,15 +19,12 @@ router.post('/login', function(req, res, next) {
     //获取表单数据
     var uname = req.body.user;
     var pwd = req.body.pwd;
-    console.log(uname);
-
-    db.queryUserByName(uname, function(user) {
-        console.log(user);
-        if (pwd == user.pwd) {
+    db.queryUserByValue(uname, function(user) {
+        if (user && pwd == user.pwd) {
             req.session.user = user;
-            res.render('index', { title: 'Express', fragment: 1 });
+            res.render('index', { fragment: 1 });
         } else {
-            console.log(uname + " login: fail");
+            res.render('login');
         }
     });
 });
@@ -105,6 +102,11 @@ router.post('/changepwd', function(req, res, next) {
             }
         })
     }
+});
+
+router.get('/logout', function(req, res, next) {
+    delete req.session.user;
+    res.render('index', { fragment: 1 });
 });
 
 module.exports = router;

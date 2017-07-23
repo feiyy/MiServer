@@ -212,6 +212,11 @@ a {
     margin: 0;
 }
 
+.dd_model3 a
+{
+    text-align: center;
+}
+
 .modal-body>div,
 .modal-body>input {
     padding-top: 0.5rem;
