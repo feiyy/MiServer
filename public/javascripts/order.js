@@ -1,5 +1,12 @@
-var itemMoney=0;
+var itemsMoney=0;
 var itemNum=0;
+var itemAddr="";
+var payMethod="";
+var itemBuyer="";
+var itemPhone="";
+var itemsName=[];
+var itemsPic=[];
+
 function comedown(divCtrl, divName) {
     if (divCtrl.classList.contains("zk_down")) {
         $("." + divName).css("display", "block");
@@ -22,7 +29,15 @@ function chooseAddr(divName, divCtrl) {
         chDiv.find("img").attr("src", "img/check_normal.png");
         divCtrl.getElementsByTagName("img")[0].src = "/img/check_press.png";
         divCtrl.classList.remove("zk_noChoose");
-        divCtrl.classList.add("zk_choose");
+		divCtrl.classList.add("zk_choose");
+		if(divName=="zk_payMethod")
+			payMethod=$(divCtrl).siblings(".col-xs-8").text();
+		else
+		{
+			itemPhone=$(divCtrl).siblings().find(".zk_userPhone").text();
+			itemBuyer=$(divCtrl).siblings().find(".zk_username").text();
+			itemAddr=$(divCtrl).siblings().find(".zk_position").text();
+		}
     } else {
         divCtrl.getElementsByTagName("img")[0].src = "/img/check_normal.png";
         divCtrl.classList.remove("zk_choose");
@@ -31,12 +46,31 @@ function chooseAddr(divName, divCtrl) {
 }
 function pay()
 {
+	var date=new Date();
+	var createDate=""+date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate();
 
 	var data={
-		orderItemMoney:itemsMoney,
-		orderItemNum:itemNum,
-		orderRecAddr:
-	}
+		orderRecAddr:itemAddr,
+		orderRecDate:"",
+		orderBuyer:itemBuyer,
+		orderPayMethod:payMethod,
+		orderDate:createDate,
+		orderState:"运输中",
+		orderId:date.getTime().toString(16)
+	};
+	console.log(data);
+	$.ajax({
+        type: "post",
+        url: "/payment/topay",
+        data: data,
+        async: true,
+        success: function(item) {
+            console.log(item);
+            if (item == "login") {
+                window.location.href = "/users/login";
+            }
+        }
+    });
 }
 init=function(id)
 {
@@ -58,6 +92,9 @@ init=function(id)
 							"<img src='img/check_normal.png' />"+
 						"</div>"+
 					"</div>";
+			itemPhone=item.address[0].phone;
+			itemName=item.address[0].name;
+			itemAddr=item.address[0].addr;
 			$("#zk_userAddr").append(str);
 			for(var i=1;i<item.address.length;i++)
 			{
@@ -82,12 +119,14 @@ init=function(id)
 			$("#zk_userAddr").append(str);
 			for(var i=0;i<item.payment.length;i++)
 			{
-				if(item.payment[i].orderState=="代付款")
+				if(item.payment[i].orderState=="待付款")
 				{
 					itemsMoney=item.payment[i].orderItemsMoney;
-					itemNum=item.payment[i].orderItemsName;
+					itemNum=item.payment[i].orderItemsName.length;
 					for(var k=0;k<item.payment[i].orderItemsName.length;k++)
 					{
+						itemsName.push(item.payment[i].orderItemsName[k].name);
+						itemsPic.push(item.payment[i].orderItemsPic[k].url);
 						str="<div class='zk_payMethod col-xs-12'>"+
 								"<div class='col-xs-2 zk_logo'>"+
 									"<img src='"+item.payment[i].orderItemsPic[k].url+"' />"+
@@ -96,6 +135,7 @@ init=function(id)
 							"</div>";
 						$("#zk_paymentPush").append(str);
 					}
+					break;
 				}
 			}
 		}

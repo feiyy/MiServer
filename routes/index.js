@@ -30,11 +30,43 @@ router.post('/detail/shopcart', function(req, res, next) {
         db.queryUserById(req.session.user._id, function(user) {
             var shoppingcart = user.shoppingcart;
             shoppingcart.push(detail);
-            console.log(shoppingcart);
             db.updateUser(req.session.user._id, { shoppingcart: shoppingcart }, function(success) {
                 console.log(success);
                 if (success) {
-
+                }
+            });
+            res.send("success");
+        })
+    }
+});
+router.post('/payment/topay', function(req, res, next) {
+    if (!req.session.user) {
+        res.send('login');
+    } else {
+        var detail = req.body;
+        console.log(detail);
+        db.queryUserById(req.session.user._id, function(user) {
+            var payment = user.payment;
+            for(var i=0;i<payment.length;i++)
+            {
+                if(payment[i].orderState=="待付款")
+                {
+                    payment[i].orderRecAddr=detail.orderRecAddr;
+                    payment[i].orderRecDate=detail.orderRecDate;
+                    payment[i].orderBuyer=detail.orderBuyer;
+                    payment[i].orderPayMethod=detail.orderPayMethod;
+                    payment[i].orderDate=detail.orderDate;
+                    payment[i].orderState=detail.orderState;
+                    payment[i].orderId=detail.orderId;
+                    break;    
+                }
+            }
+            db.updateUser(req.session.user._id, { payment: payment }, function(success) {
+                console.log(success);
+                if (success) {
+                    // //成功加入数据库之后跳转之订单详情页面
+                    // res.render('myorder',{uuserId: user._id});
+                    //res.redirect("/myorder");
                 }
             });
             res.send("success");
@@ -86,19 +118,41 @@ router.post('/address/update', function(req, res, next) {
         })
     }
 });
+<<<<<<< HEAD
+router.get('/myorder/:id', function(req, res, next) {
+=======
 
 router.get('/myorder', function(req, res, next) {
+>>>>>>> 1ed32f39e6c908a5d0c24b6f814615e3a9b1c25e
     if (!req.session.user) {
         res.render('login');
     } else {
         console.log(req.session.user._id);
         db.queryUserById(req.session.user._id, function(user) {
             console.log(user);
-            res.render('myorder', { userId: user._id });
+            res.render('myorder', { userId: user._id,state: req.params.id });
         })
     }
 });
-
+router.post('/myorder/changestate', function(req, res, next) {
+    if (!req.session.user) {
+        res.send('login');
+    } else {
+        var detail = req.body;
+        db.queryUserById(req.session.user._id, function(user) {
+            var payment = user.payment;
+            console.log("detail-count="+detail.count);
+            payment[detail.count].orderState = "已完成";
+            db.updateUser(req.session.user._id, { payment: payment }, function(success) {
+                console.log(success);
+                if (success) {
+                    
+                }
+            });
+            res.send("success");
+        })
+    }
+});
 router.get('/ordernull', function(req, res, next) {
     res.render('ordernull', { detailName: '小米6' });
 });
@@ -109,6 +163,18 @@ router.get('/search', function(req, res, next) {
 
 router.get('/fragments/:id', function(req, res, next) {
     var frag_id = req.params.id;
+<<<<<<< HEAD
+    if (frag_id == 1) {
+        res.render('fragments/' + 1, { login: req.session.user });
+    } else if (frag_id == 4) {
+        if (req.session.user) {
+            res.render('fragments/' + 4, { login: req.session.user });
+        } else {
+            res.render('login');
+        }
+    } else {
+        res.render('fragments/' + frag_id);
+=======
     switch (frag_id) {
         case "1":
             res.render('fragments/' + 1, { login: req.session.user });
@@ -140,6 +206,7 @@ router.get('/fragments/:id', function(req, res, next) {
         default:
             res.render('fragments/' + frag_id);
             break;
+>>>>>>> 1ed32f39e6c908a5d0c24b6f814615e3a9b1c25e
     }
 });
 
@@ -174,6 +241,19 @@ router.get('/shopcart/:id', function(req, res, next) {
     })
 });
 
+<<<<<<< HEAD
+router.get('/clearbutton', function(req, res, next){
+    db.queryUserById(req.session.user._id,function(user){
+        var shoppingcart = user.shoppingcart;
+        var neworder={orderId:"",orderState:"待付款",orderItemsPic:[{url:"img/orderItem1.jpg"}],orderItemsName:[{name:"小米手环 2 黑色"}],orderDate:"",orderPayMethod:"",orderBuyer:"",orderRecDate:"",orderRecAddr:"",orderItemNum:"1",orderItemMoney:"149"};
+        for(index=0;index<shoppingcart.lenth;index++){
+            neworder.orderItemsPic.url=shoppingcart.url;
+            neworder.orderItemsName.name=shoppingcart.goodsName;
+        }
+        neworder.orderItemNum = $(".all_counts").value ;
+        neworder.orderItemMoney = $(".all_price").value ; 
+
+=======
 router.post('/clearbutton', function(req, res, next) {
     db.queryUserById(req.session.user._id, function(user) {
         var shoppingcart = user.shoppingcart;
@@ -210,6 +290,7 @@ router.post('/clearbutton', function(req, res, next) {
                 res.send("success");
             }
         });
+>>>>>>> 1ed32f39e6c908a5d0c24b6f814615e3a9b1c25e
     });
 });
 
@@ -234,5 +315,14 @@ router.get('/init', function(req, res, next) {
         res.send(cb);
     });
 })
+<<<<<<< HEAD
+// router.get('/addUser', function(req, res, next) {
+//     db.addUser(user,function(cb) {
+//         res.send(cb);
+//     });
+// })
+module.exports = router;
+=======
 
 module.exports = router; 
+>>>>>>> 1ed32f39e6c908a5d0c24b6f814615e3a9b1c25e
