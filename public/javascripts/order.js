@@ -69,18 +69,13 @@ function pay()
             if (item == "login") {
                 window.location.href = "/users/login";
 			}
-<<<<<<< HEAD
 			else
 			{
 				window.location.href="/myorder/all";
-=======
-			else if(item == "success")
-			{
-				window.location.href = "/myorder/all";
->>>>>>> 7bf45b606372d304fe2cf8da9a6d7412626a88bc
 			}
         }
-    });
+	});
+	
 }
 init=function(id)
 {
