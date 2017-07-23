@@ -8,11 +8,10 @@ var options = {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express', fragment: 1 });
-});
-
-router.get('/mine', function(req, res, next) {
-    res.render('index', { title: 'Express', fragment: 4 });
+    req.session.user = {
+        _id: "5974096afbe6f076f80f724a"
+    }
+    res.render('index', { fragment: 1 })
 });
 
 router.get('/detail/:id', function(req, res, next) {
@@ -42,6 +41,7 @@ router.post('/detail/shopcart', function(req, res, next) {
         })
     }
 });
+
 router.get('/payment', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -53,6 +53,7 @@ router.get('/payment', function(req, res, next) {
         })
     }
 });
+
 router.get('/address', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -85,6 +86,7 @@ router.post('/address/update', function(req, res, next) {
         })
     }
 });
+
 router.get('/myorder', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -107,7 +109,6 @@ router.get('/search', function(req, res, next) {
 
 router.get('/fragments/:id', function(req, res, next) {
     var frag_id = req.params.id;
-<<<<<<< HEAD
     switch (frag_id) {
         case "1":
             res.render('fragments/' + 1, { login: req.session.user });
@@ -139,19 +140,11 @@ router.get('/fragments/:id', function(req, res, next) {
         default:
             res.render('fragments/' + frag_id);
             break;
-=======
-    if (frag_id == 1) {
-        res.render('fragments/' + 1, { login: req.session.user });
-    } else if (frag_id == 4) {
-        if (req.session.user) {
-            res.render('fragments/' + 4, { login: req.session.user });
-        } else {
-            res.render('login');
-        }
-    } else {
-        res.render('fragments/' + frag_id);
->>>>>>> 0b229bd7029067010711e76a80a4571752cdfd95
     }
+});
+
+router.get('/mine', function(req, res, next) {
+    res.render('index', { fragment: 4 });
 });
 
 router.get('/shopcart', function(req, res, next) {
@@ -159,58 +152,59 @@ router.get('/shopcart', function(req, res, next) {
         res.render('login');
     } else {
         db.queryUserById(req.session.user._id, function(user) {
-        var details = user.shoppingcart;
-        console.log(details); 
-        res.render('fragments/' + 3, { details: details });
-    });
+            var details = user.shoppingcart;
+            console.log(details);
+            res.render('fragments/' + 3, { details: details });
+        });
     }
 });
 
-router.get('/shopcart/:id', function(req, res, next){
-    db.queryUserById(req.session.user._id,function(user){
+router.get('/shopcart/:id', function(req, res, next) {
+    db.queryUserById(req.session.user._id, function(user) {
         var shoppingcart = user.shoppingcart;
         console.log(shoppingcart);
         shoppingcart.splice(req.params.id, 1);
         console.log(shoppingcart);
-        db.updateUser(req.session.user._id, {shoppingcart: shoppingcart}, function(success) {
+        db.updateUser(req.session.user._id, { shoppingcart: shoppingcart }, function(success) {
             console.log(success);
-            if(success) {
+            if (success) {
                 res.send("success");
             }
         });
     })
 });
 
-router.post('/clearbutton', function(req, res, next){
-    db.queryUserById(req.session.user._id,function(user){
+router.post('/clearbutton', function(req, res, next) {
+    db.queryUserById(req.session.user._id, function(user) {
         var shoppingcart = user.shoppingcart;
         var payment = user.payment;
-        var neworder={
-            orderId:"",
-            orderState:"待付款",
-            orderItemsPic:[],
-            orderItemsName:[],
-            orderDate:"",
-            orderPayMethod:"",
-            orderBuyer:"",
-            orderRecDate:"",
-            orderRecAddr:"",
-            orderItemNum:"",
-            orderItemMoney:""};
-        for(index=0;index<shoppingcart.length;index++){
-            neworder.orderItemsPic.push({url:shoppingcart[index].url});
-            neworder.orderItemsName.push({name:shoppingcart[index].goodsName});
-        } 
+        var neworder = {
+            orderId: "",
+            orderState: "待付款",
+            orderItemsPic: [],
+            orderItemsName: [],
+            orderDate: "",
+            orderPayMethod: "",
+            orderBuyer: "",
+            orderRecDate: "",
+            orderRecAddr: "",
+            orderItemNum: "",
+            orderItemMoney: ""
+        };
+        for (index = 0; index < shoppingcart.length; index++) {
+            neworder.orderItemsPic.push({ url: shoppingcart[index].url });
+            neworder.orderItemsName.push({ name: shoppingcart[index].goodsName });
+        }
         neworder.orderItemNum = req.body.allcounts;
-        neworder.orderItemMoney = req.body.allprice; 
+        neworder.orderItemMoney = req.body.allprice;
 
-        shoppingcart.splice(0,shoppingcart.length);
+        shoppingcart.splice(0, shoppingcart.length);
         console.log(neworder);
         payment.unshift(neworder);
-        console.log(payment);   
-        db.updateUser(req.session.user._id, {shoppingcart: shoppingcart, payment:payment}, function(success) {
+        console.log(payment);
+        db.updateUser(req.session.user._id, { shoppingcart: shoppingcart, payment: payment }, function(success) {
             console.log(success);
-            if(success) {
+            if (success) {
                 res.send("success");
             }
         });
@@ -224,13 +218,11 @@ router.get('/img/:file', function(req, res, next) {
 
 router.get('/json/:id', function(req, res, next) {
     db.queryDetailById(req.params.id, function(detail) {
-        console.log("the json detail is " + detail);
         res.send(detail);
     });
 });
 router.get('/order/:id', function(req, res, next) {
     db.queryUserById(req.params.id, function(detail) {
-        console.log("the json detail is " + detail);
         res.send(detail);
     });
 });
