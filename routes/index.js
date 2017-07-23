@@ -59,9 +59,7 @@ router.post('/payment/topay', function(req, res, next) {
             db.updateUser(req.session.user._id, { payment: payment }, function(success) {
                 console.log(success);
                 if (success) {
-                    // //成功加入数据库之后跳转之订单详情页面
-                    // res.render('myorder',{uuserId: user._id});
-                    //res.redirect("/myorder");
+                    res.send("success");
                 }
             });
             res.send("success");
@@ -80,7 +78,17 @@ router.get('/payment', function(req, res, next) {
         })
     }
 });
-
+router.get('/payment:id', function(req, res, next) {
+    if (!req.session.user) {
+        res.render('login');
+    } else {
+        console.log(req.session.user._id);
+        db.queryUserById(req.session.user._id, function(user) {
+            console.log(user);
+            res.render('payment', { userId: user._id,state:req.params.id });
+        })
+    }
+});
 router.get('/address', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -228,6 +236,7 @@ router.post('/clearbutton', function(req, res, next) {
         var check = req.body.check;
         console.log("111111111111");
         console.log(check);
+<<<<<<< HEAD
         var neworder = {
             orderId: "",
             orderState: "待付款",
@@ -246,12 +255,31 @@ router.post('/clearbutton', function(req, res, next) {
                 neworder.orderItemsPic.push({ url: shoppingcart[index].url });
                 neworder.orderItemsName.push({ name: shoppingcart[index].goodsName });
                 shoppingcart.splice(index, 1);
+=======
+        var neworder={
+            orderId:"",
+            orderState:"待付款",
+            orderItemsPic:[],
+            orderItemsName:[],
+            orderDate:"",
+            orderPayMethod:"",
+            orderBuyer:"",
+            orderRecDate:"",
+            orderRecAddr:"",
+            orderItemNum:"",
+            orderItemMoney:""};
+        for(index=shoppingcart.length-1;index>-1;index--){
+            if(check[index]=="1"){
+                 neworder.orderItemsPic.push({url:shoppingcart[index].url});
+                 neworder.orderItemsName.push({name:shoppingcart[index].goodsName});
+                 shoppingcart.splice(index,1);
+>>>>>>> a5fa79639aa3773d2b1a21c10f3b32b7a26cd13d
             }
         }
         neworder.orderItemNum = req.body.allcounts;
         neworder.orderItemMoney = req.body.allprice;
         console.log("44444444");
-        console.log(req.body.allcounts);
+        console.log(neworder);
 
         if (req.body.allcounts != '0') {
             payment.unshift(neworder);
@@ -263,6 +291,13 @@ router.post('/clearbutton', function(req, res, next) {
             });
         }
 
+        payment.unshift(neworder); 
+        db.updateUser(req.session.user._id, {shoppingcart: shoppingcart, payment:payment}, function(success) {
+            console.log(success);
+            if (success) {
+                res.send("success");
+            }
+        });
     });
 });
 
