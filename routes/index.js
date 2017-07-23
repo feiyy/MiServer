@@ -147,17 +147,39 @@ router.get('/shopcart/:id', function(req, res, next){
     })
 });
 
-router.get('/clearbutton', function(req, res, next){
+router.post('/clearbutton', function(req, res, next){
     db.queryUserById(req.session.user._id,function(user){
         var shoppingcart = user.shoppingcart;
-        var neworder={orderId:"",orderState:"待付款",orderItemsPic:[{url:"img/orderItem1.jpg"}],orderItemsName:[{name:"小米手环 2 黑色"}],orderDate:"",orderPayMethod:"",orderBuyer:"",orderRecDate:"",orderRecAddr:"",orderItemNum:"1",orderItemMoney:"149"};
-        for(index=0;index<shoppingcart.lenth;index++){
-            neworder.orderItemsPic.url=shoppingcart.url;
-            neworder.orderItemsName.name=shoppingcart.goodsName;
+        var payment = user.payment;
+        var neworder={
+            orderId:"",
+            orderState:"待付款",
+            orderItemsPic:[],
+            orderItemsName:[],
+            orderDate:"",
+            orderPayMethod:"",
+            orderBuyer:"",
+            orderRecDate:"",
+            orderRecAddr:"",
+            orderItemNum:"",
+            orderItemMoney:""};
+        for(index=0;index<shoppingcart.length;index++){
+            neworder.orderItemsPic.push({url:shoppingcart[index].url});
+            neworder.orderItemsName.push({name:shoppingcart[index].goodsName});
         }
-        neworder.orderItemNum = $(".all_counts").value ;
-        neworder.orderItemMoney = $(".all_price").value ; 
+        neworder.orderItemNum = req.body.allcounts;
+        neworder.orderItemMoney = req.body.allprice; 
 
+        shoppingcart.splice(0,shoppingcart.length);
+        console.log(neworder);
+        payment.unshift(neworder);
+        console.log(payment);   
+        db.updateUser(req.session.user._id, {shoppingcart: shoppingcart, payment:payment}, function(success) {
+            console.log(success);
+            if(success) {
+                res.send("success");
+            }
+        });
     });
 });
 
