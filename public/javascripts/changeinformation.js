@@ -164,5 +164,25 @@ $(function() {
     });
 
 
+    $("#dd_headimg cite").on("click", function(){
+         var formData = new FormData($("#myform")[0]);
+         var url = "/users/uploader";
+          $.ajax({
+            url: url,
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (responseStr) {
+                alert(responseStr.newPath);
+                $("img").attr({"src": responseStr.newPath}).prependTo($("body"));
+            },
+            error: function (responseStr) {
+                alert(responseStr.newPath);
+            }
+        });
+    });
+
+
 
 });
