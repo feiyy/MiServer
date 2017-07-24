@@ -186,7 +186,13 @@ router.get('/fragments/:id', function(req, res, next) {
     var frag_id = req.params.id;
     switch (frag_id) {
         case "1":
-            res.render('fragments/' + 1, { login: req.session.user });
+            if (req.session.user) {
+                db.queryUserById(req.session.user._id, function(user) {
+                    res.render('fragments/' + 1, { login: user });
+                })
+            } else {
+                res.render('fragments/' + 1, { login: req.session.user });
+            }
             break;
         case "2":
             db.queryDetail(function(details) {

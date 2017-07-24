@@ -175,12 +175,11 @@ $(function() {
             data: formData,
             processData: false,
             contentType: false,
-            success: function(responseStr) {
-            }
+            success: function(responseStr) {}
         });
     });
 
-    cancel = function(){
+    cancel = function() {
         $(".close").click();
     }
 

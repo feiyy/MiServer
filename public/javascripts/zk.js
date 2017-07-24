@@ -9,7 +9,7 @@ phoneInfo = function(id) {
         url: "/json/" + jid,
         async: true,
         success: function(item) {
-           
+
             console.log(item);
             $(".zk_mi6Name").text(item.name);
             $(".zk_mi6brief").html("<font color='#ff4a00'>" + item.activity + "</font>" + item.brief);
@@ -22,7 +22,7 @@ phoneInfo = function(id) {
             $(".zk_mi6pics").html("<img src='" + item.urls1[0].url + "' />" + "<img src='" + item.urls1[1].url + "' />" + "<img src='" + item.urls1[2].url + "' />" + "<div class='col-xs-12 zk_mi6more' style='text-align: center;font-size:2rem;background-color:white;color:#FF5722' onclick='showMore()'>点击查看更多</div>");
             $(".zk_mi6nameAndSpec").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color);
             $(".zk_mi6icon").html("<img src='" + item.type[0].pic + "' />");
-            if(parseInt(item.type[0].stock)==0)
+            if (parseInt(item.type[0].stock) == 0)
                 $(".zk_commit").text("已售罄");
         }
     });
@@ -69,7 +69,7 @@ function up() {
         async: true,
         success: function(item) {
             var types = new Array();
-            console.log("itemname="+item.name+" str[0]="+str[0]);
+            console.log("itemname=" + item.name + " str[0]=" + str[0]);
             if (item.name == str[0]) {
                 for (var j = 0; j < item.type.length; j++) {
                     var typeStr = item.type[j].name + " " + item.type[j].ram + " " + item.type[j].rom;
@@ -146,16 +146,15 @@ function showMore() {
 
 function commitOrder(divCtrl) {
 
-    if($(".zk_commit").text()=="加入购物车")
-    {
-        
+    if ($(".zk_commit").text() == "加入购物车") {
+
         var data = {
             goodsName: $(".zk_mi6Name").text(),
             url: $(".zk_mi6icon>img").attr("src"),
             goodsPrice: thePrice,
             goodsStock: theStock,
             goodsId: jid,
-            goodsCount:1
+            goodsCount: 1
         };
         $.ajax({
             type: "post",
@@ -163,6 +162,9 @@ function commitOrder(divCtrl) {
             data: data,
             async: true,
             success: function(item) {
+                $("#shopcart_button").fadeOut("slow", function() {
+                    $("#shopcart_button").fadeIn("slow");
+                });
                 console.log(item);
                 if (item == "login") {
                     window.location.href = "/users/login";
@@ -241,7 +243,7 @@ $(function() {
                                 $(".zk_mi6stock>.col-xs-10").text("剩余" + item.type[i].stock + "件");
                                 thePrice = parseInt(item.type[i].price);
                                 theStock = parseInt(item.type[i].stock);
-                                $(".zk_mi6pics").html("<img src='" + item.urls1[0].url + "' />" + "<img src='" + item.urls1[1].url + "' />" + "<img src='" + item.urls1[2].url + "' />"+"<div class='col-xs-12 zk_mi6more' style='text-align: center;font-size:2rem;background-color:white;color:#FF5722' onclick='showMore()'>点击查看更多</div>");
+                                $(".zk_mi6pics").html("<img src='" + item.urls1[0].url + "' />" + "<img src='" + item.urls1[1].url + "' />" + "<img src='" + item.urls1[2].url + "' />" + "<div class='col-xs-12 zk_mi6more' style='text-align: center;font-size:2rem;background-color:white;color:#FF5722' onclick='showMore()'>点击查看更多</div>");
                                 $(".zk_mi6nameAndSpec").text(item.name + " " + item.type[i].name + " " + item.type[i].ram + " " + item.type[i].rom + " " + item.type[i].color);
                                 $(".zk_mi6icon").html("<img src='" + item.type[i].pic + "'/>");
                                 $(".zk_mi6Store").text(item.type[i].stock);

@@ -38,9 +38,8 @@ a {
     color: inherit;
 }
 
-a:hover
-{
-	text-decoration: none;
+a:hover {
+    text-decoration: none;
 }
 
 .row {
@@ -1591,7 +1590,8 @@ a:-webkit-any-link {
 }
 
 .dd_username {
-    width: 3.9rem;
+    width: 15rem;
+    overflow: hidden;
     height: 3rem;
     line-height: 3rem;
     color: #fff;

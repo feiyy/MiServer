@@ -161,18 +161,14 @@ a {
 
 #dd_headimg {
     height: 6rem !important;
-
 }
 
-#myform{
-     height: 6rem;
-     line-height: 6rem;
-     position: relative;
-     padding-left: 1rem;
-
+#myform {
+    height: 6rem;
+    line-height: 6rem;
+    position: relative;
+    padding-left: 1rem;
 }
-
-
 
 .dd_userimg {
     width: 3.225rem;
@@ -218,8 +214,7 @@ a {
     margin: 0;
 }
 
-.dd_model3 a
-{
+.dd_model3 a {
     text-align: center;
 }
 
@@ -252,6 +247,9 @@ a {
 }
 
 .dd_sexoption {
+    width: 6rem !important;
+    height: auto !important;
+    line-height: auto !important;
     outline: 0;
 }
 
@@ -277,17 +275,16 @@ a {
     border-radius: 3.225rem;
 }
 
-.modal-header
-{
+.modal-header {
     font-size: 1.2rem;
 }
 
-.dd_remind
-{
+.dd_remind {
     font-size: 1.2rem;
 }
 
-.dd_modName , .dd_sexoption , .dd_modPassword
-{
+.dd_modName,
+.dd_sexoption,
+.dd_modPassword {
     font-size: 1.2rem;
 }
