@@ -7,6 +7,9 @@ var itemPhone = "";
 var itemsName = [];
 var itemsPic = [];
 
+var addrChoosen=false;
+var methodChoosen=false;
+
 function comedown(divCtrl, divName) {
     if (divCtrl.classList.contains("zk_down")) {
         $("." + divName).css("display", "block");
@@ -31,47 +34,65 @@ function chooseAddr(divName, divCtrl) {
         divCtrl.classList.remove("zk_noChoose");
         divCtrl.classList.add("zk_choose");
         if (divName == "zk_payMethod")
+        {
             payMethod = $(divCtrl).siblings(".col-xs-8").text();
-        else {
+            methodChoosen=true;
+        }
+        else 
+        {
             itemPhone = $(divCtrl).siblings().find(".zk_userPhone").text();
             itemBuyer = $(divCtrl).siblings().find(".zk_username").text();
             itemAddr = $(divCtrl).siblings().find(".zk_position").text();
+            addrChoosen=true;
         }
-    } else {
+    } 
+    else 
+    {
         divCtrl.getElementsByTagName("img")[0].src = "/img/check_normal.png";
         divCtrl.classList.remove("zk_choose");
         divCtrl.classList.add("zk_noChoose");
+        if (divName == "zk_payMethod")
+            methodChoosen=false;
+        else
+            addrChoosen=false;
     }
 }
 
 function pay() {
+
     var date = new Date();
     var createDate = "" + date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
 
-    var data = {
-        orderRecAddr: itemAddr,
-        orderRecDate: "",
-        orderBuyer: itemBuyer,
-        orderPayMethod: payMethod,
-        orderDate: createDate,
-        orderState: "运输中",
-        orderId: date.getTime().toString(16)
-    };
-    console.log(data);
-    $.ajax({
-        type: "post",
-        url: "/payment/topay",
-        data: data,
-        async: true,
-        success: function(item) {
-            console.log(item);
-            if (item == "login") {
-                window.location.href = "/users/login";
-            } else {
-                window.location.href = "/myorder/all";
+    console.log("addr:"+addrChoosen+" method:"+methodChoosen);
+    if(methodChoosen&&addrChoosen)
+    {
+
+        console.log("都选择了");
+        var data = {
+            orderRecAddr: itemAddr,
+            orderRecDate: "",
+            orderBuyer: itemBuyer,
+            orderPayMethod: payMethod,
+            orderDate: createDate,
+            orderState: "运输中",
+            orderId: date.getTime().toString(16)
+        };
+        console.log(data);
+        $.ajax({
+            type: "post",
+            url: "/payment/topay",
+            data: data,
+            async: true,
+            success: function(item) {
+                console.log(item);
+                if (item == "login") {
+                    window.location.href = "/users/login";
+                } else {
+                    window.location.href = "/myorder/all";
+                }
             }
-        }
-    });
+        });
+    }
 
 }
 init = function(id) {
