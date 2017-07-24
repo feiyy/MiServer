@@ -1,4 +1,5 @@
 function modifyAddr(j) {
+    $("#number").val(j);
     $(".zk_modName").val($("#zk_address" + j + " .zk_addrUser").text());
     $(".zk_modPhone").val($("#zk_address" + j + " .zk_addrPhone").text());
     $(".zk_modAddr").val($("#zk_address" + j + " .zk_addrSpecific").text());
@@ -52,3 +53,7 @@ $(function() {
             // $(".zk_addrHold").attr("onclick", "keepInDB(" + recipient + ")");
         });
 });
+
+cancel = function() {
+    $(".close").click();
+}

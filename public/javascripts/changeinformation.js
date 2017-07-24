@@ -162,6 +162,7 @@ $(function() {
         $(".dd_userimg").empty();
         var file = this.files[0];
         readFile(file, $(".dd_userimg"));
+        $("#dd_headimg cite").click();
     });
 
 
@@ -175,7 +176,6 @@ $(function() {
             processData: false,
             contentType: false,
             success: function(responseStr) {
-                alert(responseStr);
             }
         });
     });
