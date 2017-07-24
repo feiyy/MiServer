@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
-var db = mongoose.createConnection('192.168.1.7', 'smallmimall');
+var db = mongoose.createConnection('10.25.53.88', 'smallmimall');
 
 db.on('error', function(doc) { console.log(doc) });
 db.once('open', function() {
