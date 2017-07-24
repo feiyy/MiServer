@@ -276,3 +276,18 @@ a {
     border: 0;
     border-radius: 3.225rem;
 }
+
+.modal-header
+{
+    font-size: 1.2rem;
+}
+
+.dd_remind
+{
+    font-size: 1.2rem;
+}
+
+.dd_modName , .dd_sexoption , .dd_modPassword
+{
+    font-size: 1.2rem;
+}

@@ -38,6 +38,11 @@ a {
     color: inherit;
 }
 
+a:hover
+{
+	text-decoration: none;
+}
+
 .row {
     margin-right: -0.25rem;
     margin-left: -0.25rem;
@@ -1628,6 +1633,7 @@ a:-webkit-any-link {
     width: 1.1rem;
     height: 3rem;
     float: right;
+    font-size: 1.2rem;
 }
 
 .dd_nav {
@@ -1723,6 +1729,7 @@ a:-webkit-any-link {
 .dd_item2 span {
     width: 1.1rem;
     height: 3.525rem;
+    font-size: 1.2rem;
     float: right;
     color: rgba(0, 0, 0, .54);
 }
