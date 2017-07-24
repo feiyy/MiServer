@@ -104,13 +104,34 @@ router.post('/address/update', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
     } else {
-        console.log(req.session.user._id);
         db.queryUserById(req.session.user._id, function(user) {
             var address = user.address;
-            var item = req.body.key;
-            address[item.number].name = item.name;
-            address[item.number].phone = item.phone;
-            address[item.number].addr = item.addr;
+            var item = req.body;
+            address[item.key].name = item.name;
+            address[item.key].phone = item.phone;
+            address[item.key].addr = item.addr;
+            db.updateUser(req.session.user._id, { address: address }, function(success) {
+                console.log(success);
+                if (success) {
+                    res.render("address", { userId: user._id });
+                }
+            });
+        })
+    }
+});
+
+router.post('/address/add', function(req, res, next) {
+    if (!req.session.user) {
+        res.render('login');
+    } else {
+        db.queryUserById(req.session.user._id, function(user) {
+            var address = user.address;
+            var item = req.body;
+            address.push({
+                name: item.name,
+                phone: item.phone,
+                addr: item.addr
+            });
             db.updateUser(req.session.user._id, { address: address }, function(success) {
                 console.log(success);
                 if (success) {
