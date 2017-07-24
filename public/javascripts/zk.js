@@ -9,8 +9,7 @@ phoneInfo = function(id) {
         url: "/json/" + jid,
         async: true,
         success: function(item) {
-            //$.each(data.phone, function(i, item) {
-            // if (item.name == "小米6") {
+           
             console.log(item);
             $(".zk_mi6Name").text(item.name);
             $(".zk_mi6brief").html("<font color='#ff4a00'>" + item.activity + "</font>" + item.brief);
@@ -23,9 +22,8 @@ phoneInfo = function(id) {
             $(".zk_mi6pics").html("<img src='" + item.urls1[0].url + "' />" + "<img src='" + item.urls1[1].url + "' />" + "<img src='" + item.urls1[2].url + "' />" + "<div class='col-xs-12 zk_mi6more' style='text-align: center;font-size:2rem;background-color:white;color:#FF5722' onclick='showMore()'>点击查看更多</div>");
             $(".zk_mi6nameAndSpec").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color);
             $(".zk_mi6icon").html("<img src='" + item.type[0].pic + "' />");
-            //     return false;
-            // }
-            //});
+            if(parseInt(item.type[0].stock)==0)
+                $(".zk_commit").text("已售罄");
         }
     });
 }
@@ -97,7 +95,7 @@ function up() {
                                 $(".zk_commit").addClass("zk_noStock");
                             }
                         } else
-                            $(".zk_mi6standard1").append("<div class='col-xs-3' style='text-align: center;margin-right: 1rem;'>" + item.type[0].color + "</div>");
+                            $(".zk_mi6standard1").append("<div class='col-xs-3' style='text-align: center;margin-right: 1rem;'>" + item.type[j].color + "</div>");
                     }
                 }
             }
@@ -147,26 +145,32 @@ function showMore() {
 }
 
 function commitOrder(divCtrl) {
-    var data = {
-        goodsName: $(".zk_mi6Name").text(),
-        url: $(".zk_mi6icon>img").attr("src"),
-        goodsPrice: thePrice,
-        goodsStock: theStock,
-        goodsId: jid,
-        goodsCount:1
-    };
-    $.ajax({
-        type: "post",
-        url: "/detail/shopcart",
-        data: data,
-        async: true,
-        success: function(item) {
-            console.log(item);
-            if (item == "login") {
-                window.location.href = "/users/login";
+
+    if($(".zk_commit").text()=="加入购物车")
+    {
+        
+        var data = {
+            goodsName: $(".zk_mi6Name").text(),
+            url: $(".zk_mi6icon>img").attr("src"),
+            goodsPrice: thePrice,
+            goodsStock: theStock,
+            goodsId: jid,
+            goodsCount:1
+        };
+        $.ajax({
+            type: "post",
+            url: "/detail/shopcart",
+            data: data,
+            async: true,
+            success: function(item) {
+                console.log(item);
+                if (item == "login") {
+                    window.location.href = "/users/login";
+                }
             }
-        }
-    });
+        });
+        console.log("成功加入购物车");
+    }
 }
 $(function() {
 
@@ -242,7 +246,7 @@ $(function() {
                                 $(".zk_mi6icon").html("<img src='" + item.type[i].pic + "'/>");
                                 $(".zk_mi6Store").text(item.type[i].stock);
                                 if (parseInt(item.type[i].stock) > 0) {
-                                    $(".zk_commit").text("确定");
+                                    $(".zk_commit").text("加入购物车");
                                     $(".zk_commit").removeClass("zk_noStock");
                                     $(".zk_wrongInfo").text("请尽快购买");
                                 } else {
