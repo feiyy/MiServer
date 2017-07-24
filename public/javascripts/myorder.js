@@ -27,7 +27,7 @@ function changeState(i) {
         data: { count: i },
         async: true,
         success: function(item) {
-            window.location.href="/myorder/all";
+            window.location.href = "/myorder/all";
         }
     });
 }
@@ -53,7 +53,7 @@ initialize = function(id, state) {
                             "<div class='col-xs-4'>订单编号</div>" +
                             "<div class='col-xs-5'>" + item.payment[i].orderId + "</div>" +
                             "</div>" +
-                            "<div class='col-xs-3 zk_orderState' id='zk_state"+j+"'>" + item.payment[i].orderState + "</div>" +
+                            "<div class='col-xs-3 zk_orderState' id='zk_state" + j + "'>" + item.payment[i].orderState + "</div>" +
                             "<div class='zk_Space col-xs-12'></div>";
 
                         if (item.payment[i].orderItemsPic == null || item.payment[i].orderItemsPic == undefined) {
@@ -106,7 +106,7 @@ initialize = function(id, state) {
                         "<div class='col-xs-4'>订单编号</div>" +
                         "<div class='col-xs-5'>" + item.payment[i].orderId + "</div>" +
                         "</div>" +
-                        "<div class='col-xs-3 zk_orderState'  id='zk_state"+j+"'>" + item.payment[i].orderState + "</div>" +
+                        "<div class='col-xs-3 zk_orderState'  id='zk_state" + j + "'>" + item.payment[i].orderState + "</div>" +
                         "<div class='zk_Space col-xs-12'></div>";
 
                     if (item.payment[i].orderItemsPic == null || item.payment[i].orderItemsPic == undefined) {
@@ -130,8 +130,8 @@ initialize = function(id, state) {
                         "<div class='col-xs-4'>收货地址：</div>" +
                         "<div class='col-xs-8 zk_orderRecAddr'>" + item.payment[i].orderRecAddr + "</div>" +
                         "<div class='col-xs-9'></div>";
-                    if(item.payment[i].orderState=="运输中")
-                        str+="<div class='col-xs-3' style='color:#FF5722;text-align:right;' onclick='changeState(" + j + ")'>确认收货</div>" ;
+                    if (item.payment[i].orderState == "运输中")
+                        str += "<div class='col-xs-3' style='color:#FF5722;text-align:right;' onclick='changeState(" + j + ")'>确认收货</div>";
                     str += "</div>" +
                         "<div class='zk_Space col-xs-12'></div>" +
                         "<div class='col-xs-4'></div>" +
@@ -158,7 +158,7 @@ initialize = function(id, state) {
                             "<div class='col-xs-4'>订单编号</div>" +
                             "<div class='col-xs-5'>" + item.payment[i].orderId + "</div>" +
                             "</div>" +
-                            "<div class='col-xs-3 zk_orderState'  id='zk_state"+j+"'>" + item.payment[i].orderState + "</div>" +
+                            "<div class='col-xs-3 zk_orderState'  id='zk_state" + j + "'>" + item.payment[i].orderState + "</div>" +
                             "<div class='zk_Space col-xs-12'></div>";
 
                         if (item.payment[i].orderItemsPic == null || item.payment[i].orderItemsPic == undefined) {
@@ -209,7 +209,7 @@ initialize = function(id, state) {
                             "<div class='col-xs-4'>订单编号</div>" +
                             "<div class='col-xs-5'>" + item.payment[i].orderId + "</div>" +
                             "</div>" +
-                            "<div class='col-xs-3 zk_orderState'  id='zk_state"+j+"'>" + item.payment[i].orderState + "</div>" +
+                            "<div class='col-xs-3 zk_orderState'  id='zk_state" + j + "'>" + item.payment[i].orderState + "</div>" +
                             "<div class='zk_Space col-xs-12'></div>";
 
                         if (item.payment[i].orderItemsPic == null || item.payment[i].orderItemsPic == undefined) {

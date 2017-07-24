@@ -7,8 +7,8 @@ var itemPhone = "";
 var itemsName = [];
 var itemsPic = [];
 
-var addrChoosen=false;
-var methodChoosen=false;
+var addrChoosen = false;
+var methodChoosen = false;
 
 function comedown(divCtrl, divName) {
     if (divCtrl.classList.contains("zk_down")) {
@@ -33,28 +33,23 @@ function chooseAddr(divName, divCtrl) {
         divCtrl.getElementsByTagName("img")[0].src = "/img/check_press.png";
         divCtrl.classList.remove("zk_noChoose");
         divCtrl.classList.add("zk_choose");
-        if (divName == "zk_payMethod")
-        {
+        if (divName == "zk_payMethod") {
             payMethod = $(divCtrl).siblings(".col-xs-8").text();
-            methodChoosen=true;
-        }
-        else 
-        {
+            methodChoosen = true;
+        } else {
             itemPhone = $(divCtrl).siblings().find(".zk_userPhone").text();
             itemBuyer = $(divCtrl).siblings().find(".zk_username").text();
             itemAddr = $(divCtrl).siblings().find(".zk_position").text();
-            addrChoosen=true;
+            addrChoosen = true;
         }
-    } 
-    else 
-    {
+    } else {
         divCtrl.getElementsByTagName("img")[0].src = "/img/check_normal.png";
         divCtrl.classList.remove("zk_choose");
         divCtrl.classList.add("zk_noChoose");
         if (divName == "zk_payMethod")
-            methodChoosen=false;
+            methodChoosen = false;
         else
-            addrChoosen=false;
+            addrChoosen = false;
     }
 }
 
@@ -63,9 +58,8 @@ function pay() {
     var date = new Date();
     var createDate = "" + date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
 
-    console.log("addr:"+addrChoosen+" method:"+methodChoosen);
-    if(methodChoosen&&addrChoosen)
-    {
+    console.log("addr:" + addrChoosen + " method:" + methodChoosen);
+    if (methodChoosen && addrChoosen) {
 
         console.log("都选择了");
         var data = {

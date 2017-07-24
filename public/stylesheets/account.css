@@ -38,9 +38,8 @@ a {
     color: inherit;
 }
 
-a:hover
-{
-	text-decoration: none;
+a:hover {
+    text-decoration: none;
 }
 
 .row {
@@ -102,9 +101,7 @@ a:hover
     padding-left: 0.25rem;
 }
 
-
-.dd
-{
+.dd {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -112,223 +109,198 @@ a:hover
     background: transparent;
     color: #333;
     font-size: 0.66rem;
-    font-family: Arial,Verdana,Sans-serif;
+    font-family: Arial, Verdana, Sans-serif;
     display: block;
 }
 
-.dd_wrapper
-{
-	position: relative;
+.dd_wrapper {
+    position: relative;
     width: 100%;
-    height: 42.6rem;	
+    height: 42.6rem;
     z-index: 2;
 }
 
-.dd_personalcenter
-{
-	width: 100%;
-	height: 45.9rem;
-	background: #f5f5f5;
+.dd_personalcenter {
+    width: 100%;
+    height: 45.9rem;
+    background: #f5f5f5;
     min-height: 100%;
     padding-bottom: 3.3rem;
 }
 
-.dd_head
-{
-	width: 100%;
-	height: 5.325rem;
-	background: url(../images/account/headbg.png);
-	background-color: #f37d0f;
-	background-size: auto 100%;
-	padding: 1.05rem 0;
+.dd_head {
+    width: 100%;
+    height: 5.325rem;
+    background: url(../images/account/headbg.png);
+    background-color: #f37d0f;
+    background-size: auto 100%;
+    padding: 1.05rem 0;
 }
 
-.dd_user
-{
-	width: 100%;
-	height: 3.225rem;
+.dd_user {
+    width: 100%;
+    height: 3.225rem;
 }
 
-.dd_userimg
-{
-	width: 3.225rem;
-	height: 3.225rem;
-	border: 0;
+.dd_userimg {
+    width: 3.225rem;
+    height: 3.225rem;
+    border: 0;
     background: url(../images/account/userimg.png) no-repeat;
     background-size: 100% auto;
     margin: 0 0.528rem 0 1.056rem;
     float: left;
 }
 
-.dd_username
-{
-	width: 3.9rem;
-	height: 3.225rem;
-	padding: 1.125rem 0 1.125rem;
-	color: #fff;
+.dd_username {
+    width: 15rem;
+    overflow: hidden;
+    height: 3.225rem;
+    padding: 1.125rem 0 1.125rem;
+    color: #fff;
     font-size: 0.9rem;
     float: left;
-    font-family: Mi;	
+    font-family: Mi;
 }
 
-.dd_item1
-{
-	width: 100%;
-	height: 9rem;
-	background: #fff;
+.dd_item1 {
+    width: 100%;
+    height: 9rem;
+    background: #fff;
 }
 
-.dd_bill
-{
-	width: 100%;
-	height: 3rem;
-	line-height: 3rem;
-	padding-right: 1rem;
-	border-bottom: 0.075rem solid rgba(0,0,0,.15);
-	color: rgba(0,0,0,.54);
+.dd_bill {
+    width: 100%;
+    height: 3rem;
+    line-height: 3rem;
+    padding-right: 1rem;
+    border-bottom: 0.075rem solid rgba(0, 0, 0, .15);
+    color: rgba(0, 0, 0, .54);
 }
 
-.dd_bill cite
-{
-	font-size: 0.95rem;
-	padding-left: 1.06rem;
-	color: rgba(0,0,0,.87);
-	font-style: normal;
-	font-family: Mi;
+.dd_bill cite {
+    font-size: 0.95rem;
+    padding-left: 1.06rem;
+    color: rgba(0, 0, 0, .87);
+    font-style: normal;
+    font-family: Mi;
 }
 
-.dd_morebill
-{
-	width: 3.5rem;
-	height: 3rem;
-	float: right;
-	font-size: 0.85rem;
-	color: rgba(0,0,0,.54);
-	font-family: Mi;
+.dd_morebill {
+    width: 3.5rem;
+    height: 3rem;
+    float: right;
+    font-size: 0.85rem;
+    color: rgba(0, 0, 0, .54);
+    font-family: Mi;
 }
 
-.dd_bill span
-{
-	width: 1.1rem;
-	height: 3rem;
-	float: right;
-	font-size: 1.2rem;
+.dd_bill span {
+    width: 1.1rem;
+    height: 3rem;
+    float: right;
+    font-size: 1.2rem;
 }
 
-.dd_nav
-{
-	width: 100%;
-	height: 6rem;
-	padding: 0 2.66rem;
-	list-style: none;
-	margin: 0;
+.dd_nav {
+    width: 100%;
+    height: 6rem;
+    padding: 0 2.66rem;
+    list-style: none;
+    margin: 0;
 }
 
-.dd_navitem
-{
-	height: 6rem;
-	padding: 0;
-	text-align: center;
+.dd_navitem {
+    height: 6rem;
+    padding: 0;
+    text-align: center;
 }
 
-.dd_navitem a
-{
-	display: block;
-	height: 6rem;
-	padding: 1.335rem 0;
-	position: relative;
-	color: #333;
-	text-decoration: none;
+.dd_navitem a {
+    display: block;
+    height: 6rem;
+    padding: 1.335rem 0;
+    position: relative;
+    color: #333;
+    text-decoration: none;
     outline: 0;
 }
 
-#dd_dfk div
-{
-	width: 2rem;
-	height: 2rem;
-	margin: 0 auto 0;
-	background-image: url(../images/account/nav1.png);
-	background-size: 100% auto;
+#dd_dfk div {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 auto 0;
+    background-image: url(../images/account/nav1.png);
+    background-size: 100% auto;
 }
 
-#dd_dsh div
-{
-	width: 2rem;
-	height: 2rem;
-	margin: 0 auto 0;
-	background-image: url(../images/account/nav2.png);
-	background-size: 100% auto;
+#dd_dsh div {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 auto 0;
+    background-image: url(../images/account/nav2.png);
+    background-size: 100% auto;
 }
 
-#dd_thx div
-{
-	width: 2rem;
-	height: 2rem;
-	margin: 0 auto 0;
-	background-image: url(../images/account/nav3.png);
-	background-size: 100% auto;
+#dd_thx div {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 auto 0;
+    background-image: url(../images/account/nav3.png);
+    background-size: 100% auto;
 }
 
-.dd_navitem span
-{
-	color: #333;
-	font-family: Mi;
-	text-align: center;
+.dd_navitem span {
+    color: #333;
+    font-family: Mi;
+    text-align: center;
     font-size: 0.9rem;
 }
 
-
-.dd_item2
-{
-	width: 100%;
-	height: 15.675rem;
-	margin-top: 0.525rem;
+.dd_item2 {
+    width: 100%;
+    height: 15.675rem;
+    margin-top: 0.525rem;
 }
 
-.dd_item2 ul
-{
-	list-style: none;
-	background: #fff;
+.dd_item2 ul {
+    list-style: none;
+    background: #fff;
     margin-bottom: 0.528rem;
     padding: 0;
 }
 
-.dd_item2 li
-{
-	width: 100%;
-	height: 3.525rem;
-    border-bottom: 0.075rem solid rgba(0,0,0,.15);
+.dd_item2 li {
+    width: 100%;
+    height: 3.525rem;
+    border-bottom: 0.075rem solid rgba(0, 0, 0, .15);
 }
 
-.dd_item2 a
-{
-	width: 100%;
-	height: 3.525rem;
-	line-height: 3.525rem;
-	display: block;
-	padding-right: 1rem;
+.dd_item2 a {
+    width: 100%;
+    height: 3.525rem;
+    line-height: 3.525rem;
+    display: block;
+    padding-right: 1rem;
     padding-left: 1.06rem;
 }
 
-.dd_item2 cite
-{
-	font-size: 0.924rem;
-	font-family: Mi;
-    color: rgba(0,0,0,.87);
+.dd_item2 cite {
+    font-size: 0.924rem;
+    font-family: Mi;
+    color: rgba(0, 0, 0, .87);
     font-style: normal;
 }
 
-.dd_item2 span
-{
-	width: 1.1rem;
-	height: 3.525rem;
-	font-size: 1.2rem;
-	float: right;
-	color: rgba(0,0,0,.54);
+.dd_item2 span {
+    width: 1.1rem;
+    height: 3.525rem;
+    font-size: 1.2rem;
+    float: right;
+    color: rgba(0, 0, 0, .54);
 }
 
-.dd_item2 img
-{
-	width: 1.584rem;
-	height: 1.584rem;
+.dd_item2 img {
+    width: 1.584rem;
+    height: 1.584rem;
 }

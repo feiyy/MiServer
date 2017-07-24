@@ -18,6 +18,8 @@ $(document).ready(function() {
             async: true,
             success: function(data) {
                 $(target).html(data);
+                touchLoad();
+                $('.carousel').carousel('cycle');
                 callback();
             }
         });
