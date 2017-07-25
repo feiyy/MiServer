@@ -1,4 +1,3 @@
-var db = require("./mongo.js");
 var user = {
     uname: "张三",
     pwd: "123",
