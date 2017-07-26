@@ -2,7 +2,7 @@ $(document).ready(function() {
     reSize = function() {
         var width = $(window).width();
         var height = $(window).height();
-        if ((width / height) > 0.76 && height > 768) {
+        if ((width / height) > 0.76 && height > 500) {
             width = height * 0.5625;
             $('.wrapper').css('width', width + 'px');
         } else {
