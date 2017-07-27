@@ -27,7 +27,7 @@ $(document).ready(function() {
 
     footer = function(id) {
         var fragbtns = $("#fragbtns").children();
-        for (var index = 0; index < 2; index++) {
+        for (var index = 0; index < 4; index++) {
             var fragbtn = fragbtns[index];
             var target = (index + 1) * 2;
             if ((id - 1) == index) {
