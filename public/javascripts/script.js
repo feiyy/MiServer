@@ -57,6 +57,17 @@ $(document).ready(function() {
     reSize();
     $(window).on('load', reSize);
     $(window).on('resize', reSize);
+
+    shopcartCounts = function() {
+        $.ajax({
+            type: "get",
+            url: "/shopcart/count",
+            async: false,
+            success: function(data) {
+                $("#shopcart-counts").text(data);
+            }
+        });
+    }
 });
 
 //wf

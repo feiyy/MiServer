@@ -11,6 +11,15 @@ router.get('/', function(req, res, next) {
     res.render('index', { fragment: 1 })
 });
 
+router.get("/shopcart/count", function(req, res, next) {
+    db.queryUserById(req.session.user._id, function(user) {
+        var shoppingcart = user.shoppingcart;
+        console.log(shoppingcart);
+        var data = shoppingcart.length;
+        res.send(data);
+    })
+});
+
 router.get('/detail/:id', function(req, res, next) {
     var detailId = req.params.id;
     db.queryDetailById(detailId, function(detail) {
