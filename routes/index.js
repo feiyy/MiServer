@@ -24,9 +24,21 @@ router.post('/detail/shopcart', function(req, res, next) {
         res.send('login');
     } else {
         var detail = req.body;
+        var isRepeated=false;
         db.queryUserById(req.session.user._id, function(user) {
             var shoppingcart = user.shoppingcart;
-            shoppingcart.push(detail);
+            for(var i=0;i<shoppingcart.length;i++)
+            {
+                console.log("detail.goodsName="+detail.goodsName+" shoppingcart[i].goodsName="+shoppingcart[i].goodsName);
+                if(shoppingcart[i].goodsName==detail.goodsName)
+                {
+                    isRepeated=true;
+                    shoppingcart[i].goodsCount=parseInt(shoppingcart[i].goodsCount)+parseInt(detail.goodsCount);
+                    break;
+                }
+            }
+            if(!isRepeated)
+                shoppingcart.push(detail);
             db.updateUser(req.session.user._id, { shoppingcart: shoppingcart }, function(success) {
                 console.log(success);
                 if (success) {}
