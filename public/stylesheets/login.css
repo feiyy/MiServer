@@ -396,7 +396,7 @@ html {
 .icon_type {
     width: 3.375rem;
     height: 3.375rem;
-    margin: 0 10px;
+    margin: 0 0.5rem !important;
     display: inline-block;
     border-radius: 50%;
 }
