@@ -15,7 +15,7 @@ phoneInfo = function(id) {
             $(".zk_mi6brief").html("<font color='#ff4a00'>" + item.activity + "</font>" + item.brief);
             $(".zk_mi6price").text(item.type[0].price);
             thePrice = parseInt(item.type[0].price);
-            $(".zk_mi6choosen>.col-xs-10").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color + " x1");
+            $(".zk_mi6choosen>.col-xs-10").text(item.name + " " + item.type[0].name + " " + item.type[0].ram + " " + item.type[0].rom + " " + item.type[0].color);
             $(".zk_mi6stock>.col-xs-10").text("剩余" + item.type[0].stock + "件");
             $(".zk_mi6Store").text(item.type[0].stock);
             theStock = parseInt(item.type[0].stock);
@@ -146,15 +146,17 @@ function showMore() {
 
 function commitOrder(divCtrl) {
 
+    console.log($(".zk_commit").text());
+    
     if ($(".zk_commit").text() == "加入购物车") {
-
+        console.log("进入购物车？");
         var data = {
             goodsName: $(".zk_mi6Name").text(),
             url: $(".zk_mi6icon>img").attr("src"),
             goodsPrice: thePrice,
             goodsStock: theStock,
             goodsId: jid,
-            goodsCount: 1
+            goodsCount: $(".zk_mi6number").text()
         };
         $.ajax({
             type: "post",
