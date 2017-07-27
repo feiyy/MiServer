@@ -60,10 +60,11 @@ $(document).ready(function() {
 
     shopcartCounts = function() {
         $.ajax({
-            type: "get",
+            type: "post",
             url: "/shopcart/count",
             async: false,
             success: function(data) {
+                console.log(data);
                 $("#shopcart-counts").text(data);
             }
         });

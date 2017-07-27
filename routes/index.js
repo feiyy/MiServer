@@ -11,12 +11,11 @@ router.get('/', function(req, res, next) {
     res.render('index', { fragment: 1 })
 });
 
-router.get("/shopcart/count", function(req, res, next) {
+router.post("/shopcart/count", function(req, res, next) {
     db.queryUserById(req.session.user._id, function(user) {
         var shoppingcart = user.shoppingcart;
-        console.log(shoppingcart);
         var data = shoppingcart.length;
-        res.send(data);
+        res.send(data.toString());
     })
 });
 
