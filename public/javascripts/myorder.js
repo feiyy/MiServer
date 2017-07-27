@@ -11,10 +11,10 @@ var jid = "";
 function showDetail(divIdNum) {
     if ($("#zk_orderhide" + divIdNum).hasClass("zk_hide")) {
         $("#zk_orderhide" + divIdNum).removeClass("zk_hide");
-        $("#zk_orderhide" + divIdNum).css("display", "block");
+        $("#zk_orderhide" + divIdNum).slideDown();
     } else {
         $("#zk_orderhide" + divIdNum).addClass("zk_hide");
-        $("#zk_orderhide" + divIdNum).css("display", "none");
+        $("#zk_orderhide" + divIdNum).slideUp();
     }
 }
 
@@ -79,8 +79,8 @@ initialize = function(id, state) {
                             "<div class='col-xs-4'>收货地址：</div>" +
                             "<div class='col-xs-8 zk_orderRecAddr'>" + item.payment[i].orderRecAddr + "</div>" +
                             "<div class='col-xs-9'></div>" +
-                            "<div class='col-xs-3' style='color:#FF5722;text-align:right;' onclick='changeState(" + j + ")'>确认收货</div>" +
                             "</div>" +
+                            "<div class='col-xs-3' style='color:#FF5722;text-align:right;' onclick='changeState(" + j + ")'>确认收货</div>" +
                             "<div class='zk_Space col-xs-12'></div>" +
                             "<div class='col-xs-4'></div>" +
                             "<div class='col-xs-3 zk_orderItemNum'>共" + item.payment[i].orderItemNum + "件商品</div>" +
@@ -129,11 +129,11 @@ initialize = function(id, state) {
                         "<div class='col-xs-8 zk_orderBuyer'>" + item.payment[i].orderBuyer + "</div>" +
                         "<div class='col-xs-4'>收货地址：</div>" +
                         "<div class='col-xs-8 zk_orderRecAddr'>" + item.payment[i].orderRecAddr + "</div>" +
-                        "<div class='col-xs-9'></div>";
+                        "<div class='col-xs-9'></div>" +
+                        "</div>";
                     if (item.payment[i].orderState == "运输中")
-                        str += "<div class='col-xs-3' style='color:#FF5722;text-align:right;' onclick='changeState(" + j + ")'>确认收货</div>";
-                    str += "</div>" +
-                        "<div class='zk_Space col-xs-12'></div>" +
+                        str += "<div class='col-xs-3 col-xs-offset-8' style='color:#FF5722;text-align:right;' onclick='changeState(" + j + ")'>确认收货</div>";
+                    str += "<div class='zk_Space col-xs-12'></div>" +
                         "<div class='col-xs-4'></div>" +
                         "<div class='col-xs-3 zk_orderItemNum'>共" + item.payment[i].orderItemNum + "件商品</div>" +
                         "<div class='col-xs-2' style='font-size: 0.8rem;color: #999;padding-top: 0.5rem;padding-bottom: 0.5rem;'>总金额:</div>" +

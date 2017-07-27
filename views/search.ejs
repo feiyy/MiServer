@@ -11,30 +11,36 @@
     <script src="javascripts/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="javascripts/script.js" type="text/javascript" charset="utf-8"></script>
 	<script>
-		search = function(){
-			var key = $("#search").val();
-			$.ajax({
-				type: "post",
-				url: "/search",
-				data: {key: key},
-				async: true,
-				success: function(items) {
-					$(".search_out_ul").html("");
-					for(var index = 0; index < items.length; index ++ ){
-						$(".search_out_ul").append(
-						'<a href="/detail/' + items[index]._id +'"><li class="search_out_li"><div class="search_out"><div class="search_out_img"><img src="' + items[index].spic + '"/></div><div class="search_out_info"><div class="search_out_info_name"><p>' + items[index].name + '</p></div><div class="search_out_info_brief"><p><font color="#ff4a00">【现货在售】</font>'+ items[index].brief + '</p></div><div class="search_out_info_price"><span>'+ items[index].price + '</span><em>起</em></div></div></div></li></a>'
-						)
-						console.log(items);
+		$(document).ready(function() {
+			search = function(){
+				var key = $("#search").val();
+				$.ajax({
+					type: "post",
+					url: "/search",
+					data: {key: key},
+					async: true,
+					success: function(items) {
+						$(".search_out_ul").html("");
+						for(var index = 0; index < items.length; index ++ ){
+							$(".search_out_ul").append(
+							'<a href="/detail/' + items[index]._id +'"><li class="search_out_li"><div class="search_out"><div class="search_out_img"><img src="' + items[index].spic + '"/></div><div class="search_out_info"><div class="search_out_info_name"><p>' + items[index].name + '</p></div><div class="search_out_info_brief"><p><font color="#ff4a00">【现货在售】</font>'+ items[index].brief + '</p></div><div class="search_out_info_price"><span>'+ items[index].price + '</span><em>起</em></div></div></div></li></a>'
+							)
+							console.log(items);
+						}
 					}
-				}
-			});
-		} 
+				});
+			}
+			searchact = function(item){
+				$("#search").val($(item).text());
+				$("#search_icon").click();
+			}
+		})
 	</script>
 </head>
 <body>
     <div class="wrapper">
 	<div class="search_header">
-		<a href="/">
+		<a id="search_act" href="/">
 			<div id="home_icon" class="col-xs-1">
 				<img src="/images/home_icon.png"/>
 			</div>
@@ -56,10 +62,10 @@
     	</div>
     	
     	<div id="search_btn">
-            <button class="btn btn-default">米粉卡</button>
-            <button class="btn btn-default">音箱</button>
-            <button class="btn btn-default">小米5C</button>
-            <button class="btn btn-default">小米5s Plus</button>
+            <button id="link" class="btn btn-default" onclick="searchact(this)">手表</button>
+            <button id="link" class="btn btn-default" onclick="searchact(this)">小米笔记本</button>
+            <button id="link" class="btn btn-default" onclick="searchact(this)">大屏</button>
+            <button id="link" class="btn btn-default" onclick="searchact(this)">小米5s</button>
     	</div>
     	
     	<ul class="search_out_ul">

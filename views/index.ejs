@@ -5,34 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>小mi商城</title>
-
     <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
-
     <script src="/javascripts/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="/javascripts/jquery.scrollto.js" type="text/javascript" charset="utf-8"></script>
     <script src="/javascripts/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="/javascripts/script.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/javascripts/wf.js" type="text/javascript" charset="utf-8"></script>
-
     <script>
-        $(document).ready(function() {
-            fragment(<%= fragment %>);
-        });
+        $(document).ready(function() { fragment(<%= fragment %>) });
     </script>
-
 </head>
-
 <body>
     <div class="wrapper">
         <div id="tvbox" class="wrapper">
-
         </div>
-        <!--
-        作者：yoyo
-        时间：2017-07-12	
-        描述：footer
-        -->
         <div class="col-xs-12 footer">
             <ul id="fragbtns" class="col-xs-12">
                 <li class="col-xs-3">
@@ -63,6 +49,7 @@
                     <a href="/shopcart">
                         <div class="nav">
                             <div class="footerimg">
+                                <div id="shopcart-counts">2</div>
                                 <img src="/images/footer/footer6.png" />
                             </div>
                             <div class="frag_name">
@@ -87,5 +74,4 @@
         </div>
     </div>
 </body>
-
 </html>
