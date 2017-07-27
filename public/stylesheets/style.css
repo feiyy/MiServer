@@ -314,13 +314,15 @@ a:-webkit-any-link {
     position: absolute;
     z-index: 2;
     background-color: red;
-    width: 0.8rem;
-    height: 0.8rem;
-    font-size: .4rem;
-    line-height: .8rem;
-    border-radius: .4rem;
-    left: 3.5rem;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    border-radius: 1rem;
+    top: -0.5rem;
+    left: 2.8rem;
     color: white;
+    transform: scale(0.4, 0.4);
 }
 
 .frag_name {

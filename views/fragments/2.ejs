@@ -10,13 +10,12 @@
 			var r = $(window).width()/24;
 			
 			if(ccst>100){
-				$("#category-header").fadeOut();
+				$("#category-header").slideUp();
 			}
 			else if(ccst<100){
-				$("#category-header").fadeIn();
+				$("#category-header").slideDown();
 			}
 			
-	
 			if(getElementPos("co_xinpin").y<=0&&getElementPos("co_shouji").y>0){
 				$("#li_xinpin").siblings().removeClass();
 				$("#li_xinpin").attr("class","li_active");
