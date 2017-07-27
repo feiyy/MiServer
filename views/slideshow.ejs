@@ -1,12 +1,9 @@
-<div id="carousel-example-generic" class="carousel slide slideshow col-sm-12" data-ride="carousel" data-interval="2000" style="height:20rem">
-    <!-- Indicators -->
+<div id="carousel-example-generic" class="carousel slide slideshow col-sm-12" data-ride="carousel" data-interval="2000">
     <ol class="carousel-indicators">
         <% for (var index = 0; index < pictures.length; index++) { %>
         <li data-target='#carousel-example-generic' data-slide-to='<%= index %>' class='<%=index==0?"active":""%>'> </li>
         <% } %>
     </ol>
-
-    <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <% for (var index = 0; index < pictures.length; index++) { %>
             <div class='item <%=index==0?"active":""%>'> 
@@ -14,12 +11,6 @@
             </div>
         <% } %>
     </div>
-
-    <!-- Controls -->
-    <a class="left carousel-control hide" href="#carousel-example-generic" role="button" data-slide="prev">
-
-    </a>
-    <a class="right carousel-control hide" href="#carousel-example-generic" role="button" data-slide="next">
-
-    </a>
+    <a class="left carousel-control hide" href="#carousel-example-generic" role="button" data-slide="prev"></a>
+    <a class="right carousel-control hide" href="#carousel-example-generic" role="button" data-slide="next"></a>
 </div>

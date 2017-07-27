@@ -9,24 +9,13 @@
             <img src="/images/logo_mi.png" />
         </div>
         <div id="search">
-            <a href="/search">
-                <span id="search_text">
-					搜索商品名称
-				</span>
-            </a>
+            <a href="/search">搜索商品名称</a>
         </div>
         <div id="login_button" class="<%=login?"hide":""%>">
-            <a href="/users/login">
-                <span id="login_button_text">登录
-				</span>
-            </a>
+            <a href="/users/login" id="login_button_text">登录</a>
         </div>
         <div id="login_button" class="<%=login?"":"hide"%>">
-            <a href="javascript:fragment(4)">
-                <span id="login_button_text">
-					<img src="<%=login?login.hphoto:""%>">
-				</span>
-            </a>
+            <a href="javascript:fragment(4)" id="login_button_text"><img src="<%=login?login.hphoto:""%>"></a>
         </div>
     </div>
     <script>
