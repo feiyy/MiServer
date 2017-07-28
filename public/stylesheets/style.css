@@ -273,6 +273,7 @@ a:-webkit-any-link {
     height: 3rem;
     background: white;
     border-top: 1px solid #E0E0E0;
+    overflow: hidden;
 }
 
 .footer ul {

@@ -196,6 +196,9 @@
 .zk_commit_li {
     height: inherit;
     background-color: #f95b07;
+    line-height: 3rem;
+    font-size: 1rem;
+    color: white;
 }
 
 .zk_commit_li div {

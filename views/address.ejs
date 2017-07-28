@@ -20,24 +20,24 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<div class="push">
-				<div class="col-xs-12" style="background-color: #f2f2f2;">
-					<a href="/mine">
-						<div class="col-xs-1 zk_topBack">
-							<img src="/images/icon_back_n.png">
-						</div>
-					</a>
-					<div class="col-xs-10" style="text-align: center;color: #666;height:3rem;line-height:3rem;">
-						管理地址
+			<div class="wf_head">
+				<a href="/">
+					<div class="col-xs-1" id="back_button">
+						<img src="/images/details/icon_back.png" />
 					</div>
-					<div class="col-xs-1" ></div>
+				</a>		
+				<div class="col-xs-9" id="wf_head_content">管理地址</div>
+				<a href="/search">
+					<div class="col-xs-2" id="search_botton">
+						<img src="/images/search_icon.png" />
+					</div>
+				</a>
+			</div>
+			<div class="content row"  style="padding-top: 0; padding-bottom: 3rem;">
+				<div class="push">
+					<div class="col-xs-12 zk_addrs">
+					</div>
 				</div>
-				<div class="col-xs-12 zk_addrs">
-				</div>
-				<div class="col-xs-12" id="footer" data-toggle='modal' data-target='#addAddrModal'>
-					<p>新增地址</p>
-				</div>
-			
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
 					<div class="modal-dialog" role="document" style="width:23rem">
 						<div class="modal-content">
@@ -120,6 +120,11 @@
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="footer">
+				<ul id="fragbtns" class="col-xs-12">
+					<li class="col-xs-12 zk_commit_li" data-toggle='modal' data-target='#addAddrModal'>新增地址</li>
+				</ul>
 			</div>
 		</div>
 	</body>
