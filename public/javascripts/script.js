@@ -62,10 +62,11 @@ $(document).ready(function() {
         $.ajax({
             type: "post",
             url: "/shopcart/count",
-            async: false,
+            async: true,
             success: function(data) {
-                console.log(data);
-                $("#shopcart-counts").text(data);
+                $("#shopcart-counts").fadeOut("fast", function() {
+                    if (data != 0) $("#shopcart-counts").text(data).fadeIn();
+                })
             }
         });
     }
@@ -317,13 +318,14 @@ $(document).ready(function() {
         $(".all_price").attr('value', total);
     });
     $(".goods_delete").on("click", function() {
+        var item = $(this).parents("li").slideUp();
         $.ajax({
             type: "get",
             url: "/shopcart/" + $(this).attr("id"),
             async: true,
             success: function(data) {
                 if (data == "success") {
-                    location.reload();
+                    item.fadeOut().slideUp();
                 }
             }
         });
@@ -334,8 +336,6 @@ $(document).ready(function() {
         for (index = 0; index < checks.length; index++) {
             check.push($(checks[index]).attr('check'));
         }
-        console.log("222222");
-        console.log(check);
         var data = {
             allcounts: $(".all_counts").attr("value"),
             allprice: $(".all_price").attr("value"),

@@ -147,7 +147,7 @@ function showMore() {
 function commitOrder(divCtrl) {
 
     console.log($(".zk_commit").text());
-    
+
     if ($(".zk_commit").text() == "加入购物车") {
         console.log("进入购物车？");
         var data = {
@@ -164,16 +164,12 @@ function commitOrder(divCtrl) {
             data: data,
             async: true,
             success: function(item) {
-                $("#shopcart_button").fadeOut("slow", function() {
-                    $("#shopcart_button").fadeIn("slow");
-                });
-                console.log(item);
+                shopcartCounts();
                 if (item == "login") {
                     window.location.href = "/users/login";
                 }
             }
         });
-        console.log("成功加入购物车");
     }
 }
 $(function() {

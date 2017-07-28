@@ -14,9 +14,9 @@
     <script src="/javascripts/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="/javascripts/script.js" type="text/javascript" charset="utf-8"></script>
     <script src="/javascripts/zk.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/javascripts/wf.js" type="text/javascript" charset="utf-8"></script>
     <script>
-        phoneInfo("<%= detailId%>");
+        $(document).ready(function() { phoneInfo("<%= detailId%>");shopcartCounts(); });
+        
     </script>
 </head>
 
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="detail_footer" class="col-xs-12">
+                <!--div id="detail_footer" class="col-xs-12">
                 	<a href="/"><div class="col-xs-3" id="home_button" onclick="">
             			<img src="/images/HOME.png"/>
             			<p>首页</p>
@@ -101,9 +101,41 @@
             			<p>购物车</p>
                 	</div></a>
                 	<div class="zk_commit col-xs-6" onclick="commitOrder(this)">加入购物车</div>
-                </div>
+                </div-->
                 
             </div>
+        </div>
+        <div class="footer">
+            <ul id="fragbtns" class="col-xs-12">
+                <li class="col-xs-3">
+                    <a href="/">
+                        <div class="nav">
+                            <div class="footerimg">
+                                <img src="/images/footer/footer2.png" />
+                            </div>
+                            <div class="frag_name">
+                                <p>首页</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-xs-3">
+                    <a href="/shopcart">
+                        <div class="nav">
+                            <div class="footerimg">
+                                <div id="shopcart-counts" style="display: none"></div>
+                                <img src="/images/footer/footer6.png" />
+                            </div>
+                            <div class="frag_name">
+                                <p>购物车</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-xs-6 zk_commit_li">
+                    <div class="zk_commit" onclick="commitOrder(this)">加入购物车</div>
+                </li>
+            </ul>
         </div>
     </div>
 </body>
