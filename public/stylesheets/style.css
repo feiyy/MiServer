@@ -137,6 +137,11 @@ body,
     border-color: gainsboro;
 }
 
+.exit {
+    background-color: red;
+    color: white;
+}
+
 #header {
     position: fixed;
     top: 0;
@@ -502,7 +507,6 @@ a:-webkit-any-link {
     opacity: 0.8;
     font-size: 1.2rem;
     font-weight: 600;
-    padding-left: 1rem;
     color: rgba(0, 0, 0, .6);
 }
 
