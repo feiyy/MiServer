@@ -73,7 +73,11 @@ router.get('/address', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-    res.render('login');
+    if (req.session.user) {
+        res.redirect("/");
+    } else {
+        res.render('login');
+    }
 });
 
 router.post('/login', function(req, res, next) {
@@ -83,7 +87,7 @@ router.post('/login', function(req, res, next) {
     db.queryUserByValue(uname, function(user) {
         if (user && pwd == user.pwd) {
             req.session.user = user;
-            res.render('index', { fragment: 1 });
+            res.redirect("/");
         } else {
             res.render('login');
         }

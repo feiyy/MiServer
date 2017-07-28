@@ -84,7 +84,7 @@
 }
 
 .zk_mi6hide {
-    width: 100%;
+    width: inherit;
     height: 100%;
     background-color: black;
     display: block;
@@ -97,7 +97,7 @@
     height: 30rem;
     width: 25.64rem;
     background-color: white;
-    z-index: 3;
+    z-index: 98;
     position: fixed;
     bottom: 0;
 }
@@ -114,7 +114,7 @@
     height: 20rem;
 }
 
-.zk_mi6_version::-webkit-scrollbar {
+.zk_mi6version::-webkit-scrollbar {
     display: none;
 }
 
@@ -193,11 +193,18 @@
     text-align: center;
 }
 
-.zk_commit {
-    right: 0;
+.zk_commit_li {
     height: inherit;
-    padding-top: .8rem;
+    background-color: #f95b07;
+    line-height: 3rem;
+    font-size: 1rem;
+    color: white;
+}
+
+.zk_commit_li div {
+    height: inherit;
+    line-height: 3rem;
+    font-size: 1rem;
     color: white;
     text-align: center;
-    background-color: #f95b07;
 }

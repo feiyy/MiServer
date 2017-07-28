@@ -34,10 +34,11 @@ initialize = function() {
 function removeAddr(divNum) {
     $.ajax({
         type: "get",
-        url: "/order/delete/" + divNum,
+        url: "/address/delete/" + divNum,
         async: true,
         success: function(item) {
-            $("#zk_address" + divNum).fadeOut();
+            console.log(item);
+            $("#zk_address" + divNum).slideUp();
         }
     });
 }

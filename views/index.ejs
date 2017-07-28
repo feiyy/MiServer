@@ -12,14 +12,14 @@
     <script src="/javascripts/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="/javascripts/script.js" type="text/javascript" charset="utf-8"></script>
     <script>
-        $(document).ready(function() { fragment(<%= fragment %>) });
+        $(document).ready(function() { fragment(<%= fragment %>);shopcartCounts(); });
     </script>
 </head>
 <body>
     <div class="wrapper">
         <div id="tvbox" class="wrapper">
         </div>
-        <div class="col-xs-12 footer">
+        <div class="footer">
             <ul id="fragbtns" class="col-xs-12">
                 <li class="col-xs-3">
                     <a href="javascript:fragment(1)">
@@ -49,7 +49,7 @@
                     <a href="/shopcart">
                         <div class="nav">
                             <div class="footerimg">
-                                <div id="shopcart-counts">2</div>
+                                <div id="shopcart-counts" style="display: none"></div>
                                 <img src="/images/footer/footer6.png" />
                             </div>
                             <div class="frag_name">

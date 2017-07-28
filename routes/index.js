@@ -11,6 +11,18 @@ router.get('/', function(req, res, next) {
     res.render('index', { fragment: 1 })
 });
 
+router.post("/shopcart/count", function(req, res, next) {
+    if (req.session.user) {
+        db.queryUserById(req.session.user._id, function(user) {
+            var shoppingcart = user.shoppingcart;
+            var data = shoppingcart.length;
+            res.send(data.toString());
+        })
+    } else {
+        res.send('0');
+    }
+});
+
 router.get('/detail/:id', function(req, res, next) {
     var detailId = req.params.id;
     db.queryDetailById(detailId, function(detail) {
@@ -89,6 +101,7 @@ router.get('/payment', function(req, res, next) {
         })
     }
 });
+
 router.get('/payment:id', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -100,6 +113,7 @@ router.get('/payment:id', function(req, res, next) {
         })
     }
 });
+
 router.get('/address', function(req, res, next) {
     if (!req.session.user) {
         res.render('login');
@@ -147,7 +161,7 @@ router.post('/address/add', function(req, res, next) {
             db.updateUser(req.session.user._id, { address: address }, function(success) {
                 console.log(success);
                 if (success) {
-                    res.render("address", { userId: user._id });
+                    res.redirect("/address");
                 }
             });
         })
@@ -329,7 +343,7 @@ router.get('/order', function(req, res, next) {
     });
 });
 
-router.get('/order/delete/:id', function(req, res, next) {
+router.get('/address/delete/:id', function(req, res, next) {
     db.queryUserById(req.session.user, function(user) {
         user.address.splice(req.params.id, 1);
         db.updateUser(req.session.user, { address: user.address }, function(success) {

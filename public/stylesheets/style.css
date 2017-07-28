@@ -113,10 +113,10 @@ body,
 .wrapper {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .wrapper {
-    overflow: hidden;
     margin-left: auto;
     margin-right: auto;
 }
@@ -264,28 +264,29 @@ a:-webkit-any-link {
     overflow: hidden;
 }
 
-.push {
-    height: 120rem;
-}
-
 .footer {
+    box-sizing: content-box;
     position: absolute;
     bottom: 0;
-    z-index: 2;
+    z-index: 99;
     width: inherit;
     height: 3rem;
-    background-color: gray;
+    background: white;
+    border-top: 1px solid #E0E0E0;
+    overflow: hidden;
 }
 
-.footer {
-    position: fixed;
-    bottom: 0;
-    background: #FFFFFF;
-    border-top: 1px solid #E0E0E0;
+.footer ul {
+    width: 100%;
+    display: inline-block;
+    height: inherit;
+    padding: 0;
+    margin: 0;
 }
 
 .footer ul li {
     display: inline-block;
+    height: inherit;
     list-style: none;
     text-align: center;
 }
@@ -475,6 +476,7 @@ a:-webkit-any-link {
 }
 
 .wf_head {
+    z-index: 10;
     height: 3rem;
     background-color: #F5F5F5;
 }
@@ -985,12 +987,17 @@ a:-webkit-any-link {
 }
 
 .push {
+    overflow: scroll;
     height: auto;
-    padding-bottom: 5rem;
+    padding-bottom: 3rem;
+}
+
+.push::-webkit-scrollbar {
+    display: none;
 }
 
 .zk_mi6hide {
-    width: 100%;
+    width: inherit;
     height: 100%;
     background-color: black;
     display: block;
@@ -1050,14 +1057,6 @@ a:-webkit-any-link {
 .zk_addGoods {
     /*border: 1px solid #f4f4f4;*/
     padding-right: 1rem;
-}
-
-.zk_commit {
-    position: fixed;
-    bottom: 0;
-    z-index: 3;
-    background-color: white;
-    text-align: center;
 }
 
 .dd_wrapper {
