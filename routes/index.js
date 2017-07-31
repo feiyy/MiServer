@@ -242,7 +242,7 @@ router.get('/fragments/:id', function(req, res, next) {
                     res.render('fragments/' + 4, { login: user });
                 })
             } else {
-                res.redirect('/users/login');
+                res.send('login');
             }
             break;
         default:
