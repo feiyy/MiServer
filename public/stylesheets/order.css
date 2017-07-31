@@ -130,7 +130,7 @@
     padding-left: 1rem;
 }
 
-.zk_orderItem>.col-xs-9 {
+.zk_orderItem>.col-xs-9, .zk_orderItem>.col-xs-7,.zk_orderItem>.col-xs-2{
     font-size: 0.8rem;
     color: #666;
     padding-top: 1.5rem;

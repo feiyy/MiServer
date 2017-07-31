@@ -13,15 +13,17 @@ var methodChoosen = false;
 
 function comedown(divCtrl, divName) {
     if (divCtrl.classList.contains("zk_down")) {
-        $("." + divName).css("display", "block");
+        // $("." + divName).css("display", "block");
         divCtrl.classList.remove("zk_down");
         divCtrl.classList.add("zk_turnUp");
         divCtrl.getElementsByTagName("img")[0].src = "/img/getUp.png";
+        $("." + divName).slideDown();
     } else {
-        $("." + divName).css("display", "none");
+        //$("." + divName).css("display", "none");
         divCtrl.classList.remove("zk_turnUp");
         divCtrl.classList.add("zk_down");
         divCtrl.getElementsByTagName("img")[0].src = "/img/getDown.png";
+        $("." + divName).slideUp();
     }
 }
 
@@ -171,7 +173,7 @@ init = function(id) {
                             "<img src='" + item.payment[i].orderItemsPic[k].url + "' />" +
                             "</div>" +
                             "<div class='col-xs-8 zk_proName'>" + item.payment[i].orderItemsName[k].name + "</div>" +
-                            "<div class='col-xs-2 zk_proNum' style='padding-top:0.5rem;'>x2</div>" +
+                            "<div class='col-xs-2 zk_proNum' style='padding-top:0.5rem;'>x"+item.payment[i].orderItemsCount[k].goodsCount+"</div>" +
                             "</div>";
                         $("#zk_paymentPush").append(str);
                     }

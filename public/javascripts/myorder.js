@@ -64,7 +64,8 @@ initialize = function(id, state) {
                         for (var k = 0; k < item.payment[i].orderItemsPic.length; k++) {
                             str += "<div class='zk_orderItem col-xs-12'>" +
                                 "<div class='col-xs-3'><img src='" + item.payment[i].orderItemsPic[k].url + "'></div>" +
-                                "<div class='col-xs-9'>" + item.payment[i].orderItemsName[k].name + "</div>" +
+                                "<div class='col-xs-7'>" + item.payment[i].orderItemsName[k].name + "</div>" +
+                                "<div class='col-xs-2'>x" + item.payment[i].orderItemsCount[k].goodsCount + "</div>" +
                                 "</div>";
                         }
                         str += "<div class='col-xs-12 zk_orderDetail zk_hide' id='zk_orderhide" + j + "'>" +
@@ -117,7 +118,8 @@ initialize = function(id, state) {
                     for (var k = 0; k < item.payment[i].orderItemsPic.length; k++) {
                         str += "<div class='zk_orderItem col-xs-12'>" +
                             "<div class='col-xs-3'><img src='" + item.payment[i].orderItemsPic[k].url + "'></div>" +
-                            "<div class='col-xs-9'>" + item.payment[i].orderItemsName[k].name + "</div>" +
+                            "<div class='col-xs-7'>" + item.payment[i].orderItemsName[k].name + "</div>" +
+                            "<div class='col-xs-2'>x" + item.payment[i].orderItemsCount[k].goodsCount + "</div>" +
                             "</div>";
                     }
                     if(item.payment[i].orderState!="待付款")
@@ -170,7 +172,8 @@ initialize = function(id, state) {
                         for (var k = 0; k < item.payment[i].orderItemsPic.length; k++) {
                             str += "<div class='zk_orderItem col-xs-12'>" +
                                 "<div class='col-xs-3'><img src='" + item.payment[i].orderItemsPic[k].url + "'></div>" +
-                                "<div class='col-xs-9'>" + item.payment[i].orderItemsName[k].name + "</div>" +
+                                "<div class='col-xs-7'>" + item.payment[i].orderItemsName[k].name + "</div>" +
+                                "<div class='col-xs-2'>x" + item.payment[i].orderItemsCount[k].goodsCount + "</div>" +
                                 "</div>";
                         }
                         str += "<div class='col-xs-12 zk_orderDetail zk_hide' id='zk_orderhide" + j + "'>" +
@@ -221,7 +224,8 @@ initialize = function(id, state) {
                         for (var k = 0; k < item.payment[i].orderItemsPic.length; k++) {
                             str += "<div class='zk_orderItem col-xs-12'>" +
                                 "<div class='col-xs-3'><img src='" + item.payment[i].orderItemsPic[k].url + "'></div>" +
-                                "<div class='col-xs-9'>" + item.payment[i].orderItemsName[k].name + "</div>" +
+                                "<div class='col-xs-7'>" + item.payment[i].orderItemsName[k].name + "</div>" +
+                                "<div class='col-xs-2'>x" + item.payment[i].orderItemsCount[k].goodsCount + "</div>" +
                                 "</div>";
                         }
                         // str += "<div class='col-xs-12 zk_orderDetail zk_hide' id='zk_orderhide" + j + "'>" +

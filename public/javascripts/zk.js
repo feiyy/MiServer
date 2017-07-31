@@ -58,8 +58,11 @@ function changePic(num) {
 }
 
 function up() {
-    $(".zk_mi6cover").css("display", "block");
-    $(".zk_mi6hide").css("display", "block");
+    //$(".zk_mi6cover").css("display", "block");
+    //$(".zk_mi6hide").css("display", "block");
+    $(".zk_mi6cover").fadeIn("slow",function(){
+        $(".zk_mi6hide").fadeIn("slow");
+    });
     var str = $(".zk_mi6choosen>.col-xs-10").text().split(" ");
     $(".zk_mi6standard").html("");
     $(".zk_mi6standard1").html("");
@@ -110,8 +113,11 @@ function up() {
 }
 
 function down() {
-    $(".zk_mi6cover").css("display", "none");
-    $(".zk_mi6hide").css("display", "none");
+    // $(".zk_mi6cover").css("display", "none");
+    // $(".zk_mi6hide").css("display", "none");
+    $(".zk_mi6hide").fadeOut("slow",function(){
+        $(".zk_mi6cover").fadeOut("slow");
+    });
 }
 
 // function commitOrder(divCtrl) {
