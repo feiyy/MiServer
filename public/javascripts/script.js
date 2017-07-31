@@ -11,6 +11,10 @@ $(document).ready(function() {
         $('html').css('font-size', parseInt(width / 24) + "px");
     }
 
+    reSize();
+    $(window).on('load', reSize);
+    $(window).on('resize', reSize);
+
     frag_switch = function(target, source, callback) {
         $.ajax({
             type: "get",
@@ -57,9 +61,6 @@ $(document).ready(function() {
         }
 
     }
-    reSize();
-    $(window).on('load', reSize);
-    $(window).on('resize', reSize);
 
     shopcartCounts = function() {
         $.ajax({
@@ -72,6 +73,10 @@ $(document).ready(function() {
                 })
             }
         });
+    }
+
+    goBack = function() {
+        window.history.back()
     }
 });
 
