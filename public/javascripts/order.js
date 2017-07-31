@@ -189,8 +189,10 @@ function clearpwd()
 function checkpwd()
 {
     console.log(userpwd);
+    
     if(userpwd==$("#zk_paypwd").val())
     {
         console.log("进来了");
+        pay();
     }
 }
