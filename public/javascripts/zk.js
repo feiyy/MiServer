@@ -149,9 +149,8 @@ function commitOrder(divCtrl) {
     console.log($(".zk_commit").text());
 
     if ($(".zk_commit").text() == "加入购物车") {
-        console.log("进入购物车？");
         var data = {
-            goodsName: $(".zk_mi6Name").text(),
+            goodsName: $(".zk_mi6choosen>.col-xs-10").text(),
             url: $(".zk_mi6icon>img").attr("src"),
             goodsPrice: thePrice,
             goodsStock: theStock,

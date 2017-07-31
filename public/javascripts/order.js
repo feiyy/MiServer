@@ -6,6 +6,7 @@ var itemBuyer = "";
 var itemPhone = "";
 var itemsName = [];
 var itemsPic = [];
+var userpwd="";
 
 var addrChoosen = false;
 var methodChoosen = false;
@@ -53,12 +54,38 @@ function chooseAddr(divName, divCtrl) {
     }
 }
 
+function initModel()
+{
+    console.log("模态框初始化");
+    if (methodChoosen && addrChoosen)
+    {
+        $("#zk_payModel .modal-title").text(payMethod);
+        $("#zk_payModel").modal("show");
+    }
+    else if(methodChoosen)
+    {
+
+        $("#zk_warnModel .modal-body").text("请选择收货地址");
+        $("#zk_warnModel").modal("show");
+    }
+    else if(addrChoosen)
+    {
+        $("#zk_warnModel .modal-body").text("请选择支付方式");
+        $("#zk_warnModel").modal("show");
+    }
+    else
+    {
+        $("#zk_warnModel .modal-body").text("请选择支付方式和收货地址");
+        $("#zk_warnModel").modal("show");
+    }
+} 
 function pay() {
 
     var date = new Date();
     var createDate = "" + date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
 
     console.log("addr:" + addrChoosen + " method:" + methodChoosen);
+    
     if (methodChoosen && addrChoosen) {
 
         console.log("都选择了");
@@ -95,6 +122,7 @@ init = function(id) {
         url: "/order",
         async: true,
         success: function(item) {
+            userpwd=item.pwd;
             var str = "<div class='col-xs-12 zk_address'>" +
                 "<div class='col-xs-10'>" +
                 "<div class='col-xs-12' style='padding-bottom: 0.5rem;'>" +
@@ -142,7 +170,8 @@ init = function(id) {
                             "<div class='col-xs-2 zk_logo'>" +
                             "<img src='" + item.payment[i].orderItemsPic[k].url + "' />" +
                             "</div>" +
-                            "<div class='col-xs-10 zk_proName'>" + item.payment[i].orderItemsName[k].name + "</div>" +
+                            "<div class='col-xs-8 zk_proName'>" + item.payment[i].orderItemsName[k].name + "</div>" +
+                            "<div class='col-xs-2 zk_proNum' style='padding-top:0.5rem;'>x2</div>" +
                             "</div>";
                         $("#zk_paymentPush").append(str);
                     }
@@ -151,4 +180,17 @@ init = function(id) {
             }
         }
     });
+}
+function clearpwd()
+{
+    console.log($("#zk_paypwd").val());
+    $("#zk_paypwd").val("");
+}
+function checkpwd()
+{
+    console.log(userpwd);
+    if(userpwd==$("#zk_paypwd").val())
+    {
+        console.log("进来了");
+    }
 }

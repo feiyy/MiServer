@@ -17,6 +17,9 @@ $(document).ready(function() {
             url: "/fragments/" + source,
             async: true,
             success: function(data) {
+                if (data == 'login') {
+                    window.location.href = "/users/login";
+                }
                 $(target).html(data);
                 touchLoad();
                 $('.carousel').carousel('cycle');

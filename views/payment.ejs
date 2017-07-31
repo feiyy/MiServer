@@ -75,11 +75,58 @@
                 
             </div>
         </div>
-        <div id="footerp" class="col-xs-12" onclick="pay()">
+        <div id="footerp" class="col-xs-12" onclick="initModel()">
 			<p>去支付</p>
 	    </div>
     </div>
+
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="zk_warnModel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">警告</h4>
+            </div>
+            <div class="modal-body col-xs-12">
+
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     
+    <div class="modal fade" tabindex="-1" role="dialog" id="zk_payModel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4> 
+            </div>
+            <div class="modal-body col-xs-12">
+
+
+
+            <div class="col-xs-1"></div>
+            <div class="col-xs-10">
+                <input id="zk_paypwd" type="password" style="border:1px solid rgba(0,0,0,0.2)"/>
+            
+            </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-xs-12">
+                    <div class="col-xs-6" style="background-color:#FF5722;text-align:center;color:white" onclick="checkpwd()">确定</div>
+                    <div class="col-xs-6" style="background-color:whitesmoke;text-align:center" onclick="clearpwd()">取消</div>
+                </div>
+            </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 </body>
 
 </html>

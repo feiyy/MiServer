@@ -65,14 +65,17 @@
         </div>
     </div>
     <div class="wrapper">
+        <div class="wf_head">
+            <a href="/">
+                <div class="col-xs-2" id="back_button">
+                    <img src="/images/details/icon_back.png" />
+                </div>
+            </a>		
+            <div class="col-xs-8" id="wf_head_content">个人资料</div>
+        </div>
         <div id="tvbox" class="wrapper">
             <div class="dd">
                 <div class="dd_wrapper">
-
-                    <div class="dd_header">
-                        <span onclick="window.location.href='/mine'"><</span>
-                        <cite>个人资料</cite>
-                    </div>
                     <div class="dd_content">
                         <ul class="dd_model">
                             <li id="dd_headimg">
@@ -122,17 +125,15 @@
                         </ul>
                          <ul class="dd_model3">
                             <li>
-                                <a href="/users/logout">
-                                    <cite>退出账号</cite>
+                                <a class="exit" href="/users/logout">
+                                    <p>退出账号</p>
                                 </a>
                             </li> 
                         </ul>
                     </div>
-
                 </div>
             </div>
         </div>
-
     </div>
 </body>
 
