@@ -6,21 +6,24 @@ var itemBuyer = "";
 var itemPhone = "";
 var itemsName = [];
 var itemsPic = [];
+var userpwd="";
 
 var addrChoosen = false;
 var methodChoosen = false;
 
 function comedown(divCtrl, divName) {
     if (divCtrl.classList.contains("zk_down")) {
-        $("." + divName).css("display", "block");
+        // $("." + divName).css("display", "block");
         divCtrl.classList.remove("zk_down");
         divCtrl.classList.add("zk_turnUp");
         divCtrl.getElementsByTagName("img")[0].src = "/img/getUp.png";
+        $("." + divName).slideDown();
     } else {
-        $("." + divName).css("display", "none");
+        //$("." + divName).css("display", "none");
         divCtrl.classList.remove("zk_turnUp");
         divCtrl.classList.add("zk_down");
         divCtrl.getElementsByTagName("img")[0].src = "/img/getDown.png";
+        $("." + divName).slideUp();
     }
 }
 
@@ -121,6 +124,7 @@ init = function(id) {
         url: "/order",
         async: true,
         success: function(item) {
+            userpwd=item.pwd;
             var str = "<div class='col-xs-12 zk_address'>" +
                 "<div class='col-xs-10'>" +
                 "<div class='col-xs-12' style='padding-bottom: 0.5rem;'>" +
@@ -169,7 +173,7 @@ init = function(id) {
                             "<img src='" + item.payment[i].orderItemsPic[k].url + "' />" +
                             "</div>" +
                             "<div class='col-xs-8 zk_proName'>" + item.payment[i].orderItemsName[k].name + "</div>" +
-                            "<div class='col-xs-2 zk_proNum' style='padding-top:0.5rem;'>x2</div>" +
+                            "<div class='col-xs-2 zk_proNum' style='padding-top:0.5rem;'>x"+item.payment[i].orderItemsCount[k].goodsCount+"</div>" +
                             "</div>";
                         $("#zk_paymentPush").append(str);
                     }
@@ -179,39 +183,18 @@ init = function(id) {
         }
     });
 }
-
-$(function(){
-    $(".ipt-real-nick").on("input", function() 
+function clearpwd()
+{
+    console.log($("#zk_paypwd").val());
+    $("#zk_paypwd").val("");
+}
+function checkpwd()
+{
+    console.log(userpwd);
+    
+    if(userpwd==$("#zk_paypwd").val())
     {
-        console.log("进来了"+$(this).val());
-        var $input = $(".ipt-fake-box input");
-        if(!$(this).val()){//无值光标顶置
-        $('.ipt-active-nick').css('left',$input.eq(0).offset().left-parseInt($('.ipt-box-nick').parent().css('padding-left'))+'px');
-        }
-        if(/^[0-9]*$/g.test($(this).val())){//有值只能是数字
-        //console.log($(this).val());
-        var pwd = $(this).val().trim();
-        for (var i = 0, len = pwd.length; i < len; i++) {
-            $input.eq(i).val(pwd[i]);
-            if($input.eq(i).next().length){//模拟光标，先将图片容器定位，控制left值而已
-                $('.ipt-active-nick').css('left',$input.eq(i).offset().left-parseInt($('.ipt-box-nick').parent().css('padding-left'))+'px');
-            }
-        }
-        $input.each(function() {//将有值的当前input后的所有input清空
-            var index = $(this).index();
-            if (index >= len) {
-            $(this).val("");
-            }
-        });
-        if (len == 6) {
-            //执行其他操作
-            console.log('输入完整，执行操作');
-        }
-        }else{//清除val中的非数字，返回纯number的value
-        var arr=$(this).val().match(/\d/g);
-        $(this).val($(this).val().slice(0,$(this).val().lastIndexOf(arr[arr.length-1])+1));
-        //console.log($(this).val());
-        }
-        });
-
-})
+        console.log("进来了");
+        pay();
+    }
+}

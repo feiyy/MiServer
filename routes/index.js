@@ -294,6 +294,7 @@ router.post('/clearbutton', function(req, res, next) {
             orderState: "待付款",
             orderItemsPic: [],
             orderItemsName: [],
+            orderItemsCount: [],
             orderDate: "",
             orderPayMethod: "",
             orderBuyer: "",
@@ -306,6 +307,7 @@ router.post('/clearbutton', function(req, res, next) {
             if (check[index] == "1") {
                 neworder.orderItemsPic.push({ url: shoppingcart[index].url });
                 neworder.orderItemsName.push({ name: shoppingcart[index].goodsName });
+                neworder.orderItemsCount.push({goodsCount:shoppingcart[index].goodsCount });
                 shoppingcart.splice(index, 1);
             }
         }
